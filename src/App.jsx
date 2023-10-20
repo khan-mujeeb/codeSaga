@@ -1,11 +1,12 @@
 
-import HomeScreen from "./components/HomeScreen"
-
+import FlexGame from "./pages/FlexGame"
+import UnitGame from "./pages/UnitGame"
 function App() {
   
   return (
     <div>
-    <HomeScreen />
+    {/* <FlexGame /> */}
+    <UnitGame />
   </div>
 )
 }

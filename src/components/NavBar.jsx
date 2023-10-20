@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const NavBar = (props) => {
+const NavBar = ({level, onLevelChangeHandler}) => {
     // state to update level number
     // const [level, setLevel] = React.useState(1);
 
@@ -11,7 +11,7 @@ const NavBar = (props) => {
             
             <div className="flex gap-1">
                 <h2>Level </h2>
-                <h2>{props.level}</h2>
+                <h2>{level}</h2>
             </div>
 
         </div>
@@ -20,6 +20,7 @@ const NavBar = (props) => {
 
 NavBar.propTypes = {
     level: PropTypes.number.isRequired, 
+    onLevelChangeHandler: PropTypes.func.isRequired,
 };
 
 export default NavBar;

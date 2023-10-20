@@ -1,7 +1,7 @@
 import flexbox from "../data/flexgame.json";
 import PropTypes from "prop-types";
 
-const CodeSetion = ({onPosChange}) => {
+const CodeSetion = ({level, onPosChange, onLevelChangeHandle}) => {
 
     const leftBracket = "{";
     const rightBracket = "}";
@@ -47,7 +47,9 @@ const CodeSetion = ({onPosChange}) => {
 
 
 CodeSetion.propTypes = {
+    level: PropTypes.number.isRequired,
     onPosChange: PropTypes.func.isRequired,
+    onLevelChangeHandle: PropTypes.func.isRequired,
 };
 
 export default CodeSetion;

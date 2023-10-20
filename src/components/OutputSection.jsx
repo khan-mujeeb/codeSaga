@@ -7,7 +7,7 @@ const bg = flexbox.level1.assets[0];
 const mo = flexbox.level1.assets[2];
 const fo = flexbox.level1.assets[1];
 
-const OutputSection = ({level, elementPosition}) => {
+const OutputSection = ({level, elementPosition, onLevelChangeHandle}) => {
     // console.log("1st log" + mo);
     // const [image, setImage] = useState('/');
 
@@ -30,7 +30,7 @@ const OutputSection = ({level, elementPosition}) => {
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     alignItems: elementPosition,  
-                                      
+
                 }
                 
             }
@@ -45,6 +45,7 @@ const OutputSection = ({level, elementPosition}) => {
 OutputSection.propTypes = {
     level: PropTypes.number.isRequired,
     elementPosition: PropTypes.string.isRequired,
+    onLevelChangeHandle: PropTypes.func.isRequired,
 };
 
 export default OutputSection;

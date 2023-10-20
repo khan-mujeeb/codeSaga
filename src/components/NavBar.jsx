@@ -1,24 +1,25 @@
-import React from "react";
+import PropTypes from "prop-types";
 
-const NavBar =  () => {    
-        
-        // state to update level number
-        const [level, setLevel] = React.useState(1);
+const NavBar = (props) => {
+    // state to update level number
+    // const [level, setLevel] = React.useState(1);
 
-        return <div className="flex justify-around items-center h-20 bg-blue-950 text-white text-lg font-bold">
+    return (
+        <div className="flex justify-around items-center h-20 bg-navBarBg text-white text-lg font-bold">
+            <h2 className="flex text-3xl"><span className="text-green-400">Flex</span>🌎 </h2>
 
-            <h2>Code Here</h2>
-
-            {/* level div */}
+            
             <div className="flex gap-1">
                 <h2>Level </h2>
-                <h2>{level}</h2>
+                <h2>{props.level}</h2>
             </div>
 
-            <h2>See Here</h2>
+        </div>
+    );
+};
 
-        </div>;
-    }
-
+NavBar.propTypes = {
+    level: PropTypes.number.isRequired, 
+};
 
 export default NavBar;

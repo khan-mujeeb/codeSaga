@@ -10,6 +10,10 @@ export default {
         "black-100": "#100d25",
         "black-200": "#090325",
         "white-100": "#f3f3f3",
+        "codeEditor": "#1E293B",
+        "mainBg": "#1B2430",
+        "codeBg": "#94A3B8",
+        "navBarBg": "#161E2E"
       },
       boxShadow: {
         card: "0px 35px 120px -15px #211e35",

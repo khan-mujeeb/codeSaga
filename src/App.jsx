@@ -4,9 +4,9 @@ import HomeScreen from "./components/HomeScreen"
 function App() {
   
   return (
-    <h1>
+    <div>
     <HomeScreen />
-  </h1>
+  </div>
 )
 }
 

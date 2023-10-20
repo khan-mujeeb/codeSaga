@@ -1,6 +1,10 @@
 import React from 'react'
-const flexgame = {1:'Units',2:'Flex',3:'Grid',4:'media-query',5:'animations'}
+
 import GameMenuUnit from "./GameMenuUnit";
+
+
+const flexgame = {1:'Units',2:'Flex',3:'Grid',4:'media-query',5:'animations'}
+
 const GameMenu = () => {
     const rendergameList = Object.entries(flexgame).map(([key, value], index) => {
         return (
@@ -20,9 +24,9 @@ const GameMenu = () => {
     <>
    <div className=" w-screen h-screen p-1 overflow-hidden box-border">
    <div className="w-full h-full flex flex-col  ">
-   <div className=" m-10 w-screen    py-1 flex justify-center  text-9xl">
-       GameMenu
-       </div>
+   <div className="m-10 w-screen   text-mountain h-40 font-roboto py-1 items-center flex justify-center  text-center text-6xl">
+          GAME MENU
+          </div>
       <div className=" flex w-screen flex-wrap px-10 gap-4    grow my-10   text-5xl justify-center items-center">
       {rendergameList}
       </div>

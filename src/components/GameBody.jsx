@@ -5,18 +5,19 @@ import OutputSection from "./OutputSection";
 
 
 
-const GameBody = (props) => {
+const GameBody = ({level, onLevelChangeHandle}) => {
 
     const [elementPosition, setElementPosition] = React.useState("");
 
     return <div className="flex flex-wrap h-full">
-        <CodeSection onPosChange = {setElementPosition}/>
-        <OutputSection level={props.level} elementPosition = {elementPosition}/>
+        <CodeSection onPosChange = {setElementPosition} onLevelChangeHandle = {onLevelChangeHandle}/>
+        <OutputSection level={level} elementPosition = {elementPosition} onLevelChangeHandle = {onLevelChangeHandle}/>
     </div>
 }
 
 GameBody.propTypes = {
     level: PropTypes.number.isRequired, 
+    onLevelChangeHandle: PropTypes.func.isRequired,
 };
 
 export default GameBody;

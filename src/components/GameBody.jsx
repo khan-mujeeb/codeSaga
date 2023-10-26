@@ -7,11 +7,15 @@ import OutputSection from "./OutputSection";
 
 const GameBody = ({level, onLevelChangeHandle}) => {
 
-    const [elementPosition, setElementPosition] = React.useState("");
+    const [elementPosition, setElementPosition] = React.useState();
+    const [alignItem, setAlignItem] = React.useState("center");
+    const [justifyContent, setJustifyContent] = React.useState("center");
 
     return <div className="flex flex-wrap h-full">
-        <CodeSection onPosChange = {setElementPosition} onLevelChangeHandle = {onLevelChangeHandle}/>
-        <OutputSection level={level} elementPosition = {elementPosition} onLevelChangeHandle = {onLevelChangeHandle}/>
+
+        <CodeSection onPosChange = {setElementPosition} onAlignItem = {setAlignItem} onJustifyContent = {setJustifyContent} onLevelChangeHandle = {onLevelChangeHandle}/>
+
+        <OutputSection level={level} elementPosition = {elementPosition} alignItem = {alignItem} justifyContent = {justifyContent} onLevelChangeHandle = {onLevelChangeHandle}/>
     </div>
 }
 

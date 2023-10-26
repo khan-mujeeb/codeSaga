@@ -21,7 +21,7 @@ const  DesktopSection = ({newHeight, newWidth}) => {
                 <div className="w-[690px] h-[350px] ml-[31px] mt-14">
                     <div 
                     
-                    className="bg-orange-500 w-[30%] h-[20%]"
+                    className="bg-orange-500 w-[30%] h-[20%] transition-all duration-50000 "
                     style={
                         {
                             height: newHeight,

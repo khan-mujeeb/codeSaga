@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 const API_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMjEwNjU0NWEtYWU5NC00ZTM2LWI5Y2UtNzFlYWQ5OTYyMjE4IiwidHlwZSI6ImFwaV90b2tlbiJ9.pL9Fbl2EN_fDzs7kBPVOLDxNmh2Rvn7dYMfvEcTXkf8";
@@ -6,6 +6,7 @@ const API_KEY =
 const ChatbotBody = () => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
+  const messagesEndRef = useRef(null);
 
   const chatWithGPT3 = async (userInput) => {
     const apiEndpoint = "https://api.edenai.run/v2/text/chat/stream";
@@ -35,6 +36,16 @@ const ChatbotBody = () => {
       return "";
     }
   };
+
+  useEffect(() => {
+    // Scroll to the end of messages whenever they change
+    scrollToBottom();
+  }, [messages]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Don't send an empty message
@@ -56,7 +67,7 @@ const ChatbotBody = () => {
 
   return (
     <div
-      className="fixed bottom-[calc(4rem+1.5rem)] right-0 mr-4 bg-green-50 p-6 rounded-lg border border-[#e5e7eb] w-[400px] h-[550px]"
+      className="fixed z-10  bottom-[calc(4rem+1.5rem)] right-0 mr-4 bg-green-50 p-6 rounded-lg border border-[#e5e7eb] w-[400px] h-[550px]"
       style={{
         boxShadow: "0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgb(0 0 0 / 0.05)",
       }}
@@ -71,8 +82,8 @@ const ChatbotBody = () => {
 
       {/* Chat Container */}
       <div
-        className="pr-4 h-[385px]"
-        style={{ minWidth: "100%", display: "table" }}
+        className="pr-4 h-[385px] overflow-y-scroll  scrollbar-none"
+        style={{ minWidth: "100%" }}
       >
         {messages.map((message, index) =>
           message.user ? (
@@ -96,14 +107,14 @@ const ChatbotBody = () => {
                 </div>
               </span>
               <p className="leading-relaxed">
-                <span className="block font-bold text-gray-700">You </span>
+                <span className="block font-bold text--700">You </span>
                 {message.text}
               </p>
             </div>
           ) : (
             <div
               key={index}
-              className="flex gap-3 my-4 text-gray-600 text-sm flex-1"
+              className="flex gap-3 my-4 text-green-700 text-sm flex-1"
             >
               <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
                 <div className="rounded-full bg-gray-100 border p-1">
@@ -132,6 +143,7 @@ const ChatbotBody = () => {
             </div>
           )
         )}
+        <div ref={messagesEndRef} />
       </div>
 
       {/* Input box */}

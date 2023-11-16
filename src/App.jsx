@@ -12,6 +12,8 @@ import {
   Outlet,
 } from "react-router-dom";
 
+// import "./App.css";
+
 /**
  * - The App component is the entry point of the application.
  * - It is responsible for rendering the top-level components.
@@ -32,10 +34,10 @@ const App = () => {
             </Route>
           </Route>
         </Routes>
-
-        {/* <Route exact path="/flex" component={FlexGame} />
-      <Route exact path="/unit" component={UnitGame} /> */}
       </Router>
+      {/* <button type="button" className="login-with-google-btn">
+        Sign in with Google
+      </button> */}
     </>
   );
 };

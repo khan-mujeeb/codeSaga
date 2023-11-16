@@ -1,6 +1,13 @@
 import { NavLink, Outlet } from "react-router-dom";
+import React, { useState } from 'react';
+import ChatbotButton from "./ChatbotButton";
+import ChatbotBody from "./ChatbotBody";
 
 const Rootlayout = () => {
+
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
+ 
   return (
     <div className="h-full w-full">
       <NavLink
@@ -20,6 +27,9 @@ const Rootlayout = () => {
         </svg>
       </NavLink>
       {/* add nav bar and config here */}
+      <ChatbotButton isChatOpen={isChatOpen} setIsChatOpen={setIsChatOpen}/>
+      {isChatOpen && <ChatbotBody />}
+
       <Outlet />
     </div>
   );

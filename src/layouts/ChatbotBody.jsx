@@ -56,7 +56,7 @@ const ChatbotBody = () => {
 
   return (
     <div
-      className="fixed bottom-[calc(4rem+1.5rem)] right-0 mr-4 bg-white p-6 rounded-lg border border-[#e5e7eb] w-[400px] h-[550px]"
+      className="fixed bottom-[calc(4rem+1.5rem)] right-0 mr-4 bg-green-50 p-6 rounded-lg border border-[#e5e7eb] w-[400px] h-[550px]"
       style={{
         boxShadow: "0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgb(0 0 0 / 0.05)",
       }}

@@ -10,6 +10,8 @@ const NavBar = ({level, onLevelChangeHandler}) => {
 
             
             <div className="flex gap-1">
+
+                
                 <h2>Level </h2>
                 <h2>{level}</h2>
             </div>

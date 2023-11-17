@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import GameMenuUnit from "./GameMenuUnit";
+import menubg from "../assets/img/menubg.jpg";
 
 const flexgame = {
   1: "Units",
@@ -47,9 +48,12 @@ const GameMenu = () => {
 
   return (
     <>
-      <div className=" w-screen h-screen p-1 overflow-hidden box-border">
+      <div className=" w-screen h-screen p-1 overflow-hidden box-border" style={{
+          backgroundImage: `url(${menubg})`,
+          backgroundSize: "100% 100%",
+        }}>
         <div className="w-full h-full flex flex-col  ">
-          <div className="m-10 w-screen   text-mountain h-40 font-roboto py-1 items-center flex justify-center  text-center text-6xl">
+          <div className="m-10 w-screen   text-black h-40 font-roboto py-1 items-center flex justify-center  text-center text-6xl">
             GAME MENU
           </div>
           <div className=" flex w-screen flex-wrap px-10 gap-4    grow my-10   text-5xl justify-center items-center">

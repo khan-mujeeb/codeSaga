@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const NavBar = ({level, onLevelChangeHandler}) => {
+const NavBar = ({level, onLevelChangeHandler, discussionClicked , setDiscussionClicked}) => {
     // state to update level number
     // const [level, setLevel] = React.useState(1);
 
@@ -16,6 +16,12 @@ const NavBar = ({level, onLevelChangeHandler}) => {
                 <h2>{level}</h2>
             </div>
 
+            <h1 style={
+                {
+                    color: discussionClicked ? "green" : "white" 
+                }
+            } onClick={() => setDiscussionClicked(true)} >Discussion</h1>
+
         </div>
     );
 };
@@ -23,6 +29,9 @@ const NavBar = ({level, onLevelChangeHandler}) => {
 NavBar.propTypes = {
     level: PropTypes.number.isRequired, 
     onLevelChangeHandler: PropTypes.func.isRequired,
+    discussionClicked: PropTypes.bool.isRequired,
+    setDiscussionClicked: PropTypes.func.isRequired,
+
 };
 
 export default NavBar;

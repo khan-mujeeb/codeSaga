@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import "./CutomScrollBar.css";
+
 const API_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMjEwNjU0NWEtYWU5NC00ZTM2LWI5Y2UtNzFlYWQ5OTYyMjE4IiwidHlwZSI6ImFwaV90b2tlbiJ9.pL9Fbl2EN_fDzs7kBPVOLDxNmh2Rvn7dYMfvEcTXkf8";
 
@@ -82,8 +84,12 @@ const ChatbotBody = () => {
 
       {/* Chat Container */}
       <div
-        className="pr-4 h-[385px] overflow-y-scroll  scrollbar-none"
-        style={{ minWidth: "100%" }}
+        className="pr-4  mb-2 h-[385px] overflow-y-scroll  scrollbar-none"
+        style={{
+          minWidth: "100%",
+          WebkitScrollbarWidth: "thin",
+          scrollbarWidth: "thin",
+        }}
       >
         {messages.map((message, index) =>
           message.user ? (

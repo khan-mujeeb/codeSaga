@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import flexbox from "../data/flexgame.json";
 // import React, { useState, useEffect } from "react";
-import flexGameStyle from "../styles/flexGameStyles.css";
+//import flexGameStyle from "../styles/flexGameStyles.css";
 // import bg from "../assets/img/fbg.png";
 import child from "../assets/img/child.png";
 

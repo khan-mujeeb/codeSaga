@@ -5,7 +5,7 @@ import greenBoy from "../assets/img/greenBoy.svg";
 import greenboyHouse from "../assets/img/boyHouse.svg";
 import boyPlayGround from "../assets/img/boyPlayGround.svg";
 import blueBoy from "../assets/img/blueBoy.svg";
-import blueBoyHouse from "../assets/img/BlueBoyHouse.svg";
+// import blueBoyHouse from "../assets/img/BlueBoyHouse.svg";
 
 export const levelData = [
   {
@@ -27,7 +27,7 @@ export const levelData = [
     answers: [
       "[align-self] will move individual the kid vertically within the container.",
     ],
-    assets: [boyPlayGround, greenboyHouse, greenBoy, blueBoyHouse, blueBoy],
+    assets: [boyPlayGround, greenboyHouse, greenBoy, greenBoy, blueBoy],
   },
   {
     Level: 3,

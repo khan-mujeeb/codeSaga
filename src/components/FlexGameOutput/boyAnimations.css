@@ -1,0 +1,14 @@
+.boy-animation {
+    
+    animation: upDownScale 1s infinite alternate; /* Adjust the animation duration and type as needed */
+  }
+  
+  @keyframes upDownScale {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      transform: translateY(1px) scale(1.1  );
+    }
+  }
+  

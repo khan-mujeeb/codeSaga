@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 
-const NavBar = ({level, onLevelChangeHandler, discussionClicked , setDiscussionClicked}) => {
+const NavBar = ({ levelData, discussionClicked , currentLevel, setDiscussionClicked}) => {
     // state to update level number
     // const [level, setLevel] = React.useState(1);
 
@@ -13,7 +14,7 @@ const NavBar = ({level, onLevelChangeHandler, discussionClicked , setDiscussionC
 
                 
                 <h2>Level </h2>
-                <h2>{level}</h2>
+                <h2>{levelData?.[currentLevel]?.Level}</h2>
             </div>
 
             <h1 style={

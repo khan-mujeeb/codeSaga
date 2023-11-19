@@ -1,24 +1,35 @@
 import React from "react";
 import NavBar from "./NavBar";
 import GameBody from "./GameBody";
-import flexgame from "../data/flexgame"
+import flexgame from "../data/flexgame.json";
 import Discuss from "./discussion/Discuss";
+import { levelData } from "../data/newFlexgame.js";
+import { useState } from "react";
 
 const HomeScreen = () => {
-    // state to update level number
-    const [level, setLevel] = React.useState(1);
-    const onLevelChangeHandler = () => {
-        setLevel(level + 1);
-    }
-    const [discussionClicked, setDiscussionClicked] = React.useState(false);
-    return (
-        <div className="h-screen w-screen flex flex-col">
-            <NavBar level={level} data={flexgame} onLevelChangeHandler = {onLevelChangeHandler} setDiscussionClicked={setDiscussionClicked} discussionClicked={discussionClicked}/>
-            {discussionClicked? null: <GameBody level={level} data={flexgame}/> }
-            {discussionClicked? <Discuss />: null}
+  // state to update level number
+  const [currentLevel, setCurrentLevel] = useState(0);
 
-        </div>
-    );
+  const [discussionClicked, setDiscussionClicked] = React.useState(false);
+  return (
+    <div className="h-screen w-screen flex flex-col">
+      <NavBar
+        data={flexgame}
+        setDiscussionClicked={setDiscussionClicked}
+        discussionClicked={discussionClicked}
+        levelData={levelData}
+        currentLevel={currentLevel}
+      />
+      {discussionClicked ? null : (
+        <GameBody
+          levelData={levelData}
+          currentLevel={currentLevel}
+          setCurrentLevel={setCurrentLevel}
+        />
+      )}
+      {discussionClicked ? <Discuss /> : null}
+    </div>
+  );
 };
 
 export default HomeScreen;

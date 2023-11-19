@@ -12,7 +12,7 @@ function FlexLevel1({
 }) {
   const handleNextLevel = () => {
     console.log("current" + currentLevel);
-    if (currentLevel < 2) {
+    if (currentLevel < 1) {
       console.log(levelData?.[currentLevel]?.questions);
       setCurrentLevel(currentLevel + 1);
     } else {
@@ -72,7 +72,6 @@ function FlexLevel1({
               placeholder="Enter your flexbox code"
             />
             <pre id="after">{"}"}</pre>
-            
           </div>
         </div>
         <button

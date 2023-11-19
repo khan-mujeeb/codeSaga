@@ -5,7 +5,7 @@ import greenBoy from "../assets/img/greenBoy.svg";
 import greenboyHouse from "../assets/img/boyHouse.svg";
 import boyPlayGround from "../assets/img/boyPlayGround.svg";
 import blueBoy from "../assets/img/blueBoy.svg";
-import blueBoyHouse from "../assets/img/blueBoyHouse.svg";
+import blueBoyHouse from "../assets/img/BlueBoyHouse.svg";
 
 export const levelData = [
   {

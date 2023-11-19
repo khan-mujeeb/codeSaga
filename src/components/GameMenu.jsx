@@ -23,6 +23,11 @@ const routesConfig = [
     label: "Media Query",
     path: "media-qurey",
   },
+  {
+    id: "sql",
+    label: "Sql",
+    path: "sql",
+  },
   { id: "animations", label: "Animations", path: "/animations" },
 ];
 

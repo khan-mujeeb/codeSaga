@@ -14,6 +14,7 @@ const HomeScreen = () => {
     return (
         <div className="h-screen w-screen flex flex-col">
             <NavBar level={level} data={flexgame} onLevelChangeHandler = {onLevelChangeHandler} setDiscussionClicked={setDiscussionClicked} discussionClicked={discussionClicked}/>
+            
             {discussionClicked? null: <GameBody level={level} data={flexgame}/> }
             {discussionClicked? <Discuss />: null}
 

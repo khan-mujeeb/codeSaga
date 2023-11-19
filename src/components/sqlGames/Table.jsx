@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const Table = ({result, getColumnNames}) => {
     return (
         <div>

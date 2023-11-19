@@ -4,7 +4,7 @@ import Rootlayout from "./layouts/rootlayout";
 import CssMenu from "./pages/CssMenu";
 import UnitGame from "./pages/UnitGame";
 import FlexGame from "./pages/FlexGame";
-import SelectQuery from "./pages/sql";
+import SelectQuery from "./pages/Sql.jsx";
 import {
   BrowserRouter as Router,
   Route,
@@ -32,7 +32,7 @@ const App = () => {
               <Route path="" element={<CssMenu />} />
               <Route path="unit" element={<UnitGame />} />
               <Route path="flex" element={<FlexGame />} />
-              {/* <Route path="sql" element={<SelectQuery />} /> */}
+              <Route path="sql" element={<SelectQuery />} />
             </Route>
           </Route>
         </Routes>

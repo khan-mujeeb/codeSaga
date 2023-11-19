@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import GameMenuUnit from "./GameMenuUnit";
+// import GameMenuUnit from "./GameMenuUnit";
 import menubg from "../assets/img/menubg.jpg";
 
 const routesConfig = [

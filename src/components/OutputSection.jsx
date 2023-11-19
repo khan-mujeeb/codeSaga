@@ -1,56 +1,43 @@
+/* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
-import flexbox from "../data/flexgame.json";
-// import React, { useState, useEffect } from "react";
-//import flexGameStyle from "../styles/flexGameStyles.css";
-// import bg from "../assets/img/fbg.png";
-import child from "../assets/img/child.png";
+import FlexLevel1 from "./FlexGameOutput/FlexLevel1";
+import FlexLevel2 from "./FlexGameOutput/FlexLevel2";
+import FlexLevel3 from "./FlexGameOutput/FlexLevel3";
 
-const bg = flexbox.level1.assets[0];
-// const mo = flexbox.level1.assets[2];
-const fo = flexbox.level1.assets[1];
+const OutputSection = ({ currentLevel, pondStyles, levelData }) => {
+  let currentLevelComponent;
 
-const OutputSection = ({level, elementPosition, onLevelChangeHandle, alignItem, justifyContent}) => {
-    // console.log("1st log" + mo);
-    // const [image, setImage] = useState('/');
+  switch (currentLevel) {
+    case 0:
+      currentLevelComponent = (
+        <FlexLevel1 levelData={levelData} pondStyles={pondStyles} />
+      );
+      break;
+    case 1:
+      currentLevelComponent = (
+        <FlexLevel2 levelData={levelData} pondStyles={pondStyles} />
+      );
+      break;
+    case 2:
+      currentLevelComponent = <FlexLevel3 />;
+      break;
+    // Add more cases for other levels if needed
 
-    // useEffect(() => {
-    //     setImage(mo);
-    //     console.log("2nd log" + mo);
-    // }, []);
+    default:
+      currentLevelComponent = null; // Handle unknown levels
+  }
 
-    console.log("3rd log " + elementPosition);
-
-    return (
-        <div className="flex bg-mainBg h-full flex-grow w-1/2 justify-center items-center">
-
-            {/* game box */}
-            <div id="box" className="flex relative h-[500px] w-[500px] stroke-black-100 bg-white rounded-md"
-            style={
-                {
-                    backgroundImage: `url(${bg})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    alignItems: alignItem,
-                    justifyContent: justifyContent,  
-
-                }
-                
-            }
-            >
-                <img className="absolute bottom-0 start-0 h-36 w-36" id="fo" src={fo} alt="ndrb" />
-                <img className="z-10 w-32 h-32 ml-[30px]" id="mo" src={child} alt="ndrb" />
-            </div>
-        </div>
-    );
+  return (
+    <div className="flex  bg-mainBg h-full  w-1/2 justify-center items-center">
+      {currentLevelComponent}
+    </div>
+  );
 };
 
 OutputSection.propTypes = {
-    level: PropTypes.number.isRequired,
-    elementPosition: PropTypes.string.isRequired,
-    onLevelChangeHandle: PropTypes.func.isRequired,
-    alignItem: PropTypes.string.isRequired,
-    justifyContent: PropTypes.string.isRequired,
+  currentLevel: PropTypes.number.isRequired,
+  pondStyles: PropTypes.object.isRequired,
+  levelData: PropTypes.array.isRequired,
 };
 
 export default OutputSection;

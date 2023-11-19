@@ -4,7 +4,7 @@ import Rootlayout from "./layouts/rootlayout";
 import CssMenu from "./pages/CssMenu";
 import UnitGame from "./pages/UnitGame";
 import FlexGame from "./pages/FlexGame";
-import SelectQuery from "./pages/sql";
+import SelectQuery from "./pages/Sql";
 import {
     BrowserRouter as Router,
     Route,

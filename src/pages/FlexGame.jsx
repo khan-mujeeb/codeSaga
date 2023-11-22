@@ -1,5 +1,5 @@
 
-import HomeScreen from "../components/HomeScreen"
+import HomeScreen from "../components/FlexGameFiles/HomeScreen"
 
 const FlexGame = () => {
     return (

@@ -1,14 +1,11 @@
 import bg1 from "../assets/img/mainBg.jpg";
 import play from "../assets/img/play.svg";
-import Sql from  "../pages/sql";
+// import Sql from "../pages/Sql.jsx";
 
 export const GameStart = ({ onStart }) => {
-
-
-
     // Function to add data
     return (
-        <>            
+        <>
             <div
                 className="w-screen h-screen p-1 overflow-hidden box-border"
                 style={{
@@ -16,7 +13,6 @@ export const GameStart = ({ onStart }) => {
                     backgroundSize: "100% 100%",
                 }}
             >
-
                 {/* <Sql /> */}
                 <div className="w-full h-full flex flex-col">
                     <div className="m-10 w-screen h-40 font-roboto py-1 text-mountain flex justify-center  text-center text-9xl">

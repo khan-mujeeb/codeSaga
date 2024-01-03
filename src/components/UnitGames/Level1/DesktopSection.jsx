@@ -1,4 +1,5 @@
-import desktopImage from '../assets/desktop.svg';
+// import desktopImage from '../assets/desktop.svg';
+import desktopImage from '../../../assets/desktop.svg';
 import PropTypes from 'prop-types';
 
 const  DesktopSection = ({newHeight, newWidth}) => {

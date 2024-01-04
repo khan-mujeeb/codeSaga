@@ -6,7 +6,7 @@ const Table = ({ data }) => {
         <div className="">
             <h2 className="text-xl mb-4">Officers</h2>
             {data && (
-                <table className="border border-white">
+                <table className="border border-white text-white-100 font-semibold">
                     <thead>
                         <tr>
                             {data.length > 0 && data[0].officer_id && (

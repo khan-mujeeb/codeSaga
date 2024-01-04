@@ -24,7 +24,9 @@ export default {
         "codeBg": "#94A3B8",
         "navBarBg": "#161E2E",
         "unitBg": "#d8e0e8",
-        "UnitCodeEditor": "#8295a9"
+        "UnitCodeEditor": "#8295a9",
+        "sqlInput": "#3c3c3c",
+        "sqlSideBar": "#141516",
       },
       boxShadow: {
         card: "0px 35px 120px -15px #211e35",

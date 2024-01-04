@@ -4,12 +4,12 @@ import playImg from "../../assets/img/play.svg";
 import { useEffect } from "react";
 import alasql from "alasql";
 import sqlUtils from "./sqlUtils";
+import ConfettiExplosion from "react-confetti-explosion";
+import SqlQueryEditor from "./SqlQueryEditor.jsx";
 
 const SQLCodeEditor = ({ setData, submited, setSubmited }) => {
-    const [query, setQuery] = useState(
-        "SELECT * FROM Officers "
-    );
-
+    const [isExploding, setIsExploding] = useState(false);
+    const [query, setQuery] = useState("SELECT * FROM Officers ");
 
     const [level, setLevel] = useState(0);
     const [result, setResult] = useState([]);
@@ -31,7 +31,6 @@ const SQLCodeEditor = ({ setData, submited, setSubmited }) => {
             console.log(query);
             setData(res);
             console.log(res);
-
         } catch (error) {
             // console.log(error);
         }
@@ -45,8 +44,12 @@ const SQLCodeEditor = ({ setData, submited, setSubmited }) => {
     const onCheckClickHandler = () => {
         console.log(query);
         console.log(sqlGameQuestions[level].answer);
-        if (query.toLocaleLowerCase === sqlGameQuestions[level].answer.toLocaleLowerCase) {
+        if (
+            query.toLocaleLowerCase ===
+            sqlGameQuestions[level].answer.toLocaleLowerCase
+        ) {
             setCorrect(true);
+            setIsExploding(true);
         }
     };
 
@@ -56,13 +59,16 @@ const SQLCodeEditor = ({ setData, submited, setSubmited }) => {
             setCorrect(false);
             setQuery("");
             setSubmited(false);
+            setIsExploding(false);
+            setCorrect(false);
+            setData([]);
+            setQuery("")
         }
     };
 
     return (
         <div className="flex p-10 flex-4 justify-center items-center ">
             <div className="flex flex-col gap-10">
-
                 {/* level info  */}
                 <div className="flex flex-col gap-2">
                     <div>
@@ -94,12 +100,18 @@ const SQLCodeEditor = ({ setData, submited, setSubmited }) => {
                         <p>{sqlGameQuestions[level].question}</p>
                     </div>
 
-                    {/* input  */}
+                    {/* input 
                     <input
                         type="text"
                         onChange={inputHandler}
                         className="w-[500px] h-[50px] border-2 border-black-100 rounded-lg px-5 py-2.5 text-start me-2 mb-2 dark:border-black-100 dark:text-black-100 dark:hover:text-white dark:hover:bg-black-100 dark:focus:ring-black-100"
-                    />
+                    /> */}
+
+                    {/* editor  */}
+                    <SqlQueryEditor
+                        query={query}
+                        setQuery={setQuery}
+                        inputHandler={inputHandler} />
                 </div>
 
                 {/* buttons  */}
@@ -119,7 +131,9 @@ const SQLCodeEditor = ({ setData, submited, setSubmited }) => {
                             onCheckClickHandler();
                         }}
                     >
-                        Check
+                        {isExploding && <ConfettiExplosion />}
+
+                        <h2>Check</h2>
                     </button>
                     <button
                         className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800 transition-all duration-300"

@@ -4,37 +4,35 @@ const Table = ({ data }) => {
     console.log(data);
     return (
         <div className="">
-            <h2 className="text-xl mb-4">Officers</h2>
             {data && (
                 <table className="border border-white text-white-100 font-semibold">
                     <thead>
                         <tr>
                             {data.length > 0 && data[0].officer_id && (
                                 <th className="border border-white p-2">
-                                    Officer ID
+                                    officer_id
                                 </th>
                             )}
                             {data.length > 0 && data[0].first_name && (
                                 <th className="border border-white p-2">
-                                    First Name
+                                    first_name
                                 </th>
                             )}
                             {data.length > 0 && data[0].last_name && (
                                 <th className="border border-white p-2">
-                                    Last Name
+                                    last_name
                                 </th>
                             )}
                             {data.length > 0 && data[0].rank && (
                                 <th className="border border-white p-2">
-                                    Rank
+                                    rank
                                 </th>
                             )}
                             {data.length > 0 && data[0].department && (
                                 <th className="border border-white p-2">
-                                    Department
+                                    department
                                 </th>
                             )}
-                            {/* Add other columns here */}
                         </tr>
                     </thead>
                     <tbody>
@@ -67,7 +65,6 @@ const Table = ({ data }) => {
                                     </td>
                                 )}
 
-                                {/* Add other columns here */}
                             </tr>
                         ))}
                     </tbody>

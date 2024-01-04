@@ -1,6 +1,4 @@
-import React from "react";
-
-import "./SQLCodeEditorStyle.css"
+/* eslint-disable react/prop-types */
 
 const SqlQueryEditor = ({inputHandler}) => {
     return (

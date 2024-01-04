@@ -26,15 +26,16 @@ const Sql = () => {
             <SQLCodeEditor setData={setResultData} submited={submited} setSubmited= { setSubmited} />
 
             {/* desktop section for output  */}
-            <div className="flex justify-center items-center flex-6 w-[100%] ">
+            <div className="flex justify-center items-end flex-6 w-[100%] ">
                 <div
-                    className="w-[80%] h-[80%] bg-center bg-cover flex justify-center "
+                    className="w-[80%] h-[80%] bg-contain flex justify-center "
                     style={{
+                        
                         backgroundImage: `url(${desktop})`,
                         backgroundRepeat: "no-repeat",
                     }}
                 >
-                    <div className="w-[90%] h-[430px] mt-7 overflow-y-auto">
+                    <div className="w-[90%] h-[60%] mt-7 overflow-y-auto">
                         <h1 className=" text-white-100 text-xl mb-3">
                             {query}
                         </h1>

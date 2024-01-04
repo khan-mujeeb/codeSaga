@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const SqlQueryEditor = ({inputHandler}) => {
+const SqlQueryEditor = ({query, inputHandler}) => {
     return (
             <div className="flex h-52 rounded-e-md">
                 <div className=" text-white p-3 font-semibold bg-sqlSideBar rounded-l-md ">
@@ -10,6 +10,7 @@ const SqlQueryEditor = ({inputHandler}) => {
                 </div>
 
                 <textarea
+                    
                     className=" bg-sqlInput h-full w-full border-none outline-none resize-none p-3 text-white rounded-r-md"
                     autoFocus
                     autoCapitalize="none"

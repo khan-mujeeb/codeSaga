@@ -6,12 +6,13 @@ import alasql from "alasql";
 import sqlUtils from "./sqlUtils";
 import ConfettiExplosion from "react-confetti-explosion";
 import SqlQueryEditor from "./SqlQueryEditor.jsx";
+import CustomButton from "./CustomButton.jsx";
+import ModalComponent from "./ModalComponent.jsx";
 
-const SQLCodeEditor = ({ setData, submited, setSubmited }) => {
+const SQLCodeEditor = ({ setData, submited, setSubmited, level, setLevel }) => {
     const [isExploding, setIsExploding] = useState(false);
     const [query, setQuery] = useState("SELECT * FROM Officers ");
-
-    const [level, setLevel] = useState(0);
+    const [officerTable, setOfficerTable] = useState([]); // [
     const [result, setResult] = useState([]);
     const [correct, setCorrect] = useState(false);
 
@@ -31,11 +32,17 @@ const SQLCodeEditor = ({ setData, submited, setSubmited }) => {
             console.log(query);
             setData(res);
             console.log(res);
+            const temp = mybase.exec("SELECT * FROM Officers");
+            setOfficerTable(temp);
         } catch (error) {
             // console.log(error);
         }
         setSubmited(false);
     }, [query]);
+
+    const onExecuteClickHandler = () => {
+        setSubmited(true);
+    };
 
     const inputHandler = (event) => {
         setQuery(event.target.value);
@@ -45,8 +52,7 @@ const SQLCodeEditor = ({ setData, submited, setSubmited }) => {
         console.log(query);
         console.log(sqlGameQuestions[level].answer);
         if (
-            query.toLocaleLowerCase ===
-            sqlGameQuestions[level].answer.toLocaleLowerCase
+            query.toLowerCase() === sqlGameQuestions[level].answer.toLowerCase()
         ) {
             setCorrect(true);
             setIsExploding(true);
@@ -62,7 +68,9 @@ const SQLCodeEditor = ({ setData, submited, setSubmited }) => {
             setIsExploding(false);
             setCorrect(false);
             setData([]);
-            setQuery("")
+            setQuery("");
+        } else {
+            alert("Enter Correct Query to Proceed");
         }
     };
 
@@ -74,7 +82,8 @@ const SQLCodeEditor = ({ setData, submited, setSubmited }) => {
                     <div>
                         <div className="flex items-center gap-2 mb-6">
                             <h1 className=" text-white font-semibold text-3xl flex items-center">
-                                Level <span>{level + 1}</span> <span>:</span>
+                                {"Level "} <span>{level + 1}</span>{" "}
+                                <span>:</span>
                             </h1>
                             <h1 className=" text-codeEditor font-bold text-3xl">
                                 {sqlGameQuestions[level].name}
@@ -100,52 +109,34 @@ const SQLCodeEditor = ({ setData, submited, setSubmited }) => {
                         <p>{sqlGameQuestions[level].question}</p>
                     </div>
 
-                    {/* input 
-                    <input
-                        type="text"
-                        onChange={inputHandler}
-                        className="w-[500px] h-[50px] border-2 border-black-100 rounded-lg px-5 py-2.5 text-start me-2 mb-2 dark:border-black-100 dark:text-black-100 dark:hover:text-white dark:hover:bg-black-100 dark:focus:ring-black-100"
-                    /> */}
-
                     {/* editor  */}
                     <SqlQueryEditor
                         query={query}
                         setQuery={setQuery}
-                        inputHandler={inputHandler} />
+                        inputHandler={inputHandler}
+                    />
                 </div>
 
                 {/* buttons  */}
-                <div className="flex justify-between w-[500px] items-center">
-                    <button
-                        className="flex gap-1"
-                        onClick={() => {
-                            setSubmited(true);
-                        }}
-                    >
-                        <img src={playImg} alt="" />
-                        <h1>Execute</h1>
-                    </button>
-                    <button
-                        className=" font-bold text-black-700 hover:text-white border border-black-100 hover:bg-black-100 rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-black-100 dark:text-black-100 dark:hover:text-white dark:hover:bg-black-100 dark:focus:ring-black-100"
-                        onClick={() => {
-                            onCheckClickHandler();
-                        }}
-                    >
+                <div className="flex justify-between w-full items-center px-10">
+                    <CustomButton
+                        title="Execute"
+                        onClickHandler={onExecuteClickHandler}
+                    />
+                    <div>
+                        <CustomButton
+                            title="Check"
+                            onClickHandler={onCheckClickHandler}
+                        />
                         {isExploding && <ConfettiExplosion />}
+                    </div>
+                    <CustomButton
+                        title="Next"
+                        onClickHandler={onNextClickHandler}
+                        correct={correct}
+                    />
 
-                        <h2>Check</h2>
-                    </button>
-                    <button
-                        className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800 transition-all duration-300"
-                        style={{
-                            backgroundColor: correct ? "green" : "",
-                        }}
-                        onClick={() => {
-                            onNextClickHandler();
-                        }}
-                    >
-                        Next
-                    </button>
+                    <ModalComponent table={officerTable}/>
                 </div>
             </div>
         </div>

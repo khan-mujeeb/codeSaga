@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "react-responsive-modal/styles.css";
-import { Modal } from "react-responsive-modal";
+import {Modal } from "react-responsive-modal";
 import CustomButton from "./CustomButton";
 const ModalComponent = ({ table }) => {
     const [open, setOpen] = useState(false);

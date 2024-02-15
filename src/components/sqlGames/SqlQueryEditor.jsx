@@ -10,7 +10,7 @@ const SqlQueryEditor = ({query, inputHandler}) => {
                 </div>
 
                 <textarea
-                    
+                    value={query}
                     className=" bg-sqlInput h-full w-full border-none outline-none resize-none p-3 text-white rounded-r-md"
                     autoFocus
                     autoCapitalize="none"

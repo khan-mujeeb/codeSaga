@@ -1,5 +1,6 @@
 //import HomeScreen from "./components/HomeScreen"
 
+import AiInterview from "./pages/AiInterview.jsx"
 import Rootlayout from "./layouts/rootlayout";
 import CssMenu from "./pages/CssMenu";
 import UnitGame from "./pages/UnitGame";
@@ -33,6 +34,7 @@ const App = () => {
                             <Route path="unit" element={<UnitGame />} />
                             <Route path="flex" element={<FlexGame />} />
                             <Route path="sql" element={<Sql />} />
+                            <Route path="ai-interview" element={<AiInterview />} />
                         </Route>
                     </Route>
                 </Routes>

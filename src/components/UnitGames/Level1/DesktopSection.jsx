@@ -7,8 +7,8 @@ const  DesktopSection = ({newHeight, newWidth}) => {
     console.log("height and width " + newHeight+ " "+ newWidth);
     
     return (
-        <div className="flex flex-grow w-2/3 justify-center items-center">
-
+        <div className="flex flex-col w-[60%] items-center justify-around ">
+            <h1 className="text-5xl font-extrabold text-center">Unit<span className="ml-2 text-green-800">Universe</span></h1>
             {/* desktop background  */}
             <div style={
                 {

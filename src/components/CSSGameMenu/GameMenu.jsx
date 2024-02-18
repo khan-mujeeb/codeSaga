@@ -30,20 +30,16 @@ const routesConfig = [
     id: "sql",
     label: "Sql",
     path: "sql",
-    url: sql,
-  },
+    url:sql,
+  }
+  ,
   {
-    id: "Register",
-    label: "Quizz",
-    path: "register",
-    url: sql,
-  },
-  // {
-  //   id: "animations",
-  //   label: "Animations",
-  //   path: "/animations",
-  //   url:animation,
-  // },
+    id: "ai-interview",
+    label: "AI Interview",
+    path: "ai-interview",
+    url:"https://www.globaltimes.cn/Portals/0/attachment/2022/2022-05-27/04143cc7-2bd0-4e3a-bec3-1a250f689a86.jpeg",
+  }
+  
 ];
 
 const GameMenu = () => {
@@ -60,30 +56,20 @@ const GameMenu = () => {
         // }}
       >
         {/* {route.label} */}
-        <div className="w-full max-w-xs bg-white border hover:scale-95 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          <a href="#">
-            <img
-              className="p-5 rounded-t-3xl w-80 h-40 "
-              src={route.url}
-              alt="product image"
-            />
-          </a>
-          <div className="px-5 pb-5">
-            <a href="#">
-              <h5 className="text-2xl mb-3 text-center font-roboto tracking-tight text-gray-900 dark:text-white">
-                {route.label}
-              </h5>
-            </a>
-            <div className="flex justify-center">
-              <a
-                href="#"
-                className="text-white bg-blue-700 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-green-600 hover:scale-95 dark:focus:ring-blue-800"
-              >
-                Play Now
-              </a>
-            </div>
-          </div>
+<div className="w-full max-w-xs bg-white border hover:scale-95 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img className="p-5 rounded-t-3xl w-80 h-40 " src={route.url} alt="product image" />
+    </a>
+    <div className="px-5 pb-5">
+        <a href="#">
+            <h5 className="text-2xl mb-3 text-center font-roboto tracking-tight text-gray-900 dark:text-white">{route.label}</h5>
+        </a>
+        <div className="flex justify-center">
+            <a href="#" className="text-white bg-blue-700 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-green-600 hover:scale-95 dark:focus:ring-blue-800">Play Now</a>
         </div>
+    </div>
+</div>
+
       </NavLink>
     );
   });

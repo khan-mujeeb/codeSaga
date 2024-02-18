@@ -1,9 +1,10 @@
 //import HomeScreen from "./components/HomeScreen"
-import { Toaster } from "react-hot-toast";
+
 import Rootlayout from "./layouts/rootlayout";
 import CssMenu from "./pages/CssMenu";
 import UnitGame from "./pages/UnitGame";
 import FlexGame from "./pages/FlexGame";
+import { Sugar } from "react-preloaders";
 import Sql from "./pages/Sql.jsx";
 
 import {
@@ -26,6 +27,9 @@ import GridGame from "./pages/GridGame.jsx";
  * - It is also responsible for routing.
  *
  */
+import React from "react";
+
+
 const App = () => {
   return (
     <>

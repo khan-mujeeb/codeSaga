@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
+import React from "react";
+import UnitQuestions from "./UnitQuestions.js";
 
-const  DesktopCodeSection = ({onHeightChange, onWidthChange}) => {
-
+const DesktopCodeSection = ({ onHeightChange, onWidthChange }) => {
     const OnHeightChangeHandler = (event) => {
         // console.log(event.target.value);
         onHeightChange(event.target.value);
@@ -10,44 +11,75 @@ const  DesktopCodeSection = ({onHeightChange, onWidthChange}) => {
         // console.log(event.target.value);
         onWidthChange(event.target.value);
     };
-    
+    const [level, setLevel] = React.useState(1);
+
     return (
-        <div className="flex flex-grow w-1/3 justify-center items-center">
-            <div className="flex flex-col bg-UnitCodeEditor w-[80%] h-[90%] rounded-3xl p-6 gap-6">
-
-                <h1 className="text-3xl font-extrabold text-center">Unit<span className="ml-2 text-green-800">Universe</span></h1>
-
+        <div className="flex  flex-grow w-[40%] justify-center items-center">
+            <div className="flex  flex-col bg-UnitCodeEditor w-full] h-[95%] rounded-3xl p-6 gap-6">
                 {/* level component */}
                 <div className="flex gap-4 text-2xl justify-center text-white">
                     <p className="">◄</p>
                     <div className="flex gap-2">
                         <p>Level</p>
-                        <p>1</p>
+                        <p>{level}</p>
                     </div>
                     <p>►</p>
                 </div>
 
-                <h2 className="text-xl font-bold text-white">Task</h2>
-                <p className=" font-bold text-lg text-white">Set the height and width of <span className=" text-orange-700">Orange Container</span> such that it cover whole Desktop 🖥️</p>
+                <div className=" flex flex-col gap-3">
+                    <div className="gap-2">
+                        <h2 className=" font-semibold text-xl ">Scenario</h2>
+                        <p className=" text-lg">{UnitQuestions[level - 1].scenario}</p>
+                    </div
+                    >
+                    <div className="gap-2">
+                        <h2 className=" font-semibold text-xl ">Question</h2>
+                        <p className=" text-lg">{UnitQuestions[level - 1].question}</p>
+                    </div>
+
+                    <div className="gap-2">
+                        <h2 className=" font-semibold text-xl ">hint</h2>
+                        <p className=" text-lg">{UnitQuestions[level - 1].hint}</p>
+                    </div>
+                </div>
 
                 {/* controler  */}
                 <div className="flex flex-col gap-5 w-full">
+                    <div className="flex gap-2 items-center">
+                        {" "}
+                        <label htmlFor="height" className="text-white" id>
+                            Height
+                        </label>
+                        <input
+                            id="height"
+                            onChange={OnHeightChangeHandler}
+                            className="w-32 h-10 rounded-2xl bg-gray-700 text-white p-2"
+                            type="text"
+                            placeholder="20%"
+                        />
+                    </div>
 
-                    <div className="flex gap-2 items-center"> <label htmlFor="height" className="text-white" id>Height</label>
-                    <input id="height" onChange={OnHeightChangeHandler} className="w-32 h-10 rounded-2xl bg-gray-700 text-white p-2" type="text" placeholder="20%" /></div>
-
-                    <div className="flex gap-2 items-center"><label htmlFor="width" className="text-white">Width</label>
-                    <input id="width" onChange={OnWidthChangeHandler} className="w-32 h-10 rounded-2xl bg-gray-700 text-white p-2" type="text" placeholder="30%" /></div>
+                    <div className="flex gap-2 items-center">
+                        <label htmlFor="width" className="text-white">
+                            Width
+                        </label>
+                        <input
+                            id="width"
+                            onChange={OnWidthChangeHandler}
+                            className="w-32 h-10 rounded-2xl bg-gray-700 text-white p-2"
+                            type="text"
+                            placeholder="30%"
+                        />
+                    </div>
                 </div>
-
             </div>
         </div>
-    )
-            
-}
+    );
+};
+
 
 DesktopCodeSection.propTypes = {
-    onHeightChange: PropTypes.func.isRequired, 
+    onHeightChange: PropTypes.func.isRequired,
     onWidthChange: PropTypes.func.isRequired,
 };
 

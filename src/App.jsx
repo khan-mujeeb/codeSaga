@@ -1,11 +1,12 @@
 //import HomeScreen from "./components/HomeScreen"
-
+import AiInterview from "./pages/AiInterview.jsx";
 import Rootlayout from "./layouts/rootlayout";
 import CssMenu from "./pages/CssMenu";
 import UnitGame from "./pages/UnitGame";
 import FlexGame from "./pages/FlexGame";
 import { Sugar } from "react-preloaders";
 import Sql from "./pages/Sql.jsx";
+import { Toaster } from "react-hot-toast";
 
 import {
   BrowserRouter as Router,
@@ -29,29 +30,32 @@ import GridGame from "./pages/GridGame.jsx";
  */
 import React from "react";
 
-
 const App = () => {
   return (
     <>
-      <Router>
-        <Provider>
-          <Toaster />
+      <React.Fragment>
+        <Router>
+          <Provider>
+            <Toaster />
 
-          <Routes>
-            <Route path="/" element={<Rootlayout />}>
-              <Route path="" element={<Navigate to={"CssMenu"} />} />
-              <Route path="/CssMenu" element={<Outlet />}>
-                <Route path="" element={<CssMenu />} />
-                <Route path="unit" element={<UnitGame />} />
-                <Route path="flex" element={<FlexGame />} />
-                <Route path="sql" element={<Sql />} />
-                <Route path="register" element={<Register />}></Route>
-                <Route path="grid" element={<GridGame />}></Route>
+            <Routes>
+              <Route path="/" element={<Rootlayout />}>
+                <Route path="" element={<Navigate to={"CssMenu"} />} />
+                <Route path="/CssMenu" element={<Outlet />}>
+                  <Route path="" element={<CssMenu />} />
+                  <Route path="unit" element={<UnitGame />} />
+                  <Route path="flex" element={<FlexGame />} />
+                  <Route path="sql" element={<Sql />} />
+                  <Route path="register" element={<Register />}></Route>
+                  <Route path="grid" element={<GridGame />}></Route>
+                  <Route path="ai-interview" element={<AiInterview />} />
+                </Route>
               </Route>
-            </Route>
-          </Routes>
-        </Provider>
-      </Router>
+            </Routes>
+          </Provider>
+        </Router>
+        <Sugar color="#65A30D" />
+      </React.Fragment>
       {/* <button type="button" className="login-with-google-btn">
         Sign in with Google
       </button> */}

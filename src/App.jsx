@@ -1,12 +1,11 @@
 //import HomeScreen from "./components/HomeScreen"
 
 import AiInterview from "./pages/AiInterview.jsx";
-import AiInterview2 from "./pages/AiInterview2.jsx";
 import Rootlayout from "./layouts/rootlayout";
 import CssMenu from "./pages/CssMenu";
 import UnitGame from "./pages/UnitGame";
 import FlexGame from "./pages/FlexGame";
-import { Lines } from "react-preloaders";
+import { Sugar } from "react-preloaders";
 import Sql from "./pages/Sql.jsx";
 import {
     BrowserRouter as Router,
@@ -22,6 +21,8 @@ const App = () => {
     return (
         <>
             <React.Fragment>
+
+                {/* this will render after the preloader */}
                 <Router>
                     <Routes>
                         <Route path="/" element={<Rootlayout />}>
@@ -38,15 +39,17 @@ const App = () => {
                                     path="ai-interview"
                                     element={<AiInterview />}
                                 />
-                                <Route
-                                    path="ai-interview2"
-                                    element={<AiInterview2 />}
-                                />
+                                
                             </Route>
                         </Route>
                     </Routes>
                 </Router>
-                <Lines />
+
+                {/* this is preloader component  */}
+                <Sugar 
+                color="#65A30D"
+                
+                />
             </React.Fragment>
             
         </>

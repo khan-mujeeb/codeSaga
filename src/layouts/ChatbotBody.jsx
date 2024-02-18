@@ -1,7 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import "./CutomScrollBar.css";
-import { error } from "alasql";
 
 const API_KEY = "AIzaSyDFbNSCADhC5Etd8DuZdSht4uPkqvy416c";
 

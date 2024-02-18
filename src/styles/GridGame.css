@@ -1,0 +1,65 @@
+.game_gameLayout {
+  width: 100%;
+  min-height: calc(100vh);
+  background: #101310;
+}
+
+.bodyGrid {
+  overflow: auto;
+  position: inherit;
+}
+
+.game_gameLayoutInner {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+}
+
+.game_rightSide {
+  position: fixed;
+  width: calc(100% - 650px);
+  left: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game_leftSide {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 650px;
+  min-height: 100vh;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  padding: 2rem 2rem 400px;
+}
+
+.game_fieldContainer {
+  width: 45vw;
+  min-width: 300px;
+  max-width: 650px;
+}
+.EvilLandAnswer_land {
+  background-image: url("../assets/img/EvilLand.svg");
+  opacity: 0.8;
+  background-size: cover;
+  box-shadow: inset 0 -10px 0 0 #652727, inset -10px 0 0 0 #652727;
+}
+
+.HumanLand_land {
+  position: relative;
+}
+.Inspector_columnSignal {
+  position: absolute;
+  background: #282d33;
+  color: #abb2bf;
+  padding: 2px 8px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+}

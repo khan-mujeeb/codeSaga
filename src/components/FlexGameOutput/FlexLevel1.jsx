@@ -3,11 +3,7 @@
 import React from "react";
 import "./boyAnimations.css";
 
-function FlexLevel1({
-  levelData,
-
-  pondStyles,
-}) {
+function FlexLevel1({ levelData, pondStyles }) {
   const bg = levelData?.[0]?.assets[0];
   const house = levelData?.[0]?.assets[1];
   const boy = levelData?.[0]?.assets[2];
@@ -18,7 +14,7 @@ function FlexLevel1({
     backgroundSize: "cover",
     backgroundPosition: "center",
   };
-
+  console.log(pondStyles);
   return (
     <div>
       <div
@@ -26,7 +22,8 @@ function FlexLevel1({
         className="flex relative h-[600px] w-[700px] stroke-black-100 bg-white rounded-md"
         style={{
           ...fixed,
-          ...pondStyles,
+          ...pondStyles?.style1,
+          transition: "all 0.5s ease-in-out",
         }}
       >
         <img

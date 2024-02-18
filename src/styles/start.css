@@ -1,0 +1,28 @@
+.magneto{
+    width: 10rem;
+    height: 10rem;
+    background-color: rgb(172, 114, 5);
+    border-radius: 50%;
+    opacity: 0.5;
+    color: aliceblue;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.9);
+  
+    transition: background-color 0.4s ease-in-out , box-shadow 0.4 ease-in-out, opacity 0.4s ease-in-out ;
+   
+}
+.text{
+   
+    font-size: 1rem;
+}
+
+.magneto:hover{
+    background-color: rgb(226, 147, 0);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 1.3);
+    opacity: 1;
+   
+}

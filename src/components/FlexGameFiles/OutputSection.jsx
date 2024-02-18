@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import PropTypes from "prop-types";
+
 import FlexLevel1 from "../FlexGameOutput/FlexLevel1";
 import FlexLevel2 from "../FlexGameOutput/FlexLevel2";
 import FlexLevel3 from "../FlexGameOutput/FlexLevel3";
@@ -10,12 +11,12 @@ const OutputSection = ({ currentLevel, pondStyles, levelData }) => {
   switch (currentLevel) {
     case 0:
       currentLevelComponent = (
-        <FlexLevel1 levelData={levelData} pondStyles={pondStyles} />
+        <FlexLevel1 levelData={levelData} pondStyles={pondStyles.flexLevel1} />
       );
       break;
     case 1:
       currentLevelComponent = (
-        <FlexLevel2 levelData={levelData} pondStyles={pondStyles} />
+        <FlexLevel2 levelData={levelData} pondStyles={pondStyles.flexLevel2} />
       );
       break;
     case 2:
@@ -34,10 +35,10 @@ const OutputSection = ({ currentLevel, pondStyles, levelData }) => {
   );
 };
 
-OutputSection.propTypes = {
-  currentLevel: PropTypes.number.isRequired,
-  pondStyles: PropTypes.object.isRequired,
-  levelData: PropTypes.array.isRequired,
-};
+// OutputSection.propTypes = {
+//   currentLevel: PropTypes.number.isRequired,
+//   pondStyles: PropTypes.object.isRequired,
+//   levelData: PropTypes.array.isRequired,
+// };
 
 export default OutputSection;

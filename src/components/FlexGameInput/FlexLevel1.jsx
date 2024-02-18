@@ -1,15 +1,21 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import "./editor.css";
+import { parseCSS, ToastSuccess } from "./utils";
+import toast from "react-hot-toast";
+import { AnswerChecker } from "./AnswerCheck";
+import Modal from "./Modal";
 
 function FlexLevel1({
   applyStyles,
-  setCodeInput,
 
   currentLevel,
   setCurrentLevel,
   levelData,
-  codeInput,
 }) {
+  const [inputStyle, setINputStyle] = useState("");
+  const [nextLevel, setNextLevel] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleNextLevel = () => {
     console.log("current" + currentLevel);
     if (currentLevel < 1) {
@@ -19,30 +25,59 @@ function FlexLevel1({
       setCurrentLevel(0);
     }
   };
-  const hints = levelData?.[currentLevel]?.answers;
-  const renderHints = hints?.map((hint) => {
+
+  const handleApplyStyles = () => {
+    const parsedCssString = { style1: parseCSS(inputStyle) };
+    const answers = AnswerChecker("flexLevel1", parsedCssString);
+    const handlereset = () => {
+      console.log("reset");
+      applyStyles("flexLevel1", { style1: "" });
+      setINputStyle("");
+    };
+    if (answers) {
+      toast.success("You have cleared this level", ToastSuccess);
+
+      setNextLevel(true);
+      applyStyles("flexLevel1", parsedCssString);
+    } else {
+      toast.error("Try again");
+      setNextLevel(false);
+      applyStyles("flexLevel1", parsedCssString);
+      setTimeout(handlereset, 1000);
+    }
+  };
+
+  const hintdata = levelData?.[currentLevel]?.answers;
+
+  const renderHints = hintdata?.map((hint) => {
     return (
       <div
         key={hint}
         style={{ fontFamily: "Source Code Pro, monospace", fontSize: "16px" }}
-        className="text-white  pl-5  "
+        className="text-black   items-center justify-center  "
       >
-        . {hint}
+        {hint}
       </div>
     );
   });
 
+  // Modal content
+  const modalContent = <>{renderHints}</>;
+
+  const handleModalToggle = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  console.log(renderHints);
   return (
     <>
       <h2
         style={{ fontFamily: "Source Code Pro, monospace", fontSize: "20px" }}
-        className="text-white"
+        className="text-white  items-center justify-center  "
       >
+        {" "}
+        <div>FLEXBOX</div>
         {levelData?.[currentLevel]?.questions}
-        <div className="py-5">
-          HINTS:
-          {renderHints}
-        </div>
       </h2>
 
       {/* code box */}
@@ -61,34 +96,68 @@ function FlexLevel1({
               <br />
               &nbsp; display: flex;
               <br />
+              &nbsp; flex-direction: row;
             </pre>
             <textarea
               id="code"
               autoFocus
+              spellCheck={false}
               autoCapitalize="none"
-              style={{ height: "100px" }}
-              value={codeInput}
-              onChange={(e) => setCodeInput(e.target.value)}
+              style={{
+                height: "45px",
+                borderRadius: "10px",
+                paddingLeft: "10px",
+                paddingTop: "10px",
+              }}
+              // value={codeInput}
+              value={inputStyle}
+              onChange={(e) => setINputStyle(e.target.value)}
               placeholder="Enter your flexbox code"
             />
+
             <pre id="after">{"}"}</pre>
           </div>
         </div>
         <button
           onClick={handleNextLevel}
           style={{ fontFamily: "Source Code Pro, monospace", fontSize: "16px" }}
-          className="bg-gray-500 hover:bg-gray-700 text-white ] py-1 px-4 rounded  absolute bottom-2  right-4   "
+          className={`${
+            nextLevel
+              ? " bg-green-500 text-white py-1  px-4 rounded absolute bottom-2 right-4"
+              : "bg-gray-300 text-white py-1 hover:cursor-not-allowed px-4 rounded absolute bottom-2 right-4"
+          }`}
+          disabled={!nextLevel}
         >
           Next
         </button>
+
         <button
           style={{ fontFamily: "Source Code Pro, monospace", fontSize: "16px" }}
-          className="bg-gray-500 hover:bg-gray-700 text-white font-medium py-1 px-4 rounded  absolute  left-4  bottom-2 "
-          onClick={applyStyles}
+          className="bg-gray-500 hover:bg-gray-700 text-white py-1 px-4 rounded absolute bottom-2 left-4"
+          onClick={() => {
+            handleApplyStyles();
+          }}
         >
           Apply Styles
         </button>
+        <button
+          style={{ fontFamily: "Source Code Pro, monospace", fontSize: "16px" }}
+          className={
+            "bg-yellow-600 hover:bg-yellow-400 hover:cursor-help text-white py-1 px-4 rounded absolute bottom-2 left-[180px]"
+          }
+          onClick={() => {
+            console.log("hint");
+            handleModalToggle();
+          }}
+        >
+          Learning
+        </button>
       </div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleModalToggle}
+        content={modalContent}
+      />
     </>
   );
 }

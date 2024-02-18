@@ -14,9 +14,11 @@ export const levelData = [
       "Use Flex properties to help this 🚶‍♂️ kid to reach his home 🏠  ",
     ],
     answers: [
-      "[justify-content] will move the kid horizontally within the container.",
-      "[align-items] will move the kid vertically within the container.",
+      "CSS display: flex; turns a boy into a flexible container, allowing him to arrange and align his belongings (flex items) for responsive layouts.",
+      "[justify-content] centers the boy's belongings horizontally, creating an organized path for his journey, like arranging them side by side.",
+      "[align-items] aligns the boy's belongings vertically at the bottom, ensuring they stack neatly as he reaches home.",
     ],
+
     assets: [boyPlayGround, greenboyHouse, greenBoy],
   },
   {

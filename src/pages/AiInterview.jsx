@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import axios from "axios";
-
+import { useSpeechRecognition } from "react-speech-kit";
 const API_KEY = "AIzaSyDFbNSCADhC5Etd8DuZdSht4uPkqvy416c";
 
 const genAI = new GoogleGenerativeAI(API_KEY);
@@ -37,6 +37,13 @@ const AiInterview = () => {
             setShouldAutoPlay(false);
         }
     };
+
+    
+    const { listen, listening, stop } = useSpeechRecognition({
+        onResult: (result) => {
+            setInput(result);
+        },
+    });
 
     const getAudio = (inputText) => {
         const options = {
@@ -145,7 +152,9 @@ const AiInterview = () => {
         >
             {/* Heading */}
             <div className="flex justify-center items-center flex-col space-y-2 pb-6">
-                <h2 className="font-semibold text-3xl tracking-tight">MockAI</h2>
+                <h2 className="font-semibold text-3xl tracking-tight">
+                    MockAI
+                </h2>
                 <p className="text-xl text-[#6b7280] leading-3">
                     Master your interviews with AI-guided practice.
                 </p>
@@ -189,11 +198,8 @@ const AiInterview = () => {
                                 {message.text}
                             </p>
                         </div>
-                    ) 
-                    : 
-                    // ai model chat 
-                    (
-                        
+                    ) : (
+                        // ai model chat
                         <div
                             key={index}
                             className="flex gap-3 my-4 text-green-700 text-sm flex-1"
@@ -246,16 +252,24 @@ const AiInterview = () => {
                     className="flex items-center justify-center w-full space-x-2"
                     onSubmit={handleSubmit}
                 >
-                    <input
-                        className="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
-                        placeholder="Type your message"
-                        type="text"
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                    />
-                    <button className="inline-flex items-center justify-center rounded-md text-sm font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-lime-600 hover:bg-[#111827E6] h-10 px-4 py-2">
+                    <div>
+                        <textarea
+                            className="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
+                            value={input}
+                            onChange={(event) => setInput(event.target.value)}
+                        />
+                        <button
+                            className="inline-flex items-center justify-center rounded-md text-sm font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-lime-600 hover:bg-[#111827E6] h-10 px-4 py-2"
+                            onMouseDown={listen}
+                            onMouseUp={stop}
+                        >
+                            🎤
+                        </button>
+                        {listening && <div>{"Go ahead I'm listening"}</div>}
+                    </div>
+                    {/* <button className="inline-flex items-center justify-center rounded-md text-sm font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-lime-600 hover:bg-[#111827E6] h-10 px-4 py-2">
                         Send
-                    </button>
+                    </button> */}
                 </form>
             </div>
         </div>
@@ -264,5 +278,4 @@ const AiInterview = () => {
 
 export default AiInterview;
 
-
- // Hello, my name is Pravin Kale. I recently completed my Bachelor's degree in Computer Science. During my studies, I developed a strong foundation in computer science fundamentals and gained practical experience through various projects
+// Hello, my name is Pravin Kale. I recently completed my Bachelor's degree in Computer Science. During my studies, I developed a strong foundation in computer science fundamentals and gained practical experience through various projects

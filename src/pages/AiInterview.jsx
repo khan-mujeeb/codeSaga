@@ -36,7 +36,6 @@ const AiInterview = () => {
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null);
 
-
   const handleAudioEnd = (index) => {
     if (index === messages.length - 1) {
       setShouldAutoPlay(false);
@@ -141,13 +140,13 @@ const AiInterview = () => {
 
   return (
     <div
-      className=" w-[100vw] h-[100vh] overflow-hidden grid p-[25px]  grid-rows-[10%_70%_10%] "
+      className=" w-[100vw] h-[100vh] overflow-hidden grid p-[25px] gap-2   grid-rows-[10%_70%_10%] "
       style={{
         boxShadow: "0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgb(0 0 0 / 0.05)",
       }}
     >
       {/* Heading */}
-      <div className="">
+      <div className=" text-center ">
         <h2 className="font-semibold text-3xl tracking-tight">MockAI</h2>
         <p className="text-xl text-[#6b7280] leading-3">
           Master your interviews with AI-guided practice.

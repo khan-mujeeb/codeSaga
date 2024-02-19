@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import GameMenuUnit from "./GameMenuUnit";
 
 import flex from "../../assets/CssMenuImages/flex.png";
@@ -6,6 +6,7 @@ import grid from "../../assets/CssMenuImages/grid.jpg";
 
 import units from "../../assets/CssMenuImages/units.svg";
 import sql from "../../assets/CssMenuImages/sql.png";
+import Star from "../Back/Star";
 // import { register } from "module";
 
 const routesConfig = [
@@ -33,24 +34,25 @@ const routesConfig = [
     path: "sql",
     url: sql,
   },
-  {
-    id: "register",
-    label: "register",
-    path: "register",
-    url: sql,
-  },
+
   {
     id: "ai-interview",
     label: "AI Interview",
     path: "ai-interview",
     url: "https://www.globaltimes.cn/Portals/0/attachment/2022/2022-05-27/04143cc7-2bd0-4e3a-bec3-1a250f689a86.jpeg",
   },
+  {
+    id: "quiz",
+    label: "Quiz",
+    path: "quiz",
+    url: units,
+  },
 ];
 
 const GameMenu = () => {
   const rendergameList = routesConfig.map((route) => {
     return (
-      <NavLink
+      <Link
         to={route.path}
         key={route.id}
         className={"py-1 px-1  rounded-md shadow-md"}
@@ -85,18 +87,21 @@ const GameMenu = () => {
             </div>
           </div>
         </div>
-      </NavLink>
+      </Link>
     );
   });
 
   return (
     <>
+      <Star />
       <div
         className=" w-screen h-screen p-1 overflow-y-scroll overflow-x-hidden box-border"
-        style={{
-          backgroundImage: `url("https://i.pinimg.com/originals/59/2f/ae/592fae18268bc4eecc25879241ff90b5.gif")`,
-          backgroundSize: "100% 100% ",
-        }}
+        style={
+          {
+            // backgroundImage: `url("https://i.pinimg.com/originals/59/2f/ae/592fae18268bc4eecc25879241ff90b5.gif")`,
+            // backgroundSize: "100% 100% ",
+          }
+        }
       >
         <div className="w-full h-full flex flex-col  ">
           <div className="m-1 w-screen text-white h-40 font-roboto py-1 items-center flex justify-center  text-center text-7xl">

@@ -15,7 +15,7 @@ import "../button/AnimatedBtn.css"
 const SQLCodeEditor = ({ setData, submited, setSubmited, level, setLevel, setAiResult, setAiBtnClicked }) => {
     // gemini initializataion
     const genAI = new GoogleGenerativeAI(
-        "AIzaSyDvXXK0XJV5lNRSKXcNZR2li55zIA8wRog"
+        "AIzaSyBxqd-5jq5AP0LWxpdeuORYgpH07mGgIPU"
     );
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
@@ -42,7 +42,7 @@ const SQLCodeEditor = ({ setData, submited, setSubmited, level, setLevel, setAiR
                 },
                 {
                     role: "user",
-                    parts: "I want all the possible solution for the given sql query",
+                    parts: "I want you to explain all the possible solution for the given sql query",
                 },
                 {
                     role: "model",

@@ -17,7 +17,6 @@ import {
 } from "react-router-dom";
 //import Quiz from "./pages/Quiz.jsx";
 
-import Register from "./pages/Register.jsx";
 import { Provider } from "./context/AuthContext.jsx";
 import GridGame from "./pages/GridGame.jsx";
 import { useEffect, useState } from "react";
@@ -30,6 +29,7 @@ import { useEffect, useState } from "react";
  *
  */
 import React from "react";
+import Quizui from "./pages/Quizui.jsx";
 
 const App = () => {
   const [loading, isLoading] = useState(false);
@@ -54,7 +54,8 @@ const App = () => {
                   <Route path="unit" element={<UnitGame />} />
                   <Route path="flex" element={<FlexGame />} />
                   <Route path="sql" element={<Sql />} />
-                  <Route path="register" element={<Register />}></Route>
+
+                  <Route path="quiz" element={<Quizui />}></Route>
                   <Route path="grid" element={<GridGame />}></Route>
                   <Route path="ai-interview" element={<AiInterview />} />
                 </Route>

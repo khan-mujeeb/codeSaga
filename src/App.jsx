@@ -17,7 +17,6 @@ import {
 } from "react-router-dom";
 //import Quiz from "./pages/Quiz.jsx";
 
-import { Provider } from "./context/AuthContext.jsx";
 import GridGame from "./pages/GridGame.jsx";
 import { useEffect, useState } from "react";
 // import "./App.css";
@@ -43,25 +42,23 @@ const App = () => {
     <>
       <React.Fragment>
         <Router>
-          <Provider>
-            <Toaster />
+          <Toaster />
 
-            <Routes>
-              <Route path="/" element={<Rootlayout />}>
-                <Route path="" element={<Navigate to={"CssMenu"} />} />
-                <Route path="/CssMenu" element={<Outlet />}>
-                  <Route path="" element={<CssMenu />} />
-                  <Route path="unit" element={<UnitGame />} />
-                  <Route path="flex" element={<FlexGame />} />
-                  <Route path="sql" element={<Sql />} />
+          <Routes>
+            <Route path="/" element={<Rootlayout />}>
+              <Route path="" element={<Navigate to={"CssMenu"} />} />
+              <Route path="/CssMenu" element={<Outlet />}>
+                <Route path="" element={<CssMenu />} />
+                <Route path="unit" element={<UnitGame />} />
+                <Route path="flex" element={<FlexGame />} />
+                <Route path="sql" element={<Sql />} />
 
-                  <Route path="quiz" element={<Quizui />}></Route>
-                  <Route path="grid" element={<GridGame />}></Route>
-                  <Route path="ai-interview" element={<AiInterview />} />
-                </Route>
+                <Route path="quiz" element={<Quizui />}></Route>
+                <Route path="grid" element={<GridGame />}></Route>
+                <Route path="ai-interview" element={<AiInterview />} />
               </Route>
-            </Routes>
-          </Provider>
+            </Route>
+          </Routes>
         </Router>
         <Sugar color="#65A30D" customLoading={loading} time={1800} />
       </React.Fragment>

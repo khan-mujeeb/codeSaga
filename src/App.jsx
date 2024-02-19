@@ -17,7 +17,6 @@ import {
 } from "react-router-dom";
 //import Quiz from "./pages/Quiz.jsx";
 
-import Register from "./pages/Register.jsx";
 import { Provider } from "./context/AuthContext.jsx";
 import GridGame from "./pages/GridGame.jsx";
 import { useEffect, useState } from "react";

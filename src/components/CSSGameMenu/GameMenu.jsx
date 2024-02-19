@@ -34,12 +34,7 @@ const routesConfig = [
     path: "sql",
     url: sql,
   },
-  {
-    id: "register",
-    label: "register",
-    path: "register",
-    url: sql,
-  },
+
   {
     id: "ai-interview",
     label: "AI Interview",

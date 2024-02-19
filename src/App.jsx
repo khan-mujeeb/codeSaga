@@ -20,6 +20,7 @@ import {
 import Register from "./pages/Register.jsx";
 import { Provider } from "./context/AuthContext.jsx";
 import GridGame from "./pages/GridGame.jsx";
+import { useEffect, useState } from "react";
 // import "./App.css";
 
 /**
@@ -31,6 +32,13 @@ import GridGame from "./pages/GridGame.jsx";
 import React from "react";
 
 const App = () => {
+  const [loading, isLoading] = useState(false);
+  useEffect(() => {
+    isLoading(true);
+    setTimeout(() => {
+      isLoading(false);
+    }, 3000);
+  }, []);
   return (
     <>
       <React.Fragment>
@@ -54,7 +62,7 @@ const App = () => {
             </Routes>
           </Provider>
         </Router>
-        <Sugar color="#65A30D" />
+        <Sugar color="#65A30D" customLoading={loading} time={1800} />
       </React.Fragment>
       {/* <button type="button" className="login-with-google-btn">
         Sign in with Google

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import axios from "axios";
 import { useSpeechRecognition } from "react-speech-kit";
+import "../styles/aiInterview.css";
 const API_KEY = "AIzaSyDFbNSCADhC5Etd8DuZdSht4uPkqvy416c";
 
 const genAI = new GoogleGenerativeAI(API_KEY);
@@ -140,127 +141,130 @@ const AiInterview = () => {
 
   return (
     <div
-      className=" w-[100vw] h-[100vh] overflow-hidden grid p-[25px] gap-2   grid-rows-[10%_70%_10%] "
+      className=" w-[100vw] h-[100vh] overflow-hidden p-[25px] gap-4 mainAiInterviewContainer  "
       style={{
         boxShadow: "0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgb(0 0 0 / 0.05)",
       }}
     >
       {/* Heading */}
-      <div className=" text-center ">
-        <h2 className="font-semibold text-3xl tracking-tight">MockAI</h2>
+      <div className=" text-center flex items-center justify-center flex-col heading_container  gap-3 ">
+        <h2 className="font-semibold text-3xl mock__AI__title tracking-tight">
+          MOCK-AI
+        </h2>
         <p className="text-xl text-[#6b7280] leading-3">
-          Master your interviews with AI-guided practice.
+          Master your interviews with AI-guided practice
         </p>
       </div>
 
       {/* Chat Container */}
-      <div
-        className="p-4 rounded-md border bg-green-50 border-[#e5e7eb]   overflow-y-scroll scrollbar-none"
-        style={{
-          minWidth: "100%",
-          WebkitScrollbarWidth: "thin",
-          scrollbarWidth: "thin",
-        }}
-      >
+      <div className=" border border-[#e5e7eb] chat__container grid grid-cols-[70%_30%] m-[40%  ]   ">
         {/* user chat  */}
-        {messages.map((message, index) =>
-          message.user ? (
-            <div
-              key={index}
-              className="flex justify-end  gap-3 my-4 text-gray-600 text-sm flex-1"
-            >
-              <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
-                <div className="rounded-full bg-gray-100 border p-1">
-                  <svg
-                    stroke="none"
-                    fill="green"
-                    strokeWidth="0"
-                    viewBox="0 0 16 16"
-                    height="20"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
-                  </svg>
+        <div className="  overflow-y scrollbar-none w-[100%] h-[100%] p-3">
+          {" "}
+          <div
+            className="  overflow-y-scroll scrollbar-none w-[100%] h-[100%]"
+            style={{
+              minWidth: "100%",
+              WebkitScrollbarWidth: "thin",
+              scrollbarWidth: "thin",
+            }}
+          >
+            {" "}
+            {messages.map((message, index) =>
+              message.user ? (
+                <div
+                  key={index}
+                  className="flex justify-end  gap-3 my-2 text-gray-600 text-sm flex-1"
+                >
+                  <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
+                    <div className="rounded-full bg-gray-100 border p-1">
+                      <svg
+                        stroke="none"
+                        fill="green"
+                        strokeWidth="0"
+                        viewBox="0 0 16 16"
+                        height="20"
+                        width="20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
+                      </svg>
+                    </div>
+                  </span>
+                  <p className="leading-relaxed">
+                    <span className="block font-bold text--700">You </span>
+                    {message.text}
+                  </p>
                 </div>
-              </span>
-              <p className="leading-relaxed">
-                <span className="block font-bold text--700">You </span>
-                {message.text}
-              </p>
-            </div>
-          ) : (
-            // ai model chat
-            <div
-              key={index}
-              className="flex gap-3 my-4 text-green-700 text-sm flex-1"
-            >
-              <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
-                <div className="rounded-full bg-gray-100 border p-1">
-                  <svg
-                    stroke="none"
-                    fill="Orange"
-                    strokeWidth="1.5"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    height="20"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
-                    ></path>
-                  </svg>
+              ) : (
+                // ai model chat
+                <div
+                  key={index}
+                  className="flex gap-3 my-4 text-green-700 text-sm flex-1"
+                >
+                  <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
+                    <div className="rounded-full bg-gray-100 border p-1">
+                      <svg
+                        stroke="none"
+                        fill="Orange"
+                        strokeWidth="1.5"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        height="20"
+                        width="20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </span>
+                  <p className="leading-relaxed">
+                    <span className="block font-bold text-gray-700">
+                      AI Interviewer{" "}
+                    </span>{" "}
+                    {message.text}
+                    <audio
+                      className="mt-3"
+                      autoPlay={shouldAutoPlay && index === messages.length - 1}
+                      controls
+                      src={audio}
+                      onEnded={() => handleAudioEnd(index)}
+                    />
+                  </p>
                 </div>
-              </span>
-              <p className="leading-relaxed">
-                <span className="block font-bold text-gray-700">
-                  AI Interviewer{" "}
-                </span>{" "}
-                {message.text}
-                <audio
-                  className="mt-3"
-                  autoPlay={shouldAutoPlay && index === messages.length - 1}
-                  controls
-                  src={audio}
-                  onEnded={() => handleAudioEnd(index)}
-                />
-              </p>
+              )
+            )}
+          </div>
+          <div ref={messagesEndRef} />
+        </div>
+
+        <div className=" h-[100%] p-4   w-[100%]  border-l-2 ">
+          <form onSubmit={handleSubmit} className="w-[100%] h-[100%]">
+            <div className="grid  grid-rows-[80%_20%] gap-2  w-[100%] h-[100%]  ">
+              <textarea
+                disabled={true}
+                className="  h-[100%] w-full  resize-none   rounded-md border border-[#e5e7eb] text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+              />
+              <button
+                className="  rounded-3xl items-center  text-sm font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-lime-600 hover:bg-[#111827E6] h-[80%]"
+                onMouseDown={listen}
+                onMouseUp={stop}
+              >
+                🎤
+              </button>
+              {listening && <div>{"Go ahead I'm listening"}</div>}
             </div>
-          )
-        )}
-        <div ref={messagesEndRef} />
+          </form>
+        </div>
       </div>
 
       {/* Input box */}
-      <div>
-        <form
-          className="grid "
-          style={{ display: "unset" }}
-          onSubmit={handleSubmit}
-        >
-          <div>
-            <textarea
-              className=" h-10 w-full rounded-md border border-[#e5e7eb] text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-            />
-            <button
-              className=" items-center  rounded-md text-sm font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-lime-600 hover:bg-[#111827E6] h-10 px-4 py-2"
-              onMouseDown={listen}
-              onMouseUp={stop}
-            >
-              🎤
-            </button>
-            {listening && <div>{"Go ahead I'm listening"}</div>}
-          </div>
-          {/* <button className="inline-flex items-center justify-center rounded-md text-sm font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-lime-600 hover:bg-[#111827E6] h-10 px-4 py-2">
-                        Send
-                    </button> */}
-        </form>
-      </div>
     </div>
   );
 };

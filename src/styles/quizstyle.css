@@ -1,97 +1,96 @@
-.app{
-    background: #e7e8eb;
-    box-sizing: border-box;
-    width: 90%;
-    max-width: 600px;
-    border-radius: 20px;
-    padding: 30px;
-    overflow: hidden;
-    box-shadow: 0 0 2rem rgb(17, 146, 232);
+.app {
+  background: #e7e8eb;
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 20px;
+  padding: 30px;
+  overflow: hidden;
+  box-shadow: 0 0 2rem rgb(17, 146, 232);
 }
 
-.app p{
-    color: #001e4d;
-    border-bottom: 1px solid #333;
-    padding-bottom: 30px;
+.app p {
+  color: #001e4d;
+  border-bottom: 1px solid #333;
+  padding-bottom: 30px;
 }
 
-.quiz{
-    padding:20px 0;
+.quiz {
+  padding: 20px 0;
 }
 
-.quiz h2{
-    color: #001e4d;
-    font-size: 22px;
-    font-weight: 600;
+.quiz h2 {
+  color: #001e4d;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-.btn{
-    background: #fff;
-    color: #222;
-    font-weight: 500;
-    width: 100%;
-    border: 1px solid #222;
-    padding: 10px;
-    margin: 10px 0;
-    text-align: left;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
+.btn {
+  background: #fff;
+  color: #222;
+  font-weight: 500;
+  width: 100%;
+  border: 1px solid #222;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: left;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.btn:hover{
-    background: #4f4f4f;
-    color: #fff;
+.btn:hover {
+  background: #4f4f4f;
+  color: #fff;
 }
 
-.controls{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
-.ctl-btn{
-    background: #0a91df;
-    color: #fff;
-    font-weight: 500;
-    font-size: 22px;
-    width: 110px;
-    border: 1px solid #222;
-    padding: 5px 0;
-    margin: 10px 0;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
+.ctl-btn {
+  background: #0a91df;
+  color: #fff;
+  font-weight: 500;
+  font-size: 22px;
+  width: 110px;
+  border: 1px solid #222;
+  padding: 5px 0;
+  margin: 10px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.ctl-btn:hover{
-    background: rgb(24, 70, 154);
-    transform: scale(1.1);
+.ctl-btn:hover {
+  background: rgb(24, 70, 154);
+  transform: scale(1.1);
 }
 
-.submit{
-    
-    display: flex;
-    justify-content: space-between;
+.submit {
+  display: flex;
+  justify-content: space-between;
 }
 
-.submit button{
-    background: #0a91df;
-    color: #fff;
-    font-weight: 500;
-    float: left;
-    border: 1px solid #222;
-    padding: 10px;
-    margin-right: 20px;
-    margin-top: 30px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-    width: 110px;
-    height: 60px;
+.submit button {
+  background: #0a91df;
+  color: #fff;
+  font-weight: 500;
+  float: left;
+  border: 1px solid #222;
+  padding: 10px;
+  margin-right: 20px;
+  margin-top: 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 110px;
+  height: 60px;
 }
 
-.submit div{
+.submit div {
   width: 90px;
   height: 90px;
   border-radius: 50%;
@@ -106,7 +105,7 @@
   box-shadow: 0 0 1.5rem rgb(17, 146, 232);
 }
 
-.submit button:hover{
-    background: rgb(24, 143, 154);
-    transform: scale(1.1);
+.submit button:hover {
+  background: rgb(24, 143, 154);
+  transform: scale(1.1);
 }

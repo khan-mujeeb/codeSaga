@@ -7,11 +7,14 @@ import {
   set,
   onValue,
   off,
+  update,
 } from "firebase/database";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -36,6 +39,9 @@ export {
   set,
   onValue,
   off,
+  update,
+  signInWithPopup,
+  GoogleAuthProvider,
 };
 
 // Return as an object

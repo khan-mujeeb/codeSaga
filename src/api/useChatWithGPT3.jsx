@@ -1,13 +1,22 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import getAudio from "./useGetAudio";
 
-const useChatWithGPT3 = (history, setAudio, setShouldAutoPlay) => {
-    const API_KEY = "AIzaSyDFbNSCADhC5Etd8DuZdSht4uPkqvy416c";
+
+const API_KEY = "AIzaSyDFbNSCADhC5Etd8DuZdSht4uPkqvy416c";
+
+import { useState } from "react";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+const useChatWithGPT3 = (history) => {
+    const [result, setResult] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     const chatWithGPT3 = async (userInput) => {
         try {
+            setLoading(true);
+
             const chat = model.startChat({
                 history: history,
                 generationConfig: {
@@ -23,16 +32,19 @@ const useChatWithGPT3 = (history, setAudio, setShouldAutoPlay) => {
                 const text = response.text();
                 console.log("ai intervier: " + text);
                 history.push({ role: "model", parts: text });
-                getAudio(text, setAudio, setShouldAutoPlay);
 
-                return text;
+                setResult(text);
+                setLoading(false);
+                console.log(history)
             }
         } catch (err) {
-            console.log(err);
+            setError(err);
+            setLoading(false);
         }
     };
 
-    return chatWithGPT3;
+    return { result, loading, error, chatWithGPT3 };
 };
 
 export default useChatWithGPT3;
+

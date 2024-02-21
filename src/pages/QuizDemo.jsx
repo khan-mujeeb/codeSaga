@@ -104,9 +104,6 @@ function Quiz() {
         if (data !== null) {
           // Data exists, update state
           setdataIndex(data.currentIndex);
-
-          setQuestion(questions[dataIndex].text);
-          setOptions(questions[dataIndex].options);
         } else {
           // Data doesn't exist, initialize and update state
           set(ref(database, "currentIndex/"), {
@@ -117,6 +114,11 @@ function Quiz() {
     };
 
     fetchData(); // Call the function
+    if (dataIndex !== null) {
+      console.log(questions[dataIndex].text);
+      setQuestion(questions[dataIndex].text);
+      setOptions(questions[dataIndex].options);
+    }
 
     // Cleanup function
     return () => {

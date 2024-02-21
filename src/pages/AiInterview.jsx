@@ -162,7 +162,9 @@ const AiInterview = () => {
                                                 <span className="block font-bold text-gray-700">
                                                     AI Interviewer{" "}
                                                 </span>{" "}
-                                                {message.text}
+                                                {message.text ==="..."?
+                                            (<div className="loader"></div>):(message.text)    
+                                            }
                                                 <audio
                                                     className="mt-3"
                                                     autoPlay
@@ -247,4 +249,3 @@ const AiInterview = () => {
 
 export default AiInterview;
 
-// Hello, my name is Pravin Kale. I recently completed my Bachelor's degree in Computer Science. During my studies, I developed a strong foundation in computer science fundamentals and gained practical experience through various projects

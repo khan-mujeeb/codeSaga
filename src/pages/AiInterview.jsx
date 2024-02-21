@@ -107,7 +107,7 @@ const AiInterview = () => {
   return (
     <>
       <div
-        className=" w-[100vw] h-[100vh] overflow-hidden p-[25px] gap-4 mainAiInterviewContainer   "
+        className=" w-[100vw] h-[100vh] overflow-hidden p-[25px] gap-4 mainAiInterviewContainer  select-none  "
         style={{
           boxShadow: "0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgb(0 0 0 / 0.05)",
         }}

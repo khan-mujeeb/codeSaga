@@ -13,6 +13,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -38,6 +40,8 @@ export {
   onValue,
   off,
   update,
+  signInWithPopup,
+  GoogleAuthProvider,
 };
 
 // Return as an object

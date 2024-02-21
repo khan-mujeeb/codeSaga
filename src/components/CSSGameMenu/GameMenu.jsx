@@ -47,6 +47,12 @@ const routesConfig = [
     path: "quiz",
     url: units,
   },
+  {
+    id: "Authentications",
+    label: "Authentications",
+    path: "Authentications",
+    url: units,
+  },
 ];
 
 const GameMenu = () => {

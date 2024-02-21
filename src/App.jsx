@@ -19,6 +19,7 @@ import {
 
 import GridGame from "./pages/GridGame.jsx";
 import { useEffect, useState } from "react";
+import Authentications from "./pages/Authentications";
 // import "./App.css";
 
 /**
@@ -57,6 +58,7 @@ const App = () => {
                 <Route path="quiz" element={<QuizDemo />}></Route>
                 <Route path="grid" element={<GridGame />}></Route>
                 <Route path="ai-interview" element={<AiInterview />} />
+                <Route path="Authentications" element={<Authentications />} />
               </Route>
             </Route>
           </Routes>

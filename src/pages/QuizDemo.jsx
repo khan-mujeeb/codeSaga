@@ -52,6 +52,7 @@ function Quiz() {
     radioInputRef.current.forEach((radio) => {
       radio.checked = false;
     });
+    setanswer(null);
   };
 
   useEffect(() => {

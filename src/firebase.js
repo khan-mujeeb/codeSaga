@@ -7,6 +7,7 @@ import {
   set,
   onValue,
   off,
+  update,
 } from "firebase/database";
 import {
   getAuth,
@@ -36,6 +37,7 @@ export {
   set,
   onValue,
   off,
+  update,
 };
 
 // Return as an object

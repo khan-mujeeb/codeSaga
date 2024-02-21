@@ -28,7 +28,8 @@ import { useEffect, useState } from "react";
  *
  */
 import React from "react";
-import Quizui from "./pages/Quizui.jsx";
+// import Quizui from "./pages/Quizui.jsx";
+import QuizDemo from "./pages/QuizDemo.jsx";
 
 const App = () => {
   const [loading, isLoading] = useState(false);
@@ -53,7 +54,7 @@ const App = () => {
                 <Route path="flex" element={<FlexGame />} />
                 <Route path="sql" element={<Sql />} />
 
-                <Route path="quiz" element={<Quizui />}></Route>
+                <Route path="quiz" element={<QuizDemo />}></Route>
                 <Route path="grid" element={<GridGame />}></Route>
                 <Route path="ai-interview" element={<AiInterview />} />
               </Route>

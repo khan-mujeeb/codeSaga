@@ -16,6 +16,7 @@ function Quiz({ authUser }) {
   const [username, setUsername] = useState("");
   const [dataIndex, setdataIndex] = useState(null);
   const [answerGiven, setAnswerGiven] = useState(false);
+  const [timer, setTimer] = useState(10);
 
   const radioInputRef = useRef([]);
   const submitAnswer = (e) => {
@@ -48,6 +49,7 @@ function Quiz({ authUser }) {
         update(ref(database, "currentIndex/"), {
           currentIndex: dataIndex + 1,
         });
+        setTimer(10);
       } else {
         alert("Wrong Answer");
         setAnswerGiven(true);
@@ -140,15 +142,35 @@ function Quiz({ authUser }) {
   //   useEffect(() => {
   //     console.log(dataIndex);
 
-  //   }, [dataIndex]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // if (timer > 0) setTimer((prev) => prev - 1);
+    }, 1000);
+
+    if (timer === 0) {
+      clearInterval(timer);
+      alert("Time Up");
+      update(ref(database, "currentIndex/"), {
+        currentIndex: dataIndex + 1,
+      });
+      setTimer(10);
+      setAnswerGiven(false);
+    }
+    return () => clearInterval(interval);
+  }, [timer, dataIndex]);
+
   return (
     <div className="Quiz">
       <img src={img} width="130px" alt="" srcSet="" />
+      <div className="submit">
+        <div>{timer}</div>
+      </div>
       <div id="quiz-container">
         <div id="question-container">
           <h2 id="question" className="question">
             {question}
           </h2>
+
           <div id="options">
             {/* Map through options and render them */}
             {options.map((option, index) => (

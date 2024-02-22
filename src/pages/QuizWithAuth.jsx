@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Authentications from "./Authentications";
 import QuizDemo from "./QuizDemo";
 import { cookies } from "../cookies.js";

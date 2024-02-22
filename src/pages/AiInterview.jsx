@@ -252,4 +252,3 @@ const AiInterview = () => {
 
 export default AiInterview;
 
-// Hello, my name is Pravin Kale. I recently completed my Bachelor's degree in Computer Science. During my studies, I developed a strong foundation in computer science fundamentals and gained practical experience through various projects

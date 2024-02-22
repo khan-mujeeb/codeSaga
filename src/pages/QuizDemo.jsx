@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // Import necessary dependencies
 import { useEffect, useRef, useState } from "react";
 import "../styles/QuizDemo.css";
@@ -56,7 +57,7 @@ function Quiz({ authUser }) {
   };
 
   useEffect(() => {
-    const CurrentUsername = authUser||"Anonymous";
+    const CurrentUsername = authUser || "Anonymous";
     setUsername(CurrentUsername);
 
     if (CurrentUsername !== null) {
@@ -74,7 +75,11 @@ function Quiz({ authUser }) {
         return [...Object.values(data)];
       });
     });
-  }, []);
+  }, [authUser]);
+  useEffect(() => {
+    leaderboard.sort((a, b) => b.score - a.score);
+  }, [leaderboard]);
+
   // when new player enters resets the questions
   //   useEffect(() => {
   //     console.log("first");

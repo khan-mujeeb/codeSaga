@@ -3,7 +3,7 @@ import { Stepper } from "react-form-stepper";
 
 const LevelStepper = ({level}) => {
     return (
-        <div className="z-50">
+        <div className="-z-1">
             <Stepper
                 steps={[
                     { label: "" },

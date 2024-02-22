@@ -1,21 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {
-  getDatabase,
-  ref,
-  onDisconnect,
-  set,
-  onValue,
-  off,
-  update,
-} from "firebase/database";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "firebase/auth";
+import { getDatabase, ref, set, onValue, update } from "firebase/database";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC8VaJPuhuP2l-gqK2AI3p2H6Zz1l2Yb5Q",
@@ -31,17 +17,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const database = getDatabase(app);
-export {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  ref,
-  onDisconnect,
-  set,
-  onValue,
-  off,
-  update,
-  signInWithPopup,
-  GoogleAuthProvider,
-};
+export { ref, set, onValue, update, signInWithPopup, GoogleAuthProvider };
+export const provider = new GoogleAuthProvider();
 
 // Return as an object

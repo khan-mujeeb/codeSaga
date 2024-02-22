@@ -160,14 +160,23 @@ const AiInterview = () => {
                       <p className="leading-relaxed">
                         <span className="block font-bold text-gray-700">
                           AI Interviewer{" "}
-                        </span>{" "}
-                        {message.text}
-                        <audio
-                          className="mt-3"
-                          autoPlay
-                          controls
-                          src={audioUrls[index]}
-                        />
+                        </span>
+                        {message.text === "..." ? (
+                          <>
+                            <div className="loader"></div>
+                          </>
+                        ) : (
+                          <>
+                            {" "}
+                            {message.text}
+                            <audio
+                              className="mt-3"
+                              autoPlay
+                              controls
+                              src={audioUrls[index]}
+                            />
+                          </>
+                        )}
                       </p>
                     </div>
                   )

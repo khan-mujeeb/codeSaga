@@ -7,7 +7,7 @@ import img from "../assets/img.png";
 import { database, onValue, ref, set, update } from "../firebase";
 
 // Define the Quiz component
-function Quiz() {
+function Quiz({ authUser }) {
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState([]);
   const [leaderboard, setLeaderboard] = useState([]);
@@ -56,7 +56,7 @@ function Quiz() {
   };
 
   useEffect(() => {
-    const CurrentUsername = prompt("Enter your username");
+    const CurrentUsername = authUser||"Anonymous";
     setUsername(CurrentUsername);
 
     if (CurrentUsername !== null) {

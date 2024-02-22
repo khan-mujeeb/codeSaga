@@ -136,14 +136,14 @@ function Quiz({ authUser }) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // if (currentTimer > 0) {
-      //   console.log("time remaining");
-      //   update(ref(database, "currentTimer/"), {
-      //     currentTimer: currentTimer - 1,
-      //   });
-      // } else {
-      //   console.log("time up");
-      // }
+      if (currentTimer > 0) {
+        console.log("time remaining");
+        update(ref(database, "currentTimer/"), {
+          currentTimer: currentTimer - 1,
+        });
+      } else {
+        console.log("time up");
+      }
     }, 1000);
 
     if (currentTimer === 0) {
@@ -185,6 +185,10 @@ function Quiz({ authUser }) {
 
     // Call the function
   }, [currentTimer]);
+
+  useEffect(() => {
+    leaderboard.sort((a, b) => b.score - a.score);
+  }, [leaderboard]);
 
   return (
     <div className="Quiz">

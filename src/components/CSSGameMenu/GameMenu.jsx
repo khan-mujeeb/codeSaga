@@ -49,7 +49,7 @@ const routesConfig = [
   },
   {
     id: "Authentications",
-    label: "Authentications",
+    label: "Quiz",
     path: "Authentications",
     url: units,
   },

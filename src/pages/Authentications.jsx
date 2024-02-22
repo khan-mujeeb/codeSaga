@@ -9,7 +9,9 @@ function Authentications({ setIsAuth, setAuthUser }) {
     const Authentications = await signInWithPopup(auth, provider);
     try {
       console.log(Authentications);
-      cookies.set("auth-token", Authentications?.user?.refreshToken);
+      cookies.set("auth-token", Authentications?.user?.refreshToken, {
+        maxAge: 30,
+      });
       setAuthUser(Authentications?.user?.displayName);
 
       setIsAuth(true);

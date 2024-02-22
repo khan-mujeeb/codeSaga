@@ -61,12 +61,12 @@ const GameMenu = () => {
       <Link
         to={route.path}
         key={route.id}
-        className={"py-1 px-1  rounded-md shadow-md"}
-        // style={{
-        //   fontFamily: "Source Code Pro,  monospace",
-        //   fontSize: "25px",
-        //   backgroundColor: " #999",
-        // }}
+        className={"py-1 px-1"}
+      // style={{
+      //   fontFamily: "Source Code Pro,  monospace",
+      //   fontSize: "25px",
+      //   backgroundColor: " #999",
+      // }}
       >
         {/* {route.label} */}
         <div className="w-full max-w-xs bg-white border hover:scale-95 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -101,7 +101,7 @@ const GameMenu = () => {
     <>
       <Star />
       <div
-        className=" w-screen h-screen p-1 overflow-y-scroll overflow-x-hidden box-border"
+        className=" w-screen h-screen p-1 overflow-y-scroll overflow-x-hidden box-border bg-black"
         style={
           {
             // backgroundImage: `url("https://i.pinimg.com/originals/59/2f/ae/592fae18268bc4eecc25879241ff90b5.gif")`,
@@ -109,11 +109,15 @@ const GameMenu = () => {
           }
         }
       >
-        <div className="w-full h-full flex flex-col  ">
+        <div 
+        className="w-full h-full flex flex-col "
+        >
           <div className="m-1 w-screen text-white h-40 font-roboto py-1 items-center flex justify-center  text-center text-7xl">
             GAME MENU
           </div>
-          <div className=" flex w-screen flex-wrap px-10 gap-4    grow my-10   text-5xl justify-center items-center">
+          <div
+            className=" flex w-screen flex-wrap px-10 gap-4 grow my-10 text-5xl justify-center items-center"
+          >
             {rendergameList}
           </div>
         </div>

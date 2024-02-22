@@ -19,7 +19,7 @@ import {
 
 import GridGame from "./pages/GridGame.jsx";
 import { useEffect, useState } from "react";
-import Authentications from "./pages/Authentications";
+// import Authentications from "./pages/Authentications";
 // import "./App.css";
 
 /**
@@ -31,6 +31,7 @@ import Authentications from "./pages/Authentications";
 import React from "react";
 // import Quizui from "./pages/Quizui.jsx";
 import QuizDemo from "./pages/QuizDemo.jsx";
+import QuizWithAuth from "./pages/QuizWithAuth.jsx";
 
 const App = () => {
   const [loading, isLoading] = useState(false);
@@ -55,10 +56,9 @@ const App = () => {
                 <Route path="flex" element={<FlexGame />} />
                 <Route path="sql" element={<Sql />} />
 
-                <Route path="quiz" element={<QuizDemo />}></Route>
                 <Route path="grid" element={<GridGame />}></Route>
                 <Route path="ai-interview" element={<AiInterview />} />
-                <Route path="Authentications" element={<Authentications />} />
+                <Route path="Authentications" element={<QuizWithAuth />} />
               </Route>
             </Route>
           </Routes>

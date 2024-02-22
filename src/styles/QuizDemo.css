@@ -102,7 +102,7 @@
 .btn {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -135,4 +135,20 @@
   to {
     opacity: 1;
   }
+}
+
+.submit div {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #37db34; /* Set your desired background color */
+  color: #ffffff; /* Set your desired text color */
+  text-align: center;
+  line-height: 50px; /* Should be equal to the height of the circle */
+  font-size: 30px; /* Set your desired font size */
+
+  font-weight: 100;
+  margin: 2rem;
+
+  box-shadow: 0 0 1.5rem rgb(64, 199, 96);
 }

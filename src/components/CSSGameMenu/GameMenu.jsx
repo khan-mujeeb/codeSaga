@@ -41,15 +41,10 @@ const routesConfig = [
     path: "ai-interview",
     url: "https://www.globaltimes.cn/Portals/0/attachment/2022/2022-05-27/04143cc7-2bd0-4e3a-bec3-1a250f689a86.jpeg",
   },
-  {
-    id: "quiz",
-    label: "Quiz",
-    path: "quiz",
-    url: units,
-  },
+
   {
     id: "Authentications",
-    label: "Authentications",
+    label: "Quiz",
     path: "Authentications",
     url: units,
   },
@@ -61,7 +56,7 @@ const GameMenu = () => {
       <Link
         to={route.path}
         key={route.id}
-        className={"py-1 px-1  rounded-md shadow-md"}
+        className={"py-1 px-1"}
         // style={{
         //   fontFamily: "Source Code Pro,  monospace",
         //   fontSize: "25px",
@@ -101,7 +96,7 @@ const GameMenu = () => {
     <>
       <Star />
       <div
-        className=" w-screen h-screen p-1 overflow-y-scroll overflow-x-hidden box-border"
+        className=" w-screen h-screen p-1 overflow-y-scroll overflow-x-hidden box-border bg-black"
         style={
           {
             // backgroundImage: `url("https://i.pinimg.com/originals/59/2f/ae/592fae18268bc4eecc25879241ff90b5.gif")`,
@@ -109,11 +104,11 @@ const GameMenu = () => {
           }
         }
       >
-        <div className="w-full h-full flex flex-col  ">
+        <div className="w-full h-full flex flex-col ">
           <div className="m-1 w-screen text-white h-40 font-roboto py-1 items-center flex justify-center  text-center text-7xl">
             GAME MENU
           </div>
-          <div className=" flex w-screen flex-wrap px-10 gap-4    grow my-10   text-5xl justify-center items-center">
+          <div className=" flex w-screen flex-wrap px-10 gap-4 grow my-10 text-5xl justify-center items-center">
             {rendergameList}
           </div>
         </div>

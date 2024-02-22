@@ -7,22 +7,29 @@ import img from "../assets/img.png";
 import { database, onValue, ref, set, update } from "../firebase";
 
 // Define the Quiz component
-function Quiz() {
+// eslint-disable-next-line react/prop-types
+function Quiz({ authUser }) {
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState([]);
   const [leaderboard, setLeaderboard] = useState([]);
   const [answer, setanswer] = useState(null);
   const [username, setUsername] = useState("");
   const [dataIndex, setdataIndex] = useState(null);
-
+  const [currentTimer, setcurrentTimer] = useState(null);
+  const [answerGiven, setAnswerGiven] = useState(false);
   const radioInputRef = useRef([]);
+  // submit answer function
   const submitAnswer = (e) => {
     e.preventDefault();
+    if (answer === null) {
+      alert("Please select an option");
+      return;
+    }
 
     const currentIntedx = dataIndex;
     console.log(questions[currentIntedx]);
 
-    if (currentIntedx < questions.length) {
+    if (currentIntedx < questions.length - 1) {
       if (questions[currentIntedx].correctIndex === answer) {
         setdataIndex((prev) => prev + 1);
         setLeaderboard((prev) => {
@@ -42,21 +49,28 @@ function Quiz() {
         update(ref(database, "currentIndex/"), {
           currentIndex: dataIndex + 1,
         });
+        update(ref(database, "currentTimer/"), {
+          currentTimer: 20,
+        });
       } else {
         alert("Wrong Answer");
+        setAnswerGiven(true);
       }
     } else {
       alert("Quiz Completed");
       setdataIndex(0);
+      update(ref(database, "currentIndex/"), {
+        currentIndex: 0,
+      });
     }
     radioInputRef.current.forEach((radio) => {
       radio.checked = false;
     });
     setanswer(null);
   };
-
+  // initialize the leaderboard and username
   useEffect(() => {
-    const CurrentUsername = prompt("Enter your username");
+    const CurrentUsername = authUser || "Anonymous";
     setUsername(CurrentUsername);
 
     if (CurrentUsername !== null) {
@@ -74,26 +88,8 @@ function Quiz() {
         return [...Object.values(data)];
       });
     });
-  }, []);
-  // when new player enters resets the questions
-  //   useEffect(() => {
-  //     console.log("first");
-  //     if (dataIndex !== null) {
-  //       console.log("second");
-  //       const db = ref(database, "currentIndex/");
-  //       onValue(db, (snapshot) => {
-  //         const data = snapshot.val();
+  }, [authUser]);
 
-  //         setdataIndex(data.currentIndex);
-  //       });
-  //     } else {
-  //       console.log("third");
-  //       set(ref(database, "currentIndex/"), {
-  //         currentIndex: 0,
-  //       });
-  //       setdataIndex(0);
-  //     }
-  //   }, [dataIndex]);
   useEffect(() => {
     const db = ref(database, "currentIndex/");
 
@@ -110,29 +106,91 @@ function Quiz() {
           set(ref(database, "currentIndex/"), {
             currentIndex: 0,
           });
+          set(ref(database, "currentTimer/"), {
+            currentTimer: 20,
+          });
         }
       });
     };
 
-    fetchData(); // Call the function
-    if (dataIndex !== null) {
+    fetchData();
+
+    if (dataIndex < questions.length && dataIndex !== null) {
       console.log(questions[dataIndex].text);
       setQuestion(questions[dataIndex].text);
       setOptions(questions[dataIndex].options);
+    } else {
+      update(ref(database, "currentIndex/"), {
+        currentIndex: 0,
+      });
     }
 
-    // Cleanup function
-    return () => {
-      // Detach the event listener if needed
-    };
+    return () => {};
   }, [dataIndex]);
-  //   useEffect(() => {
-  //     console.log(dataIndex);
+  // timer logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (currentTimer > 0) {
+        console.log("time remaining");
+        update(ref(database, "currentTimer/"), {
+          currentTimer: currentTimer - 1,
+        });
+      } else {
+        console.log("time up");
+      }
+    }, 1000);
 
-  //   }, [dataIndex]);
+    if (currentTimer === 0) {
+      clearInterval(currentTimer);
+
+      update(ref(database, "currentIndex/"), {
+        currentIndex: dataIndex + 1,
+      });
+      setAnswerGiven(false);
+
+      update(ref(database, "currentTimer/"), {
+        currentTimer: 20,
+      });
+    }
+    return () => clearInterval(interval);
+  }, [currentTimer, dataIndex]);
+  //Global timer for the quiz intialize and update state
+  useEffect(() => {
+    const db = ref(database, "currentTimer/");
+
+    // Attach an asynchronous callback to read the data
+    const fetchData = () => {
+      onValue(db, (snapshot) => {
+        const data = snapshot.val();
+
+        if (data !== null) {
+          // Data exists, update state
+          setcurrentTimer(data.currentTimer);
+        } else {
+          // Data doesn't exist, initialize and update state
+          set(ref(database, "currentTimer/"), {
+            currentTimer: 20,
+          });
+        }
+      });
+    };
+
+    fetchData();
+
+    // Call the function
+  }, [currentTimer]);
+  // Sort the leaderboard by score
+  useEffect(() => {
+    leaderboard.sort((a, b) => b.score - a.score);
+  }, [leaderboard]);
+
   return (
     <div className="Quiz">
       <img src={img} width="130px" alt="" srcSet="" />
+      <div className="submit">
+        <div>{currentTimer}</div>
+      </div>
+
       <div id="quiz-container">
         <div id="question-container">
           <h2 id="question" className="question">
@@ -149,6 +207,7 @@ function Quiz() {
                 }}
               >
                 <input
+                  disabled={answerGiven}
                   type="radio"
                   id={option}
                   name="option"

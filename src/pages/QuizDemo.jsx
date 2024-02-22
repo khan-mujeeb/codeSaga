@@ -15,13 +15,18 @@ function Quiz({ authUser }) {
   const [answer, setanswer] = useState(null);
   const [username, setUsername] = useState("");
   const [dataIndex, setdataIndex] = useState(null);
+  const [answerGiven, setAnswerGiven] = useState(false);
 
   const radioInputRef = useRef([]);
   const submitAnswer = (e) => {
     e.preventDefault();
 
     const currentIntedx = dataIndex;
-    console.log(questions[currentIntedx]);
+    if (answer === null) {
+      alert("Please select an option");
+      return;
+    }
+    // console.log(questions[currentIntedx]);
 
     if (currentIntedx < questions.length) {
       if (questions[currentIntedx].correctIndex === answer) {
@@ -45,6 +50,7 @@ function Quiz({ authUser }) {
         });
       } else {
         alert("Wrong Answer");
+        setAnswerGiven(true);
       }
     } else {
       alert("Quiz Completed");
@@ -154,6 +160,8 @@ function Quiz({ authUser }) {
                 }}
               >
                 <input
+                  disabled={answerGiven}
+                  className="cursor-not-allowed opacity-50"
                   type="radio"
                   id={option}
                   name="option"
@@ -170,12 +178,12 @@ function Quiz({ authUser }) {
             <button onClick={submitAnswer}> Next &gt;</button>
           </div>
         </div>
-        <div id="leaderboard-container">
+        <div id="leaderboard-container  ">
           <h2 className="result">Leaderboard</h2>
-          <ol id="leaderboard">
+          <ol id="leaderboard  " disabled>
             {/* Map through leaderboard and render list items */}
             {leaderboard.map((entry, index) => (
-              <li className="G" key={index}>
+              <li className="G " key={index}>
                 {entry.username}: {entry.score}
               </li>
             ))}

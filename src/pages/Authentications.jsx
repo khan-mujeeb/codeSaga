@@ -10,9 +10,11 @@ function Authentications({ setIsAuth, setAuthUser }) {
     try {
       console.log(Authentications);
       cookies.set("auth-token", Authentications?.user?.refreshToken, {
-        // maxAge: 30,
+        maxAge: 600,
       });
-      cookies.set("auth-user", Authentications?.user?.displayName)
+      cookies.set("auth-user", Authentications?.user?.displayName, {
+        maxAge: 600,
+      });
       setAuthUser(Authentications?.user?.displayName);
 
       setIsAuth(true);

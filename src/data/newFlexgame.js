@@ -14,9 +14,7 @@ export const levelData = [
       "Use Flex properties to help this 🚶‍♂️ kid to reach his home 🏠  ",
     ],
     answers: [
-      "CSS display: flex; turns a boy into a flexible container, allowing him to arrange and align his belongings (flex items) for responsive layouts.",
-      "[justify-content] centers the boy's belongings horizontally, creating an organized path for his journey, like arranging them side by side.",
-      "[align-items] aligns the boy's belongings vertically at the bottom, ensuring they stack neatly as he reaches home.",
+      "`align-items` in flexbox controls how items are aligned vertically (up and down) inside a flex container. It works like this: - If `align-items` is set to `flex-start`, items align to the start of the container. - If set to `flex-end`, items align to the end of the container. - If set to `center`, items align at the center of the container. - If set to `stretch`, items stretch to fill the container vertically. - If set to `baseline`, items align along their baselines. Now, the `flex-direction` property in flexbox determines the direction of the main axis, which affects how `align-items` works: - If `flex-direction` is set to `row` (the default), `align-items` controls vertical alignment. - If `flex-direction` is set to `column`, `align-items` controls horizontal alignment. So, `align-items` in flexbox is used to vertically align items inside a flex container, and its effect can change based on the direction of the main axis set by `flex-direction`."
     ],
 
     assets: [boyPlayGround, greenboyHouse, greenBoy],

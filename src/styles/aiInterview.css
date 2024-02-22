@@ -103,6 +103,8 @@
 
 /* loader css  */
 .loader {
+    margin-bottom: 20px;
+    margin-top: 20px;
     width: 10px;
     aspect-ratio: 1;
     background: #3fb8af;

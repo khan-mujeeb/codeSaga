@@ -18,7 +18,7 @@ function Quiz({ authUser }) {
   const [currentTimer, setcurrentTimer] = useState(null);
   const [answerGiven, setAnswerGiven] = useState(false);
   const radioInputRef = useRef([]);
-
+  // submit answer function
   const submitAnswer = (e) => {
     e.preventDefault();
     if (answer === null) {
@@ -68,7 +68,7 @@ function Quiz({ authUser }) {
     });
     setanswer(null);
   };
-
+  // initialize the leaderboard and username
   useEffect(() => {
     const CurrentUsername = authUser || "Anonymous";
     setUsername(CurrentUsername);
@@ -114,8 +114,7 @@ function Quiz({ authUser }) {
     };
 
     fetchData();
-    // Call the function
-    // console.log(questions.length - dataIndex, dataIndex);
+
     if (dataIndex < questions.length && dataIndex !== null) {
       console.log(questions[dataIndex].text);
       setQuestion(questions[dataIndex].text);
@@ -125,15 +124,10 @@ function Quiz({ authUser }) {
         currentIndex: 0,
       });
     }
-    // if (currentTimer === 0) {
-    //   setAnswerGiven(true);
-    //   update(ref(database, "currentIndex/"), {
-    //     currentIndex: dataIndex + 1,
-    //   });
-    // }
+
     return () => {};
   }, [dataIndex]);
-
+  // timer logic
   useEffect(() => {
     const interval = setInterval(() => {
       if (currentTimer > 0) {
@@ -160,7 +154,7 @@ function Quiz({ authUser }) {
     }
     return () => clearInterval(interval);
   }, [currentTimer, dataIndex]);
-
+  //Global timer for the quiz intialize and update state
   useEffect(() => {
     const db = ref(database, "currentTimer/");
 
@@ -185,7 +179,7 @@ function Quiz({ authUser }) {
 
     // Call the function
   }, [currentTimer]);
-
+  // Sort the leaderboard by score
   useEffect(() => {
     leaderboard.sort((a, b) => b.score - a.score);
   }, [leaderboard]);

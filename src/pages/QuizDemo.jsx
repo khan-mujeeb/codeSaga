@@ -185,58 +185,60 @@ function Quiz({ authUser }) {
   }, [leaderboard]);
 
   return (
-    <div className="Quiz">
-      <img src={img} width="130px" alt="" srcSet="" />
-      <div className="submit">
-        <div>{currentTimer}</div>
-      </div>
+    <>
+      <div className="Quiz">
+        <img src={img} width="130px" alt="" srcSet="" />
+        <div className="submit">
+          <div>{currentTimer}</div>
+        </div>
 
-      <div id="quiz-container">
-        <div id="question-container">
-          <h2 id="question" className="question">
-            {question}
-          </h2>
-          <div id="options">
-            {/* Map through options and render them */}
-            {options.map((option, index) => (
-              <div
-                className="opt"
-                key={index}
-                onClick={() => {
-                  setanswer(index);
-                }}
-              >
-                <input
-                  disabled={answerGiven}
-                  type="radio"
-                  id={option}
-                  name="option"
-                  value={option}
-                  ref={(el) => {
-                    radioInputRef.current[index] = el;
+        <div id="quiz-container">
+          <div id="question-container">
+            <h2 id="question" className="question">
+              {question}
+            </h2>
+            <div id="options">
+              {/* Map through options and render them */}
+              {options.map((option, index) => (
+                <div
+                  className="opt"
+                  key={index}
+                  onClick={() => {
+                    setanswer(index);
                   }}
-                ></input>
-                <label htmlFor={option}>{option}</label>
-              </div>
-            ))}
+                >
+                  <input
+                    disabled={answerGiven}
+                    type="radio"
+                    id={option}
+                    name="option"
+                    value={option}
+                    ref={(el) => {
+                      radioInputRef.current[index] = el;
+                    }}
+                  ></input>
+                  <label htmlFor={option}>{option}</label>
+                </div>
+              ))}
+            </div>
+            <div className="btn">
+              <button onClick={submitAnswer}> Next &gt;</button>
+            </div>
           </div>
-          <div className="btn">
-            <button onClick={submitAnswer}> Next &gt;</button>
+          <div id="leaderboard-container">
+            <h2 className="result">Leaderboard</h2>
+            <ol id="leaderboard">
+              {/* Map through leaderboard and render list items */}
+              {leaderboard.map((entry, index) => (
+                <li className="G" key={index}>
+                  {entry.username}: {entry.score}
+                </li>
+              ))}
+            </ol>
           </div>
-        </div>
-        <div id="leaderboard-container">
-          <h2 className="result">Leaderboard</h2>
-          <ol id="leaderboard">
-            {/* Map through leaderboard and render list items */}
-            {leaderboard.map((entry, index) => (
-              <li className="G" key={index}>
-                {entry.username}: {entry.score}
-              </li>
-            ))}
-          </ol>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

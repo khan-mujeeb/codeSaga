@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import flex from "../../assets/CssMenuImages/flex.png";
 import grid from "../../assets/CssMenuImages/grid.jpg";
+import AiInterview from "../../assets/img/AiInterview.svg";
 
 import units from "../../assets/CssMenuImages/units.svg";
 import sql from "../../assets/CssMenuImages/sql.png";
@@ -39,7 +40,7 @@ const routesConfig = [
     id: "ai-interview",
     label: "AI Interview",
     path: "ai-interview",
-    url: "https://www.globaltimes.cn/Portals/0/attachment/2022/2022-05-27/04143cc7-2bd0-4e3a-bec3-1a250f689a86.jpeg",
+    url: AiInterview,
   },
 
   {

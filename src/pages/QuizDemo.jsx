@@ -243,6 +243,9 @@ function Quiz({ authUser }) {
               {leaderboard.map((entry, index) => (
                   <div className="list">
                     <div className="item">
+                      <div className="pos ml-2 text-black">
+                        {index + 1}
+                      </div>
                     <div className="pic" style={{backgroundImage: `url(${profileimage})`}}>
 
                       </div>

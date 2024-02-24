@@ -1,7 +1,7 @@
 html {
-    /* height: 100%; */
-    /* background: radial-gradient(ellipse at bottom, #19083e 0%, #180348 100%); */
-    overflow: hidden;
+  /* height: 100%; */
+  /* background: radial-gradient(ellipse at bottom, #19083e 0%, #180348 100%); */
+  overflow: hidden;
 }
 
 #stars {
@@ -573,6 +573,7 @@ html {
 }
 #title span {
   background: -webkit-linear-gradient(white, #38495a);
+  background-clip: initial;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

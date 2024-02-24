@@ -95,7 +95,7 @@ const GameMenu = () => {
 
   return (
     <>
-      <Star />
+      <Star color={"bg-black"} />
       <div
         className=" w-screen h-screen p-1 overflow-y-scroll overflow-x-hidden box-border bg-black"
         style={

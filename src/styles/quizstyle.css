@@ -1,12 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Red+Hat+Display:400,900&display=swap");
+
+
 .app {
   background: #e7e8eb;
   box-sizing: border-box;
   width: 90%;
-  max-width: 600px;
+  max-width: 800px;
   border-radius: 20px;
   padding: 30px;
   overflow: hidden;
-  box-shadow: 0 0 2rem rgb(17, 146, 232);
+  box-shadow: 0 0 2rem rgb(17, 146, 232,0.7);
 }
 
 .app p {
@@ -25,7 +28,7 @@
   font-weight: 600;
 }
 
-.btn {
+.op-btn {
   background: #fff;
   color: #222;
   font-weight: 500;
@@ -39,7 +42,7 @@
   transition: all 0.2s;
 }
 
-.btn:hover {
+.op-btn:hover {
   background: #4f4f4f;
   color: #fff;
 }
@@ -72,6 +75,12 @@
 .submit {
   display: flex;
   justify-content: space-between;
+}
+
+.question-container {
+  flex: 1;
+  margin-left: 20px;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .submit button {
@@ -108,4 +117,89 @@
 .submit button:hover {
   background: rgb(24, 143, 154);
   transform: scale(1.1);
+}
+
+
+.quiz-content{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.center {
+  /* position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);*/
+  border-radius: 20px;
+  z-index: 10;
+  padding: 20px 0;
+  width: 30rem;
+  font-family: "Red Hat Display", sans-serif;
+  background: #e7e8eb;
+  color: #fdfcfc;
+  box-shadow: 0 0 2rem rgb(17, 146, 232,0.7);
+}
+
+.list {
+  padding: 0 2rem;
+  margin: 0 auto;
+  
+}
+
+.list .item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: white;
+  height: 3rem;
+  width: 25rem;
+  border-radius: 4rem;
+  margin-bottom: 2rem;
+  background: #000000;
+  transform-origin: left;
+  cursor: pointer;
+  transition: transform 200ms ease-in-out;
+  box-shadow: 0 0 4rem 0 rgba(0, 0, 0, 0.1), 0 1rem 2rem -1rem rgba(0, 0, 0, 0.3);
+  
+}
+.list .item .pos {
+  font-weight: 900;
+  position: absolute;
+  left: -2rem;
+  text-align: center;
+  font-size: 1.25rem;
+  width: 1.5rem;
+  color: white;
+  opacity: 0.6;
+  transition: opacity 200ms ease-in-out;
+}
+.list .item .pic {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  margin-right: 1rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2), 0 1rem 1rem -0.5rem rgba(0, 0, 0, 0.3);
+}
+.list .item .name {
+  flex-grow: 2;
+  flex-basis: 10rem;
+  font-size: 1.1rem;
+}
+.list .item .score {
+  margin-right: 1.5rem;
+  opacity: 1;
+}
+.list .item .score:after {
+  margin-right: 1rem;
+  content: " Points";
+  opacity: 0.5;
+}
+.list .item:hover {
+  transform: scale(1.05);
+}
+.list .item:hover .pos {
+  opacity: 0.8;
 }

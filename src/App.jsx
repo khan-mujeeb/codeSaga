@@ -32,6 +32,7 @@ import React from "react";
 // import Quizui from "./pages/Quizui.jsx";
 import QuizDemo from "./pages/QuizDemo.jsx";
 import QuizWithAuth from "./pages/QuizWithAuth.jsx";
+import Quizui from "./pages/Quizui.jsx";
 
 const App = () => {
   const [loading, isLoading] = useState(false);
@@ -59,6 +60,7 @@ const App = () => {
                 <Route path="grid" element={<GridGame />}></Route>
                 <Route path="ai-interview" element={<AiInterview />} />
                 <Route path="Authentications" element={<QuizWithAuth />} />
+                <Route path="quiz" element={<Quizui/>}/>
               </Route>
             </Route>
           </Routes>

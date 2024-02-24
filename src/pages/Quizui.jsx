@@ -2,13 +2,196 @@ import React from "react";
 import back from "../assets/CssMenuImages/quizbg.jpg";
 import "../styles/quizstyle.css";
 import Star from "../components/Back/Star.jsx";
+// Import necessary dependencies
+import { useEffect, useRef, useState } from "react";
+// import "../styles/QuizDemo.css";
+import { questions } from "../data/questions";
+import img from "../assets/img.png";
+import profileimage from '../assets/CssMenuImages/sql.png'
+import { database, onValue, ref, set, update } from "../firebase";
 
-function Quizui() {
+function Quizui({ authUser }) {
+
+  const [question, setQuestion] = useState("");
+  const [options, setOptions] = useState([]);
+  const [leaderboard, setLeaderboard] = useState([]);
+  const [answer, setanswer] = useState(null);
+  const [username, setUsername] = useState("");
+  const [dataIndex, setdataIndex] = useState(null);
+  const [currentTimer, setcurrentTimer] = useState(null);
+  const [answerGiven, setAnswerGiven] = useState(false);
+  const radioInputRef = useRef([]);
+  // submit answer function
+  const submitAnswer = (e) => {
+    e.preventDefault();
+    if (answer === null) {
+      alert("Please select an option");
+      return;
+    }
+
+    const currentIntedx = dataIndex;
+    console.log(questions[currentIntedx]);
+
+    if (currentIntedx < questions.length - 1) {
+      if (questions[currentIntedx].correctIndex === answer) {
+        setdataIndex((prev) => prev + 1);
+        setLeaderboard((prev) => {
+          return prev.map((entry) => {
+            if (entry.username === username) {
+              update(ref(database, "leaderBoard/" + entry.username), {
+                username: entry.username,
+                score: entry.score + 10,
+              });
+
+              return { ...entry, score: entry.score + 10 };
+            } else {
+              return entry;
+            }
+          });
+        });
+        update(ref(database, "currentIndex/"), {
+          currentIndex: dataIndex + 1,
+        });
+        update(ref(database, "currentTimer/"), {
+          currentTimer: 20,
+        });
+      } else {
+        alert("Wrong Answer");
+        setAnswerGiven(true);
+      }
+    } else {
+      alert("Quiz Completed");
+      setdataIndex(0);
+      update(ref(database, "currentIndex/"), {
+        currentIndex: 0,
+      });
+    }
+    radioInputRef.current.forEach((radio) => {
+      radio.checked = false;
+    });
+    setanswer(null);
+  };
+  // initialize the leaderboard and username
+  useEffect(() => {
+    const CurrentUsername = authUser || "Anonymous";
+    setUsername(CurrentUsername);
+
+    if (CurrentUsername !== null) {
+      set(ref(database, "leaderBoard/" + CurrentUsername), {
+        username: CurrentUsername,
+        score: 0,
+      });
+    }
+
+    const db = ref(database, "leaderBoard/");
+    onValue(db, (snapshot) => {
+      const data = snapshot.val();
+
+      setLeaderboard(() => {
+        return [...Object.values(data)];
+      });
+    });
+  }, [authUser]);
+
+  useEffect(() => {
+    const db = ref(database, "currentIndex/");
+
+    // Attach an asynchronous callback to read the data
+    const fetchData = () => {
+      onValue(db, (snapshot) => {
+        const data = snapshot.val();
+
+        if (data !== null) {
+          // Data exists, update state
+          setdataIndex(data.currentIndex);
+        } else {
+          // Data doesn't exist, initialize and update state
+          set(ref(database, "currentIndex/"), {
+            currentIndex: 0,
+          });
+          set(ref(database, "currentTimer/"), {
+            currentTimer: 20,
+          });
+        }
+      });
+    };
+
+    fetchData();
+
+    if (dataIndex < questions.length && dataIndex !== null) {
+      console.log(questions[dataIndex].text);
+      setQuestion(questions[dataIndex].text);
+      setOptions(questions[dataIndex].options);
+    } else {
+      update(ref(database, "currentIndex/"), {
+        currentIndex: 0,
+      });
+    }
+
+    return () => {};
+  }, [dataIndex]);
+  // timer logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (currentTimer > 0) {
+        console.log("time remaining");
+        update(ref(database, "currentTimer/"), {
+          currentTimer: currentTimer - 1,
+        });
+      } else {
+        console.log("time up");
+      }
+    }, 1000);
+
+    if (currentTimer === 0) {
+      clearInterval(currentTimer);
+
+      update(ref(database, "currentIndex/"), {
+        currentIndex: dataIndex + 1,
+      });
+      setAnswerGiven(false);
+
+      update(ref(database, "currentTimer/"), {
+        currentTimer: 20,
+      });
+    }
+    return () => clearInterval(interval);
+  }, [currentTimer, dataIndex]);
+  //Global timer for the quiz intialize and update state
+  useEffect(() => {
+    const db = ref(database, "currentTimer/");
+
+    // Attach an asynchronous callback to read the data
+    const fetchData = () => {
+      onValue(db, (snapshot) => {
+        const data = snapshot.val();
+
+        if (data !== null) {
+          // Data exists, update state
+          setcurrentTimer(data.currentTimer);
+        } else {
+          // Data doesn't exist, initialize and update state
+          set(ref(database, "currentTimer/"), {
+            currentTimer: 20,
+          });
+        }
+      });
+    };
+
+    fetchData();
+
+    // Call the function
+  }, [currentTimer]);
+  // Sort the leaderboard by score
+  useEffect(() => {
+    leaderboard.sort((a, b) => b.score - a.score);
+  }, [leaderboard]);
+
   return (
     <>
-      <Star />
+      <Star color={"bg-navBarBg"} />
       <div
-        className="w-screen h-screen p-1 overflow-y-scroll overflow-x-hidden box-border"
+        className="w-screen h-screen p-1 overflow-y-scroll overflow-x-hidden box-border  bg-navBarBg"
         style={
           {
             // backgroundImage: `url("${back}")`,
@@ -17,25 +200,61 @@ function Quizui() {
         }
       >
         <div className="submit">
-          <div>60</div>
+          <div>{currentTimer}</div>
           <button>Submit</button>
         </div>
-        <div className=" flex justify-center items-center m-24">
-          <div className="app">
-            <p className=" text-xl font-bold text-center ">Sample Quiz</p>
-            <div className="quiz">
-              <h2>What does CSS stands for?</h2>
-              <div className="answer-options">
-                <button className="btn">Answer 1</button>
-                <button className="btn">Answer 2</button>
-                <button className="btn">Answer 3</button>
-                <button className="btn">Answer 4</button>
-              </div>
-              <div className="controls">
-                <button className="ctl-btn">Previous</button>
-                <button className="ctl-btn">Next</button>
+        <div className="quiz-content m-8">
+          <div className="question-container flex justify-center items-center">
+            <div className="app">
+              <p className=" text-xl font-bold text-center ">Technical Quiz</p>
+              <div className="quiz">
+                <h2>{question}</h2>
+                <div className="answer-options">
+                  {options.map((option, index) => (
+                    <div className="op-btn" key={index}>
+                      <input
+                        type="radio"
+                        name="option"
+                        ref={(el) => (radioInputRef.current[index] = el)}
+                        onClick={() => setanswer(index)}
+                      />
+                      <label className=" px-1">{option}</label>
+                    </div>
+                  ))}                
+                </div>
+                <div className="controls">
+                  <button className="ctl-btn">Previous</button>
+                  <button className="ctl-btn">Next</button>
+                </div>
               </div>
             </div>
+          </div>
+          <div id="leaderboard-container">
+          
+            <ol id="leaderboard">
+              {/* Map through leaderboard and render list items */}
+                <div className="center">
+                  <h2 className="result text-center text-black pb-5 font-bold text-xl">Leaderboard</h2>
+              {leaderboard.map((entry, index) => (
+                  <div className="list">
+                    <div className="item">
+                    <div className="pic" style={{backgroundImage: `url(${profileimage})`}}>
+
+                      </div>
+                      <div className="name">
+                          {entry?.username}
+                      </div>
+                      <div className="score">
+                        {entry?.score}
+                      </div>
+                    </div>
+                  </div>
+                // <li className="G" key={index}>
+                //   {entry.username}: {entry.score}
+                // </li>
+              ))}
+                </div>
+            </ol>
           </div>
         </div>
       </div>

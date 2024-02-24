@@ -1,9 +1,9 @@
 // import React from "react";
 import "../../styles/star.css";
 
-function Star() {
+function Star({color}) {
   return (
-    <div className="background bg-black">
+    <div className={`background ${color}`}>
       <div id="stars"></div>
       <div id="stars2"></div>
       <div id="stars3"></div>

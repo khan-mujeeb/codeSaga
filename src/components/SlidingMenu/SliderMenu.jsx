@@ -2,8 +2,58 @@ import { useState } from "react";
 import Star from "../Back/Star";
 import "./Slider.css";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
+
+import flex from "../../assets/CssMenuImages/flex.png";
+import grid from "../../assets/CssMenuImages/grid.jpg";
+import AiInterview from "../../assets/img/AiInterview.svg";
+
+import units from "../../assets/CssMenuImages/units.svg";
+import sql from "../../assets/CssMenuImages/sql.png";
+// import { register } from "module";
+
+const routesConfig = [
+    {
+        id: "unit",
+        label: "Units",
+        path: "unit",
+        url: units,
+    },
+    {
+        id: "flex",
+        label: "Flex",
+        path: "flex",
+        url: flex,
+    },
+    {
+        id: "grid",
+        label: "Grid",
+        path: "grid",
+        url: grid,
+    },
+    {
+        id: "sql",
+        label: "Sql",
+        path: "sql",
+        url: sql,
+    },
+
+    {
+        id: "ai-interview",
+        label: "AI Interview",
+        path: "ai-interview",
+        url: AiInterview,
+    },
+
+    {
+        id: "Authentications",
+        label: "Quiz",
+        path: "Authentications",
+        url: units,
+    },
+];
+
 const SliderMenu = () => {
-    
     const [animation, setAnimation] = useState(false);
 
     const onPlayButtonHandler = () => {
@@ -26,41 +76,77 @@ const SliderMenu = () => {
             <Star />
             <div className=" select-none w-screen h-screen overflow-hidden bg-black flex flex-col justify-center items-center gap-20">
                 {/* menu items  */}
-                <div className={`flex w-5/6 justify-between  ${animation?`opacity-100`:`opacity-0`} `}>
-                    <div className="button_home__Sr9Yf rotate-2 box1">
+                <div
+                    className={`flex w-4/6 justify-between  ${
+                        animation ? `opacity-100` : `opacity-0`
+                    } `}
+                >
+                    <Link
+                    to={routesConfig[0].path}
+                    className="button_home__Sr9Yf rotate-2 box1">
                         <h3>
                             <span className="__className_5a08f5 button_pointer__OFO8u">
-                                About
+                                {routesConfig[0].label}
                             </span>
                         </h3>
                         <div className="button_box__F0U3p"></div>
-                    </div>
-                    <div className="button_home__Sr9Yf -rotate-2 box2">
+                    </Link>
+                    <Link
+                    to={routesConfig[1].path}
+                    className="button_home__Sr9Yf -rotate-2 box2">
                         <h3>
                             <span className="__className_5a08f5 button_pointer__OFO8u">
-                                About
+                                {routesConfig[1].label}
                             </span>
                         </h3>
                         <div className="button_box__F0U3p"></div>
-                    </div>
+                    </Link>
                 </div>
-                <div className={`flex w-4/6 justify-between  ${animation?`opacity-100`:`opacity-0`} `}>
-                    <div className="button_home__Sr9Yf rotate-2 box1">
+
+
+                <div
+                    className={`flex w-5/6 justify-between  ${
+                        animation ? `opacity-100` : `opacity-0`
+                    } `}
+                >
+                    <Link to={routesConfig[2].path} className="button_home__Sr9Yf rotate-2 box1">
                         <h3>
                             <span className="__className_5a08f5 button_pointer__OFO8u">
-                                About
+                                {routesConfig[2].label}
                             </span>
                         </h3>
                         <div className="button_box__F0U3p"></div>
-                    </div>
-                    <div className="button_home__Sr9Yf -rotate-2 box2">
+                    </Link>
+                    <Link to={routesConfig[3].path} className="button_home__Sr9Yf -rotate-2 box2">
                         <h3>
                             <span className="__className_5a08f5 button_pointer__OFO8u">
-                                About
+                                {routesConfig[3].label}
                             </span>
                         </h3>
                         <div className="button_box__F0U3p"></div>
-                    </div>
+                    </Link>
+                </div>
+                <div
+                    className={`flex w-4/6 justify-between  ${
+                        animation ? `opacity-100` : `opacity-0`
+                    } `}
+                >
+                    <Link to={routesConfig[4].path}className="button_home__Sr9Yf rotate-2 box1">
+                        <h3>
+                            <span className="__className_5a08f5 button_pointer__OFO8u">
+                                {routesConfig[4].label}
+                            </span>
+                        </h3>
+                        <div className="button_box__F0U3p"></div>
+                    </Link>
+                    <Link to={routesConfig[5].path} className="button_home__Sr9Yf -rotate-2 box2">
+                        <h3>
+                            <span className="__className_5a08f5 button_pointer__OFO8u">
+                                {routesConfig[5].label}
+                            </span>
+                        </h3>
+                        <div className="button_box__F0U3p"></div>
+                    </Link>
                 </div>
 
                 {/* throne image and title  */}
@@ -71,7 +157,7 @@ const SliderMenu = () => {
                             <div className="div">C</div>
                         </li>
                         <li>
-                            <input type="checkbox" />
+                            <input type="checkbox" checked={true} />
                             <div className="div">O</div>
                         </li>
                         <li>
@@ -79,7 +165,7 @@ const SliderMenu = () => {
                             <div className="div">D</div>
                         </li>
                         <li>
-                            <input type="checkbox" />
+                            <input type="checkbox" checked={true} />
                             <div className="div">E</div>
                         </li>
                         <li>
@@ -87,7 +173,7 @@ const SliderMenu = () => {
                             <div className="div">S</div>
                         </li>
                         <li>
-                            <input type="checkbox" />
+                            <input type="checkbox" checked={true} />
                             <div className="div">A</div>
                         </li>
                         <li>
@@ -101,7 +187,9 @@ const SliderMenu = () => {
                     </ul>
 
                     <div
-                        className={` absolute top-10 ${animation?`opacity-0`:`opacity-100`} transition-all duration-2000 `}
+                        className={` absolute top-10 ${
+                            animation ? `opacity-0` : `opacity-100`
+                        } transition-all duration-2000 `}
                         onClick={() => {
                             onPlayButtonHandler();
                         }}
@@ -140,7 +228,7 @@ const SliderMenu = () => {
                     </div>
 
                     <img
-                        className=" h-3/4"
+                        className=" h-3/4 "
                         src="https://makeathon6.mlsctiet.com/_next/image?url=%2FthroneFinal.png&w=640&q=75"
                         alt=""
                     />

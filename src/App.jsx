@@ -58,7 +58,7 @@ const App = () => {
                                 element={<Navigate to={"CssMenu"} />}
                             />
                             <Route path="/CssMenu" element={<Outlet />}>
-                                <Route path="" element={<CssMenu />} />
+                                <Route path="" element={<SliderMenu />} />
                                 <Route path="unit" element={<UnitGame />} />
                                 <Route path="flex" element={<FlexGame />} />
                                 <Route path="sql" element={<Sql />} />
@@ -79,7 +79,7 @@ const App = () => {
                         </Route>
                     </Routes>
                 </Router>
-                <Sugar color="#65A30D" customLoading={loading} time={1800} />
+                <Sugar background={"#000000"} color="#65A30D" customLoading={loading} time={1800} />
             </React.Fragment>
             {/* <button type="button" className="login-with-google-btn">
         Sign in with Google

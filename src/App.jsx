@@ -34,6 +34,7 @@ import React from "react";
 // import Quizui from "./pages/Quizui.jsx";
 import QuizDemo from "./pages/QuizDemo.jsx";
 import QuizWithAuth from "./pages/QuizWithAuth.jsx";
+import Quizui from "./pages/Quizui.jsx";
 import SliderMenu from "./components/SlidingMenu/SliderMenu.jsx";
 
 const App = () => {

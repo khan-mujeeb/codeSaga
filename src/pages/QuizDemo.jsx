@@ -1,14 +1,16 @@
 // Import necessary dependencies
+import React from "react";
+import "../styles/quizstyle.css";
+import Star from "../components/Back/Star.jsx";
 import { useEffect, useRef, useState } from "react";
-import "../styles/QuizDemo.css";
 import { questions } from "../data/questions";
-import img from "../assets/img.png";
-
+import profileimage from '../assets/CssMenuImages/sql.png'
 import { database, onValue, ref, set, update } from "../firebase";
 
 // Define the Quiz component
 // eslint-disable-next-line react/prop-types
 function Quiz({ authUser }) {
+  
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState([]);
   const [leaderboard, setLeaderboard] = useState([]);
@@ -186,54 +188,77 @@ function Quiz({ authUser }) {
 
   return (
     <>
-      <div className="Quiz">
-        <img src={img} width="130px" alt="" srcSet="" />
+      <Star color={"bg-navBarBg"} />
+      <div
+        className="w-screen h-screen p-1 overflow-y-scroll overflow-x-hidden box-border  bg-navBarBg"
+        style={
+          {
+            // backgroundImage: `url("${back}")`,
+            // backgroundSize: "100% 100% ",
+          }
+        }
+      >
         <div className="submit">
           <div>{currentTimer}</div>
+          <button>Submit</button>
         </div>
-
-        <div id="quiz-container">
-          <div id="question-container">
-            <h2 id="question" className="question">
-              {question}
-            </h2>
-            <div id="options">
-              {/* Map through options and render them */}
-              {options.map((option, index) => (
-                <div
-                  className="opt"
-                  key={index}
-                  onClick={() => {
-                    setanswer(index);
-                  }}
-                >
-                  <input
-                    disabled={answerGiven}
-                    type="radio"
-                    id={option}
-                    name="option"
-                    value={option}
-                    ref={(el) => {
-                      radioInputRef.current[index] = el;
-                    }}
-                  ></input>
-                  <label htmlFor={option}>{option}</label>
+        <div className="quiz-content m-8">
+          <div className="question-container flex justify-center items-center">
+            <div className="app">
+              <p className=" text-xl font-bold text-center ">Technical Quiz</p>
+              <div className="quiz">
+                <h2>{question}</h2>
+                <div className="answer-options">
+                  {options.map((option, index) => (
+                    <div className="op-btn" key={index} onClick={() => {
+                      setanswer(index);
+                    }}>
+                      <input
+                        disabled={answerGiven}
+                        type="radio"
+                        id={option}
+                        name="option"
+                        value={option}
+                        ref={(el) => {
+                          radioInputRef.current[index] = el;
+                        }}
+                      />
+                      <label className=" px-1" htmlFor={option}>{option}</label>
+                    </div>
+                  ))}                
                 </div>
-              ))}
-            </div>
-            <div className="btn">
-              <button onClick={submitAnswer}> Next &gt;</button>
+                <div className="controls">
+                  {/* <button className="ctl-btn">Previous</button> */}
+                  <button className="ctl-btn" onClick={submitAnswer}>Next</button>
+                </div>
+              </div>
             </div>
           </div>
           <div id="leaderboard-container">
-            <h2 className="result">Leaderboard</h2>
+          
             <ol id="leaderboard">
               {/* Map through leaderboard and render list items */}
+                <div className="center">
+                  <h2 className="result text-center text-black pb-5 font-bold text-xl">Leaderboard</h2>
               {leaderboard.map((entry, index) => (
-                <li className="G" key={index}>
-                  {entry.username}: {entry.score}
-                </li>
+                  <div className="list">
+                    <div className="item">
+                      <div className="pos ml-2 text-black">
+                        {index + 1}
+                      </div>
+                    <div className="pic" style={{backgroundImage: `url(${profileimage})`}}>
+
+                      </div>
+                      <div className="name">
+                          {entry?.username}
+                      </div>
+                      <div className="score">
+                        {entry?.score}
+                      </div>
+                    </div>
+                  </div>
               ))}
+                </div>
             </ol>
           </div>
         </div>

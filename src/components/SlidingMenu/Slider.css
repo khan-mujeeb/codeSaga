@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* cursor: url("https://makeathon6.mlsctiet.com/_next/static/media/Medieval-Cursor.a714d1d8.png"),
+        auto; */
+}
+
+.button_home__Sr9Yf {
+    background-color: rgba(25, 89, 154, 0.8);
+    text-align: center;
+    width: 16vw;
+    border: 2px solid #94d6d6;
+    color: #eaffff;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    height: 83px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 18px 0 #4881bb;
+
+    z-index: 10;
+    letter-spacing: 0.65vh;
+    cursor: url("https://makeathon6.mlsctiet.com/_next/static/media/Medieval%20Pointer.6232df41.png"),
+        auto;
+}
+
+
+
+.button_home__Sr9Yf:hover {
+    transform: scale(1.1);
+    box-shadow: 2px 1px 26px 8px #4881bb;
+    transition: all 0.3s ease-in-out;
+    -webkit-clip-path: inset(0, -15px, 0, 0);
+    clip-path: inset(0, -15px, 0, 0);
+}
+
+.button_box__F0U3p {
+    height: 0.1vh;
+    width: 100%;
+    margin: 0.625em;
+    border: 1px solid #94d6d6;
+    border-radius: 5px;
+    background-color: #94d6d6;
+}
+
+.button_homeButton__pggj7:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 18px 0 #fff;
+    -webkit-clip-path: inset(0, -15px, 0, 0);
+    clip-path: inset(0, -15px, 0, 0);
+}
+
+.button_cs__D5KBA {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.button_home__Sr9Yf h3 {
+    font-size: 2em;
+}
+
+/* text css */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap");
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background: #18191f;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    position: relative;
+    display: flex;
+}
+
+li {
+    list-style: none;
+}
+
+label {
+    position: relative;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 80px;
+    width: 80px;
+    z-index: 100;
+}
+
+.div {
+    position: relative;
+    height: 80px;
+    width: 80px;
+    background: #18191f;
+    color: #555;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 46px;
+    cursor: pointer;
+    margin: 0 4px;
+    border-radius: 20px;
+    box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
+        4px 4px 6px rgba(0, 0, 0, 0.2),
+        inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+        inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+input[type="checkbox"]:checked ~ div {
+    box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.05),
+        inset 4px 4px 6px rgba(0, 0, 0, 0.2);
+    color: yellow;
+    text-shadow: 0 0 15px yellow, 0 0 25px yellow;
+    animation: glow 1.5s linear infinite;
+}
+
+@keyframes glow {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* play button  */
+
+svg#play {
+    width: 150px;
+    margin: 120px auto;
+    display: block;
+    cursor: pointer;
+    transform-origin: 50% 50%;
+}
+
+svg#play #triangle {
+    fill: rgba(22, 22, 22, 0);
+    transition: 500ms;
+    transform-origin: 50% 50%;
+}
+svg#play:hover #triangle {
+    fill: #a3cd3a;
+    transform-origin: 50% 50%;
+}
+
+svg #lineOne,
+svg #lineTwo {
+    transform-origin: 50% 50%;
+    transition: 1s;
+}
+
+svg:hover #lineOne {
+    transform: rotate(260deg);
+    -webkit-transform: rotate(260deg);
+    -moz-transform: rotate(260deg);
+    -o-transform: rotate(260deg);
+    transform-origin: 50% 50%;
+}
+
+svg:hover #lineTwo {
+    transform: rotate(-450deg);
+    transform-origin: 50% 50%;
+}

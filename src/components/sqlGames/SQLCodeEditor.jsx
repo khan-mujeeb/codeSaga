@@ -9,15 +9,17 @@ import CustomButton from "./CustomButton.jsx";
 import ModalComponent from "./ModalComponent.jsx";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import "../button/AnimatedBtn.css"
+import SpinningLoader from "./SpinningLoader.jsx";
+import useCheckAnswer from "../../api/useCheckAnswer.jsx";
+import { Toaster, toast } from "react-hot-toast";
 
+const SQLCodeEditor = ({ setData, setSubmited, level, setLevel, setAiBtnClicked }) => {
+    
 
-
-const SQLCodeEditor = ({ setData, submited, setSubmited, level, setLevel, setAiResult, setAiBtnClicked }) => {
-    // gemini initializataion
-    const genAI = new GoogleGenerativeAI(
-        "AIzaSyBxqd-5jq5AP0LWxpdeuORYgpH07mGgIPU"
-    );
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const {result, loading, error, getAnswerFromAi} = useCheckAnswer();
+    
+    
+    
 
     // states
     const [isExploding, setIsExploding] = useState(false);
@@ -25,51 +27,8 @@ const SQLCodeEditor = ({ setData, submited, setSubmited, level, setLevel, setAiR
     const [officerTable, setOfficerTable] = useState([]); // [
     const [correct, setCorrect] = useState(false);
 
-    useEffect(() => {
-        getHelpFromAi();
-    }, [level]);
 
-    async function getHelpFromAi() {
-        const chat = model.startChat({
-            history: [
-                {
-                    role: "user",
-                    parts: "The Officer table have the following coloumns officer_id, first_name, last_name, rank, department",
-                },
-                {
-                    role: "model",
-                    parts: "Great to meet you. What would you like to know?",
-                },
-                {
-                    role: "user",
-                    parts: "I want you to explain all the possible solution for the given sql query",
-                },
-                {
-                    role: "model",
-                    parts: "Okay, may i know what your sql query",
-                },
-            ],
-            generationConfig: {
-                maxOutputTokens: 500,
-            },
-        });
-
-        const msg = sqlGameQuestions[level].question
-
-        const result = await chat.sendMessage(msg);
-        const response = await result.response;
-        const text = response.text();
-        
-        console.log(msg)
-        console.log(text);
-        setAiResult(text)
-
-
-        
-        
-        // For text-only input, use the gemini-pro model
-    }
-
+    // show table data
     useEffect(() => {
         // Create a new database and execute a query
         const mybase = new alasql.Database();
@@ -88,6 +47,7 @@ const SQLCodeEditor = ({ setData, submited, setSubmited, level, setLevel, setAiR
         
     },[]);
 
+    // run query and get result
     useEffect(() => {
         // Create a new database and execute a query
         const mybase = new alasql.Database();
@@ -112,24 +72,24 @@ const SQLCodeEditor = ({ setData, submited, setSubmited, level, setLevel, setAiR
     }, [query]);
 
     const onExecuteClickHandler = () => {
+        console.log("execute clicked" );
+        // setAiBtnClicked(false)
         setSubmited(true);
     };
 
     const inputHandler = (event) => {
         setQuery(event.target.value);
-        console.log(query);
+        // console.log(query);
     };
+
+
 
     // function to check the correct answer
     const onCheckClickHandler = () => {
-        console.log(query);
-        console.log(sqlGameQuestions[level].answer);
-        if (
-            query.toLowerCase() === sqlGameQuestions[level].answer.toLowerCase()
-        ) {
-            setCorrect(true);
-            setIsExploding(true);
-        }
+
+        getAnswerFromAi(sqlGameQuestions[level].answer, query, setCorrect, setIsExploding)
+        
+
     };
 
     // handler for next level change 
@@ -142,15 +102,16 @@ const SQLCodeEditor = ({ setData, submited, setSubmited, level, setLevel, setAiR
             setIsExploding(false);
             setCorrect(false);
             setData([]);
-            setAiBtnClicked(false)
-            setAiResult(null)
+            
         } else {
             alert("Enter Correct Query to Proceed");
         }
     };
 
     return (
-        <div className="flex p-10 flex-4 justify-center items-center ">
+        <div className={`flex p-10 flex-4 justify-center items-center `} >
+            <div><Toaster/></div>
+            
             <div className="flex flex-col gap-10">
                 {/* level info  */}
                 <div className="flex flex-col gap-2">
@@ -168,7 +129,7 @@ const SQLCodeEditor = ({ setData, submited, setSubmited, level, setLevel, setAiR
 
                     {/* scenario  */}
                     <div className="flex flex-col">
-                        <h1 className="text-white font-medium text-xl">
+                        <h1 className="text-white font-medium text-xl ">
                             Scenario:
                         </h1>
                         <p className=" text-lg">
@@ -183,8 +144,13 @@ const SQLCodeEditor = ({ setData, submited, setSubmited, level, setLevel, setAiR
                         </h1>
                         <p>{sqlGameQuestions[level].question}</p>
                     </div>
-
+                    {isExploding && <ConfettiExplosion />}
                     {/* editor  */}
+
+                    {
+                        loading && <SpinningLoader />
+                    }
+
                     <SqlQueryEditor
                         query={query}
                         setQuery={setQuery}
@@ -205,7 +171,7 @@ const SQLCodeEditor = ({ setData, submited, setSubmited, level, setLevel, setAiR
                                 title="Check"
                                 onClickHandler={onCheckClickHandler}
                             />
-                            {isExploding && <ConfettiExplosion />}
+                            
                         </div>
                         <CustomButton
                             title="Next"

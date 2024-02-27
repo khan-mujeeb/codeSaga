@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 const Table = ({ data }) => {
-    console.log("table");
-    console.log(data);
+    // console.log("table");
+    // console.log(data);
     return (
-        <div className="">
+        <div className=" h-96 overflow-y-auto  w-[90%]">
             {data && (
                 <table className="border border-white text-white-100 font-semibold">
                     <thead>

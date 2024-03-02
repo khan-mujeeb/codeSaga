@@ -65,7 +65,7 @@ const App = () => {
 
                                 <Route
                                     path="grid"
-                                    element={<SliderMenu />}
+                                    element={<GridGame />}
                                 ></Route>
                                 <Route
                                     path="ai-interview"

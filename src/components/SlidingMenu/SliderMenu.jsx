@@ -73,7 +73,7 @@ const SliderMenu = () => {
 
     return (
         <>
-            <Star />
+            <Star  color={"bg-black"}/>
             <div className=" select-none w-screen h-screen overflow-hidden bg-black flex flex-col justify-center items-center gap-20">
                 {/* menu items  */}
                 <div

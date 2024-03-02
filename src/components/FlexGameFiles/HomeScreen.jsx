@@ -11,7 +11,7 @@ const HomeScreen = () => {
   // state to update level number
   const [currentLevel, setCurrentLevel] = useState(0);
 
-  const [discussionClicked, setDiscussionClicked] = React.useState(false);
+  const [discussionClicked, setDiscussionClicked] = useState(false);
   return (
     <div className="h-screen w-screen flex flex-col">
       <NavBar

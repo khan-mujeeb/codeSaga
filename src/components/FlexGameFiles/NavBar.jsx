@@ -7,7 +7,7 @@ const NavBar = ({ levelData, discussionClicked , currentLevel, setDiscussionClic
 
     return (
         <div className="flex justify-around items-center h-20 bg-navBarBg text-white text-lg font-bold">
-            <h2 className="flex text-3xl"><span className="text-green-400">Flex</span>🌎 </h2>
+            <h2 className="flex text-3xl"><span className="text-green-400 cursor-pointer">Flex</span>🌎 </h2>
 
             
             <div className="flex gap-1">
@@ -19,7 +19,8 @@ const NavBar = ({ levelData, discussionClicked , currentLevel, setDiscussionClic
 
             <h1 style={
                 {
-                    color: discussionClicked ? "green" : "white" 
+                    color: discussionClicked ? "green" : "white",
+                    cursor: "pointer" 
                 }
             } onClick={() => setDiscussionClicked(true)} >Discussion</h1>
 
@@ -27,12 +28,12 @@ const NavBar = ({ levelData, discussionClicked , currentLevel, setDiscussionClic
     );
 };
 
-NavBar.propTypes = {
-    level: PropTypes.number.isRequired, 
-    onLevelChangeHandler: PropTypes.func.isRequired,
-    discussionClicked: PropTypes.bool.isRequired,
-    setDiscussionClicked: PropTypes.func.isRequired,
+// NavBar.propTypes = {
+//     level: PropTypes.number.isRequired, 
+//     onLevelChangeHandler: PropTypes.func.isRequired,
+//     discussionClicked: PropTypes.bool.isRequired,
+//     setDiscussionClicked: PropTypes.func.isRequired,
 
-};
+// };
 
 export default NavBar;

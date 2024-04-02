@@ -93,7 +93,6 @@ const SelectorCSS = () => {
               >
                 Next
               </button>
-              {nextLevel && <ConfettiExplosion {...bigExplodeProps} />}
 
               <button
                 style={{
@@ -109,6 +108,12 @@ const SelectorCSS = () => {
               </button>
             </div>
           </div>
+          {nextLevel && (
+            <ConfettiExplosion
+              className=" absolute top-0 left-[50%]"
+              {...bigExplodeProps}
+            />
+          )}
           <div id="OutputSide" className="w-[70%] h-full  bg-gray-300 p-6">
             {/* selectorAsset */}
             <SelectorAsset currentItem={currentItem} nextLevel={nextLevel} />

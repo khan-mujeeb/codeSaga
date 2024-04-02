@@ -5,7 +5,6 @@
 
 // import { levelData } from "../data/newFlexgame.js";
 
-import "./editor.css";
 import FlexLevel1 from "../FlexGameInput/FlexLevel1";
 import FlexLevel2 from "../FlexGameInput/FlexLevel2";
 

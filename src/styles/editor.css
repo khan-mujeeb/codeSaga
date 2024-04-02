@@ -1,0 +1,72 @@
+#editor {
+  position: relative;
+  padding-top: 40px;
+}
+
+#editor,
+pre {
+  font-family: "Source Code Pro", monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #777;
+}
+#css {
+  height: 335px;
+  position: relative;
+  padding: 10px 10px 10px 40px;
+  background-color: #e0e0e0;
+
+  overflow: hidden;
+}
+.compiler-heading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40px;
+  font-size: larger;
+  font-weight: bold;
+  padding-left: 100px;
+  width: 100%;
+  z-index: 10;
+  padding: 4px 4px 4px 30px;
+  background-color: #999;
+  color: #d5d5d5;
+}
+.line-numbers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 10px 6px;
+  text-align: right;
+  background-color: #999;
+  color: #d5d5d5;
+}
+
+#code {
+  display: block;
+  width: calc(100% - 16px);
+  height: 24px;
+  margin-left: 16px;
+  border: none;
+  font-family: "Source Code Pro", monospace;
+  font-size: 16px;
+  outline: none;
+  resize: none;
+  overflow: auto;
+}
+@keyframes scaleAnimation {
+  0% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+.zoom-animation {
+  animation: scaleAnimation 0.5s infinite;
+  transition: transform 0.3s ease;
+}

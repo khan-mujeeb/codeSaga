@@ -49,6 +49,12 @@ const routesConfig = [
     path: "Authentications",
     url: units,
   },
+  {
+    id: "cssSlelectors",
+    label: "Css Selectors",
+    path: "cssSlelectors",
+    url: units,
+  },
 ];
 
 const GameMenu = () => {

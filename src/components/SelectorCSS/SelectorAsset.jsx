@@ -83,15 +83,27 @@ function SelectorAsset({ currentItem, nextLevel }) {
             case "3": {
               switch (index % currentItem.assets.length) {
                 case 0:
-                  positionStyle = { bottom: "15%", left: "10%" };
+                  positionStyle = {
+                    bottom: "15%",
+                    left: "10%",
+                    height: "150px",
+                    width: "150px",
+                  };
                   break;
                 case 1:
-                  positionStyle = { bottom: "18%", left: "40%" };
+                  positionStyle = {
+                    bottom: "18%",
+                    left: "40%",
+                    height: "150px",
+                    width: "150px",
+                  };
                   break;
                 case 2:
                   positionStyle = {
                     bottom: "15%",
                     left: "70%",
+                    height: "150px",
+                    width: "150px",
                   };
                   break;
 

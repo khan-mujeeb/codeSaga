@@ -91,7 +91,7 @@ export const dataSelectorCss = [
     selectAsset: [4, 5, 6, 7],
     correctAnswer: "platecone",
   },
-  // [plate, cup, cone, cone, cup, cone, cone, cup, cone, cone],
+
   {
     id: "5",
     level: "5",

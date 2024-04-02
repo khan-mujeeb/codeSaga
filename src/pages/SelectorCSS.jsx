@@ -59,7 +59,7 @@ const SelectorCSS = () => {
         >
           <div
             id="QuestionsAndInputSide"
-            className="w-[30%] flex h-full flex-col bg-gray-200 "
+            className="w-[30%] flex h-full flex-col bg-[#0E6D8B] "
           >
             {/* heading */}
             <Heading data={currentItem.level} />
@@ -99,7 +99,7 @@ const SelectorCSS = () => {
                   fontFamily: "Source Code Pro, monospace",
                   fontSize: "16px",
                 }}
-                className="bg-gray-500 hover:bg-gray-700 text-white py-1 px-4 rounded absolute bottom-2 left-4"
+                className="bg-[#F55C97] hover:bg-gray-700 text-white py-1 px-4 rounded absolute bottom-2 left-4"
                 onClick={() => {
                   handleSubmitSelector();
                 }}
@@ -114,7 +114,7 @@ const SelectorCSS = () => {
               {...bigExplodeProps}
             />
           )}
-          <div id="OutputSide" className="w-[70%] h-full  bg-gray-300 p-6">
+          <div id="OutputSide" className="w-[70%] h-full p-6 bg-[#23AEB6]">
             {/* selectorAsset */}
             <SelectorAsset currentItem={currentItem} nextLevel={nextLevel} />
 

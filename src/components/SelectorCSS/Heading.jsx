@@ -4,10 +4,10 @@ function Heading({ data }) {
   return (
     <div
       id="heading"
-      className="w-full flex justify-between h-[10%] px-6 py-4 border-b-2 border-wavy"
+      className="w-full flex bg-[#043C52] justify-between h-[10%] px-6 py-4 "
     >
-      <h1 className=" text-2xl  font-bold">CSS SCOOPS</h1>
-      <h5>Level {data} of 5</h5>
+      <h1 className=" text-2xl   text-white font-bold">CSS SCOOPS</h1>
+      <h5 className=" text-white">Level {data} of 5</h5>
     </div>
   );
 }

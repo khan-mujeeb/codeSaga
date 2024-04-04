@@ -1,16 +1,19 @@
+/* eslint-disable react/prop-types */
 // Import necessary dependencies
-import React from "react";
+// import React from "react";
 import "../styles/quizstyle.css";
 import Star from "../components/Back/Star.jsx";
 import { useEffect, useRef, useState } from "react";
-import { questions } from "../data/questions";
-import profileimage from '../assets/CssMenuImages/sql.png'
+// import { questions } from "../data/questions";
+import profileimage from "../assets/CssMenuImages/sql.png";
 import { database, onValue, ref, set, update } from "../firebase";
 
 // Define the Quiz component
 // eslint-disable-next-line react/prop-types
+const URL = "https://demo-api-opal.vercel.app/api/css-quetions";
+
 function Quiz({ authUser }) {
-  
+  const [questions, setQuestions] = useState([]);
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState([]);
   const [leaderboard, setLeaderboard] = useState([]);
@@ -70,6 +73,22 @@ function Quiz({ authUser }) {
     });
     setanswer(null);
   };
+
+  useEffect(() => {
+    fetch(URL)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setQuestions(data);
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+  }, [questions]);
   // initialize the leaderboard and username
   useEffect(() => {
     const CurrentUsername = authUser || "Anonymous";
@@ -118,7 +137,6 @@ function Quiz({ authUser }) {
     fetchData();
 
     if (dataIndex < questions.length && dataIndex !== null) {
-      console.log(questions[dataIndex].text);
       setQuestion(questions[dataIndex].text);
       setOptions(questions[dataIndex].options);
     } else {
@@ -210,9 +228,13 @@ function Quiz({ authUser }) {
                 <h2>{question}</h2>
                 <div className="answer-options">
                   {options.map((option, index) => (
-                    <div className="op-btn" key={index} onClick={() => {
-                      setanswer(index);
-                    }}>
+                    <div
+                      className="op-btn"
+                      key={index}
+                      onClick={() => {
+                        setanswer(index);
+                      }}
+                    >
                       <input
                         disabled={answerGiven}
                         type="radio"
@@ -223,42 +245,42 @@ function Quiz({ authUser }) {
                           radioInputRef.current[index] = el;
                         }}
                       />
-                      <label className=" px-1" htmlFor={option}>{option}</label>
+                      <label className=" px-1" htmlFor={option}>
+                        {option}
+                      </label>
                     </div>
-                  ))}                
+                  ))}
                 </div>
                 <div className="controls">
                   {/* <button className="ctl-btn">Previous</button> */}
-                  <button className="ctl-btn" onClick={submitAnswer}>Next</button>
+                  <button className="ctl-btn" onClick={submitAnswer}>
+                    Next
+                  </button>
                 </div>
               </div>
             </div>
           </div>
           <div id="leaderboard-container">
-          
             <ol id="leaderboard">
               {/* Map through leaderboard and render list items */}
-                <div className="center">
-                  <h2 className="result text-center text-black pb-5 font-bold text-xl">Leaderboard</h2>
-              {leaderboard.map((entry, index) => (
-                  <div className="list">
+              <div className="center">
+                <h2 className="result text-center text-black pb-5 font-bold text-xl">
+                  Leaderboard
+                </h2>
+                {leaderboard.map((entry, index) => (
+                  <div key={index} className="list">
                     <div className="item">
-                      <div className="pos ml-2 text-black">
-                        {index + 1}
-                      </div>
-                    <div className="pic" style={{backgroundImage: `url(${profileimage})`}}>
-
-                      </div>
-                      <div className="name">
-                          {entry?.username}
-                      </div>
-                      <div className="score">
-                        {entry?.score}
-                      </div>
+                      <div className="pos ml-2 text-black">{index + 1}</div>
+                      <div
+                        className="pic"
+                        style={{ backgroundImage: `url(${profileimage})` }}
+                      ></div>
+                      <div className="name">{entry?.username}</div>
+                      <div className="score">{entry?.score}</div>
                     </div>
                   </div>
-              ))}
-                </div>
+                ))}
+              </div>
             </ol>
           </div>
         </div>

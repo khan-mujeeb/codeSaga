@@ -1,8 +1,7 @@
-import React from "react";
 // import NavBar from "../NavBar.jsx";
 import NavBar from "./NavBar.jsx";
 import GameBody from "./GameBody.jsx";
-import flexgame from "../../data/flexgame.json";
+
 import Discuss from "../discussion/Discuss.jsx";
 import { levelData } from "../../data/newFlexgame.js";
 import { useState } from "react";
@@ -15,7 +14,6 @@ const HomeScreen = () => {
   return (
     <div className="h-screen w-screen flex flex-col">
       <NavBar
-        data={flexgame}
         setDiscussionClicked={setDiscussionClicked}
         discussionClicked={discussionClicked}
         levelData={levelData}

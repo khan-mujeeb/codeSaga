@@ -1,12 +1,13 @@
-import React from "react";
-import back from "../assets/CssMenuImages/quizbg.jpg";
+/* eslint-disable react/prop-types */
+// import React from "react";
+// import back from "../assets/CssMenuImages/quizbg.jpg";
 import "../styles/quizstyle.css";
 import Star from "../components/Back/Star.jsx";
 // Import necessary dependencies
 import { useEffect, useRef, useState } from "react";
 // import "../styles/QuizDemo.css";
 import { questions } from "../data/questions";
-import img from "../assets/img.png";
+// import img from "../assets/img.png";
 import profileimage from '../assets/CssMenuImages/sql.png'
 import { database, onValue, ref, set, update } from "../firebase";
 
@@ -236,7 +237,7 @@ function Quizui({ authUser }) {
                 <div className="center">
                   <h2 className="result text-center text-black pb-5 font-bold text-xl">Leaderboard</h2>
               {leaderboard.map((entry, index) => (
-                  <div className="list">
+                  <div key={index} className="list">
                     <div className="item">
                     <div className="pic" style={{backgroundImage: `url(${profileimage})`}}>
 

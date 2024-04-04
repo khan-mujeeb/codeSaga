@@ -5,41 +5,74 @@ import Heading from "../components/SelectorCSS/Heading";
 import HtmlContent from "../components/SelectorCSS/HtmlContent";
 import Introduction from "../components/SelectorCSS/Introduction";
 import SelectorAsset from "../components/SelectorCSS/SelectorAsset";
-import { dataSelectorCss } from "../data/selectorCss";
+import { Sugar } from "react-preloaders";
 import { useEffect, useState } from "react";
 
+const URL = "https://demo-api-opal.vercel.app/api/selector";
+
 const SelectorCSS = () => {
+  const [dataSelectorCss, setDataSelectorCss] = useState([]);
   const [userAnswer, setUserAnswer] = useState("");
-  const [currentLevelAnswer, setCurrentLevelAnswer] = useState(
-    dataSelectorCss[0].correctAnswer
-  );
+  const [currentLevelAnswer, setCurrentLevelAnswer] = useState("");
   const [gameOver, setGameOver] = useState(false);
   const [nextLevel, setNextLevel] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    fetch(URL)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setDataSelectorCss(data);
+        setCurrentLevelAnswer(data[0]?.correctAnswer || "");
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (dataSelectorCss.length > 0) {
+      dataSelectorCss.sort((a, b) => a.level - b.level);
+    }
+  }, [dataSelectorCss]);
+
+  useEffect(() => {
+    setCurrentLevelAnswer(dataSelectorCss[currentIndex]?.correctAnswer || "");
+  }, [currentIndex, dataSelectorCss]);
+
   const handleNextLevel = () => {
     if (currentIndex < dataSelectorCss.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex((prevIndex) => prevIndex + 1);
       setUserAnswer("");
       setNextLevel(false);
     } else {
-      console.log("Game Over");
       setGameOver(true);
     }
   };
 
   const handleSubmitSelector = () => {
     if (userAnswer !== "" && userAnswer === currentLevelAnswer) {
-      console.log("correct");
       setNextLevel(true);
-    } else {
-      console.log("incorrect");
     }
   };
-  useEffect(() => {
-    setCurrentLevelAnswer(dataSelectorCss[currentIndex].correctAnswer);
-  }, [currentIndex]);
-
+  if (dataSelectorCss.length === 0) {
+    const loading = true;
+    return (
+      <Sugar
+        background={"#000000"}
+        color="#65A30D"
+        customLoading={loading}
+        time={1800}
+      />
+    );
+  }
   const currentItem = dataSelectorCss[currentIndex];
+
   const bigExplodeProps = {
     force: 0.6,
     duration: 5000,
@@ -59,66 +92,46 @@ const SelectorCSS = () => {
         >
           <div
             id="QuestionsAndInputSide"
-            className="w-[30%] flex h-full flex-col bg-[#0E6D8B] "
+            className="w-[30%] flex h-full flex-col bg-[#0E6D8B]"
           >
-            {/* heading */}
             <Heading data={currentItem.level} />
-
-            {/* introductions */}
             <Introduction
               introductions={currentItem.introductions}
               descriptions={currentItem.descriptions}
               challenge={currentItem.challenge}
             />
-
             <div
               id="compiler"
-              className="w-full h-auto flex-grow px-6 py-6 relative "
+              className="w-full h-auto flex-grow px-6 py-6 relative"
             >
-              {/* editor */}
               <Editor setUserAnswer={setUserAnswer} />
-
               <button
                 onClick={handleNextLevel}
-                style={{
-                  fontFamily: "Source Code Pro, monospace",
-                  fontSize: "16px",
-                }}
                 className={`${
                   nextLevel
-                    ? " bg-green-500 text-white py-1  px-4 rounded absolute bottom-2 right-4"
+                    ? "bg-green-500 text-white py-1 px-4 rounded absolute bottom-2 right-4"
                     : "bg-gray-300 text-white py-1 hover:cursor-not-allowed px-4 rounded absolute bottom-2 right-4"
                 }`}
                 disabled={!nextLevel}
               >
                 Next
               </button>
-
               <button
-                style={{
-                  fontFamily: "Source Code Pro, monospace",
-                  fontSize: "16px",
-                }}
                 className="bg-[#F55C97] hover:bg-gray-700 text-white py-1 px-4 rounded absolute bottom-2 left-4"
-                onClick={() => {
-                  handleSubmitSelector();
-                }}
+                onClick={handleSubmitSelector}
               >
-                submit
+                Submit
               </button>
             </div>
           </div>
           {nextLevel && (
             <ConfettiExplosion
-              className=" absolute top-0 left-[50%]"
+              className="absolute top-0 left-[50%]"
               {...bigExplodeProps}
             />
           )}
           <div id="OutputSide" className="w-[70%] h-full p-6 bg-[#23AEB6]">
-            {/* selectorAsset */}
             <SelectorAsset currentItem={currentItem} nextLevel={nextLevel} />
-
-            {/* htmlContent */}
             <HtmlContent htmlContent={currentItem.htmlContent} />
           </div>
         </div>

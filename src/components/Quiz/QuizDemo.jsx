@@ -32,7 +32,6 @@ function Quiz({ authUser }) {
     }
 
     const currentIntedx = dataIndex;
-    console.log(questions[currentIntedx]);
 
     if (currentIntedx < questions.length - 1) {
       if (questions[currentIntedx].correctIndex === answer) {
@@ -88,7 +87,7 @@ function Quiz({ authUser }) {
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
-  }, [questions]);
+  }, []);
   // initialize the leaderboard and username
   useEffect(() => {
     const CurrentUsername = authUser || "Anonymous";

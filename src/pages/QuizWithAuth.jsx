@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Authentications from "./Authentications";
-import QuizDemo from "./QuizDemo";
+import QuizDemo from "../components/Quiz/QuizDemo.jsx";
 import { cookies } from "../cookies.js";
 
 function QuizWithAuth() {

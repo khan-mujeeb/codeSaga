@@ -12,6 +12,10 @@
   box-shadow: 0 0 2rem rgb(17, 146, 232,0.7);
 }
 
+.quiz-start{
+  box-shadow: 1rem 1rem 2rem rgba(22, 137, 214, 0.5);
+}
+
 .app p {
   color: #001e4d;
   border-bottom: 1px solid #333;

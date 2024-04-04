@@ -27,7 +27,7 @@ const routesConfig = [
   },
   {
     id: "cssSlelectors",
-    label: "Css Selectors",
+    label: "CSS Selectors",
     path: "cssSlelectors",
     url: units,
   },
@@ -116,7 +116,7 @@ const SliderMenu = () => {
             className="button_home__Sr9Yf rotate-2 box1"
           >
             <h3>
-              <span className="__className_5a08f5 button_pointer__OFO8u">
+              <span className="__className_5a08f5 button_pointer__OFO8u text-[30px]">
                 {routesConfig[2].label}
               </span>
             </h3>

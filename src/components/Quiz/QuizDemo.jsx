@@ -4,16 +4,17 @@
 import "../../styles/quizstyle.css";
 import Star from "../Back/Star.jsx";
 import { useEffect, useRef, useState } from "react";
-import { questions } from "../../data/questions";
+// import { questions } from "../../data/questions";
 import profileimage from "../../assets/CssMenuImages/sql.png";
 import { database, onValue, ref, set, update } from "../../firebase.js";
 
 // Define the Quiz component
 // eslint-disable-next-line react/prop-types
-// const URL = "https://demo-api-opal.vercel.app/api/css-quetions";
+const URL = "https://demo-api-opal.vercel.app/api/css-quetions";
+const CACHE_KEY = "cachedQuestions";
 
 function Quiz({ authUser }) {
-  // const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState([]);
   const [leaderboard, setLeaderboard] = useState([]);
@@ -73,21 +74,37 @@ function Quiz({ authUser }) {
     setanswer(null);
   };
 
-  // useEffect(() => {
-  //   fetch(URL)
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setQuestions(data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("There was a problem with the fetch operation:", error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    // Function to fetch data from the cache or URL
+    const fetchData = async () => {
+      // Check if data exists in localStorage
+      const cachedData = localStorage.getItem(CACHE_KEY);
+
+      if (cachedData) {
+        // Use cached data if available
+        setQuestions(JSON.parse(cachedData));
+      } else {
+        // Fetch data from URL
+        try {
+          const response = await fetch(URL);
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          const data = await response.json();
+
+          // Store fetched data in localStorage
+          localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+
+          // Update state with fetched data
+          setQuestions(data);
+        } catch (error) {
+          console.error("There was a problem with the fetch operation:", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, []);
   // initialize the leaderboard and username
   useEffect(() => {
     const CurrentUsername = authUser || "Anonymous";

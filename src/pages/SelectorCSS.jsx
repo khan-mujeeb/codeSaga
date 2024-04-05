@@ -5,45 +5,49 @@ import Heading from "../components/SelectorCSS/Heading";
 import HtmlContent from "../components/SelectorCSS/HtmlContent";
 import Introduction from "../components/SelectorCSS/Introduction";
 import SelectorAsset from "../components/SelectorCSS/SelectorAsset";
+import { dataSelectorCss } from "../data/cssSelector";
 import { Sugar } from "react-preloaders";
 import { useEffect, useState } from "react";
 
-const URL = "https://demo-api-opal.vercel.app/api/selector";
+// const URL = "https://demo-api-opal.vercel.app/api/selector";
 // https://demo-api-opal.vercel.app
 const SelectorCSS = () => {
-  const [dataSelectorCss, setDataSelectorCss] = useState([]);
+  // const [dataSelectorCss, setDataSelectorCss] = useState([]);
   const [userAnswer, setUserAnswer] = useState("");
   const [currentLevelAnswer, setCurrentLevelAnswer] = useState("");
   const [gameOver, setGameOver] = useState(false);
   const [nextLevel, setNextLevel] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    fetch(URL)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setDataSelectorCss(data);
-        setCurrentLevelAnswer(data[0]?.correctAnswer || "");
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(URL)
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setDataSelectorCss(data);
+  //       setCurrentLevelAnswer(data[0]?.correctAnswer || "");
+  //     })
+  //     .catch((error) => {
+  //       console.error("There was a problem with the fetch operation:", error);
+  //     });
+  // }, []);
 
-  useEffect(() => {
-    if (dataSelectorCss.length > 0) {
-      dataSelectorCss.sort((a, b) => a.level - b.level);
-    }
-  }, [dataSelectorCss]);
+  // useEffect(() => {
+  //   if (dataSelectorCss.length > 0) {
+  //     dataSelectorCss.sort((a, b) => a.level - b.level);
+  //   }
+  // }, [dataSelectorCss]);
 
+  // useEffect(() => {
+  //   setCurrentLevelAnswer(dataSelectorCss[currentIndex]?.correctAnswer || "");
+  // }, [currentIndex, dataSelectorCss]);
   useEffect(() => {
-    setCurrentLevelAnswer(dataSelectorCss[currentIndex]?.correctAnswer || "");
-  }, [currentIndex, dataSelectorCss]);
+    setCurrentLevelAnswer(dataSelectorCss[currentIndex].correctAnswer);
+  }, [currentIndex]);
 
   const handleNextLevel = () => {
     if (currentIndex < dataSelectorCss.length - 1) {

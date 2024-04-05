@@ -4,16 +4,16 @@
 import "../../styles/quizstyle.css";
 import Star from "../Back/Star.jsx";
 import { useEffect, useRef, useState } from "react";
-// import { questions } from "../data/questions";
+import { questions } from "../../data/questions";
 import profileimage from "../../assets/CssMenuImages/sql.png";
 import { database, onValue, ref, set, update } from "../../firebase.js";
 
 // Define the Quiz component
 // eslint-disable-next-line react/prop-types
-const URL = "https://demo-api-opal.vercel.app/api/css-quetions";
+// const URL = "https://demo-api-opal.vercel.app/api/css-quetions";
 
 function Quiz({ authUser }) {
-  const [questions, setQuestions] = useState([]);
+  // const [questions, setQuestions] = useState([]);
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState([]);
   const [leaderboard, setLeaderboard] = useState([]);
@@ -73,21 +73,21 @@ function Quiz({ authUser }) {
     setanswer(null);
   };
 
-  useEffect(() => {
-    fetch(URL)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setQuestions(data);
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(URL)
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setQuestions(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("There was a problem with the fetch operation:", error);
+  //     });
+  // }, []);
   // initialize the leaderboard and username
   useEffect(() => {
     const CurrentUsername = authUser || "Anonymous";

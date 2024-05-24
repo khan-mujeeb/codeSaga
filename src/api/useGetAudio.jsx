@@ -14,7 +14,7 @@ const useGetAudio = () => {
             url: "https://api.edenai.run/v2/audio/text_to_speech",
             headers: {
                 authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiOWU5MGZiZmEtYWQ0Yy00MDg1LWE5ODctMWU1MzRjN2Q4YTRiIiwidHlwZSI6ImFwaV90b2tlbiJ9.4U97JPe6qQWUs5T_s5Kfp2gPQqRmrVDhEM71Lflewpk",
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiOWMxMjg0MzItZjYyYS00MDRmLWE1NmYtNTk2NmY0M2ZkZTJhIiwidHlwZSI6ImFwaV90b2tlbiJ9.PxZchQBfRhxvdvB8gVXjYTAFotbsORHyPtqDQ81Molo",
             },
             data: {
                 providers: "openai",

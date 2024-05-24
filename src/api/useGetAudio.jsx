@@ -11,7 +11,7 @@ const useGetAudio = () => {
 
         const options = {
             method: "POST",
-            mode:'cros',
+            mode:'cors',
             url: "https://api.edenai.run/v2/audio/text_to_speech",
             headers: {
                 authorization:

@@ -20,20 +20,11 @@ import {
 
 import GridGame from "./pages/GridGame.jsx";
 import { useEffect, useState } from "react";
-// import Authentications from "./pages/Authentications";
-// import "./App.css";
 
-/**
- * - The App component is the entry point of the application.
- * - It is responsible for rendering the top-level components.
- * - It is also responsible for routing.
- *
- */
 import React from "react";
-// import Quizui from "./pages/Quizui.jsx";
-// import QuizDemo from "./pages/QuizDemo.jsx";
+
 import QuizWithAuth from "./pages/QuizWithAuth.jsx";
-// import Quizui from "./pages/Quizui.jsx";
+
 import SliderMenu from "./components/SlidingMenu/SliderMenu.jsx";
 import SelectorCSS from "./pages/SelectorCSS.jsx";
 import FlexOptimised from "./pages/FlexOptimised.jsx";
@@ -76,9 +67,6 @@ const App = () => {
           time={1800}
         />
       </React.Fragment>
-      {/* <button type="button" className="login-with-google-btn">
-        Sign in with Google
-      </button> */}
     </>
   );
 };

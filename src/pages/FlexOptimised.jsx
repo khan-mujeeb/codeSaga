@@ -12,7 +12,7 @@ import ConfettiExplosion from "react-confetti-explosion";
 
 function FlexOptimised() {
   const [discussionClicked, setDiscussionClicked] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(3);
   const [nextLevel, setNextLevel] = useState(false);
   const currentItem = dataFlexbox[currentIndex];
   const [open, setOpen] = useState(false);
@@ -321,6 +321,7 @@ function FlexOptimised() {
                 className=" flex relative    justify-between h-[600px] w-[700px] stroke-black-100 bg-white rounded-md"
                 style={{
                   ...fixed,
+                  transition: "all 0.5s ease-in-out",
                 }}
               >
                 <img
@@ -424,11 +425,6 @@ function FlexOptimised() {
         );
       }
       case 3: {
-        // const playground = dataFlexbox?.[3]?.assets[0];
-        // const greenBoy = dataFlexbox?.[3]?.assets[1];
-        // const blueBoy = dataFlexbox?.[3]?.assets[2];
-        // const redBoy = dataFlexbox?.[3]?.assets[3];
-
         console.log(pondStyles?.flexLevel4);
 
         return (
@@ -438,6 +434,7 @@ function FlexOptimised() {
               className="flex relative h-[600px] w-[700px] stroke-black-100 bg-white rounded-md"
               style={{
                 backgroundColor: "rgb(193, 154, 107)",
+                transition: "all 0.5s ease-in-out",
               }}
             >
               <div className="absolute top-32 left-48 w-64 h-96 flex  flex-col-reverse border-l-4 border-r-4 border-b-4 border-white rounded-md ">

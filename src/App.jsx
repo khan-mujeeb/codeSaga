@@ -52,7 +52,6 @@ const App = () => {
                 <Route path="unit" element={<UnitGame />} />
                 <Route path="flex" element={<FlexOptimised />} />
                 <Route path="demolab" element={<Demolab />} />
-                <Route path="flex" element={<FlexGame />} />
                 <Route path="sql" element={<Sql />} />
 
                 <Route path="grid" element={<GridGame />}></Route>

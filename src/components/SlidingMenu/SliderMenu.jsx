@@ -11,7 +11,6 @@ const routesConfig = [
     id: "demolab",
     label: "Demo Labs",
     path: "demolab",
-    url: units,
   },
   {
     id: "flex",

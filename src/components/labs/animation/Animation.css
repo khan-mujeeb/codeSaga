@@ -1,0 +1,9 @@
+/* Add this to your CSS file */
+
+.step-custom {
+    transition-timing-function: steps(4);
+}
+
+.cubic-bezier-custom {
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}

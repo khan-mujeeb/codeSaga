@@ -11,19 +11,19 @@ const useGetAudio = () => {
 
         const options = {
             method: "POST",
-            mode:'cors',
+            mode: 'cors',
             url: "https://api.edenai.run/v2/audio/text_to_speech",
             headers: {
-                authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiOWMxMjg0MzItZjYyYS00MDRmLWE1NmYtNTk2NmY0M2ZkZTJhIiwidHlwZSI6ImFwaV90b2tlbiJ9.PxZchQBfRhxvdvB8gVXjYTAFotbsORHyPtqDQ81Molo",
+                authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiOWMxMjg0MzItZjYyYS00MDRmLWE1NmYtNTk2NmY0M2ZkZTJhIiwidHlwZSI6ImFwaV90b2tlbiJ9.PxZchQBfRhxvdvB8gVXjYTAFotbsORHyPtqDQ81Molo",
+                'Content-Type': 'application/json'
             },
-            data: {
+            data: JSON.stringify({
                 providers: "openai",
                 language: "en",
                 text: inputText,
                 option: "FEMALE",
-                fallback_providers: "",
-            },
+                fallback_providers: "openai"
+            }),
         };
 
         axios

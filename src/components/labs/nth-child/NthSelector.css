@@ -1,0 +1,78 @@
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: rgb(198, 75, 53);
+}
+
+body {
+    width: min(100% - 30px);
+    margin-inline: auto;
+}
+
+.nth-child-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    gap: 30px;
+    justify-items: center;
+    align-items: center;
+}
+
+.nth-child-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nth-child-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    width: 50%;
+}
+
+.nth-child-box-container {
+    display: flex;
+    gap: 10px;
+}
+
+.nth-child-box {
+    background-color: rgb(47, 52, 52);
+    height: 60px;
+    width: 60px;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+.first-child:hover > .nth-child-box:first-child {
+    background-color: green;
+}
+
+.last-child:hover > .nth-child-box:last-child {
+    background-color: red;
+}
+
+.nth-child-second:hover > .nth-child-box:nth-child(2) {
+    background-color: orange;
+}
+
+.nth-child-odd:hover > .nth-child-box:nth-child(odd) {
+    background-color: yellow;
+}
+
+.nth-child-even:hover > .nth-child-box:nth-child(even) {
+    background-color: purple;
+}
+
+.nth-child-3n:hover > .nth-child-box:nth-child(3n) {
+    background-color: cyan;
+}
+
+.nth-child-other:hover > .nth-child-box:nth-child(n + 3) {
+    background-color: magenta;
+}

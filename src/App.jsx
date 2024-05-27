@@ -28,6 +28,7 @@ import QuizWithAuth from "./pages/QuizWithAuth.jsx";
 import SliderMenu from "./components/SlidingMenu/SliderMenu.jsx";
 import SelectorCSS from "./pages/SelectorCSS.jsx";
 import FlexOptimised from "./pages/FlexOptimised.jsx";
+import Demolab from "./pages/Demolab.jsx";
 
 const App = () => {
   const [loading, isLoading] = useState(false);
@@ -50,6 +51,8 @@ const App = () => {
                 <Route path="" element={<SliderMenu />} />
                 <Route path="unit" element={<UnitGame />} />
                 <Route path="flex" element={<FlexOptimised />} />
+                <Route path="demolab" element={<Demolab />} />
+                <Route path="flex" element={<FlexGame />} />
                 <Route path="sql" element={<Sql />} />
 
                 <Route path="grid" element={<GridGame />}></Route>

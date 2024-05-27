@@ -8,9 +8,10 @@ import { Link } from "react-router-dom";
 
 const routesConfig = [
   {
-    id: "unit",
-    label: "Units",
-    path: "unit",
+    id: "demolab",
+    label: "Demo Labs",
+    path: "demolab",
+    url: units,
   },
   {
     id: "flex",

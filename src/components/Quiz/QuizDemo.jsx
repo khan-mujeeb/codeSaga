@@ -24,6 +24,7 @@ function Quiz({ authUser }) {
   const [currentTimer, setcurrentTimer] = useState(null);
   const [answerGiven, setAnswerGiven] = useState(false);
   const radioInputRef = useRef([]);
+
   // submit answer function
   const submitAnswer = (e) => {
     e.preventDefault();
@@ -73,7 +74,7 @@ function Quiz({ authUser }) {
     });
     setanswer(null);
   };
-
+  // fetch data from the cache or URL
   useEffect(() => {
     // Function to fetch data from the cache or URL
     const fetchData = async () => {
@@ -126,7 +127,7 @@ function Quiz({ authUser }) {
       });
     });
   }, [authUser]);
-
+  // fetch the question and options from the database
   useEffect(() => {
     const db = ref(database, "currentIndex/");
 
@@ -189,7 +190,7 @@ function Quiz({ authUser }) {
     }
     return () => clearInterval(interval);
   }, [currentTimer, dataIndex]);
-  //Global timer for the quiz intialize and update state
+  // fetch the current timer from the database and update the forntend
   useEffect(() => {
     const db = ref(database, "currentTimer/");
 
@@ -219,6 +220,20 @@ function Quiz({ authUser }) {
     leaderboard.sort((a, b) => b.score - a.score);
   }, [leaderboard]);
 
+  const handleLogOut = () => {
+    // Clear all cookies
+    document.cookie.split(";").forEach((cookie) => {
+      const cookieName = cookie.split("=")[0].trim();
+      document.cookie = `${cookieName}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+    });
+
+    // Clear localStorage
+    localStorage.clear();
+
+    // Reload the page
+    window.location.reload();
+  };
+
   return (
     <>
       <Star color={"bg-navBarBg"} />
@@ -234,7 +249,7 @@ function Quiz({ authUser }) {
         >
           <div className="submit">
             <div>{currentTimer}</div>
-            <button>Submit</button>
+            <button onClick={handleLogOut}>Log Out</button>
           </div>
           <div className="quiz-content m-8">
             <div className="question-container flex justify-center items-center">

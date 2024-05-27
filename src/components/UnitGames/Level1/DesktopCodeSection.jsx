@@ -17,23 +17,12 @@ const DesktopCodeSection = ({ onHeightChange, onWidthChange }) => {
         <div className="flex  flex-grow w-[40%] justify-center items-center">
             <div className="flex  flex-col bg-UnitCodeEditor w-full] h-[95%] rounded-3xl p-6 gap-6">
                 {/* level component */}
-                <div className="flex gap-4 text-2xl justify-center text-white">
-                    <p className="">◄</p>
-                    <div className="flex gap-2">
-                        <p>Level</p>
-                        <p>{level}</p>
-                    </div>
-                    <p>►</p>
-                </div>
+                
 
                 <div className=" flex flex-col gap-3">
+                    
                     <div className="gap-2">
-                        <h2 className=" font-semibold text-xl ">Scenario</h2>
-                        <p className=" text-lg">{UnitQuestions[level - 1].scenario}</p>
-                    </div
-                    >
-                    <div className="gap-2">
-                        <h2 className=" font-semibold text-xl ">Question</h2>
+                        <h2 className=" font-semibold text-xl ">Task</h2>
                         <p className=" text-lg">{UnitQuestions[level - 1].question}</p>
                     </div>
 
@@ -45,7 +34,7 @@ const DesktopCodeSection = ({ onHeightChange, onWidthChange }) => {
 
                 {/* controler  */}
                 <div className="flex flex-col gap-5 w-full">
-                    <div className="flex gap-2 items-center">
+                    <div className="flex gap-2 items-center w-32">
                         {" "}
                         <label htmlFor="height" className="text-white" id>
                             Height

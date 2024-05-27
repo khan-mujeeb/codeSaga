@@ -12,6 +12,8 @@ const UnitGame = () => {
         <div className="flex w-screen h-screen bg-unitBg justify-around">
             
             <DesktopSection newHeight={height} newWidth={width}/>
+
+            
             <DesktopCodeSection onHeightChange={setHeight} onWidthChange={setWidth}/>
         </div>
     );

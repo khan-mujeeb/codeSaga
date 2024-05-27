@@ -27,7 +27,7 @@ const routesConfig = [
   },
   {
     id: "cssSlelectors",
-    label: "CSS Selectors",
+    label: "Selectors",
     path: "cssSlelectors",
     url: units,
   },

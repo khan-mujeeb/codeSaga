@@ -1,5 +1,5 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
-import React, { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
+import  { useState } from "react";
 import ChatbotButton from "./ChatbotButton";
 import ChatbotBody from "./ChatbotBody";
 

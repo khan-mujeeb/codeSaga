@@ -3,7 +3,7 @@ import Table from "../components/sqlGames/Table";
 import desktop from "../assets/pc.jpg";
 import LevelStepper from "../components/sqlGames/LevelStepper.jsx";
 import SQLCodeEditor from "../components/sqlGames/SQLCodeEditor.jsx";
-import Joyride from "react-joyride";
+
 import MDEditor from "@uiw/react-md-editor";
 import { sqlGameQuestions } from "../data/sqlgameData.js";
 import useGetAnswerFromAi from "../api/useGetAnswerFromAi.jsx";

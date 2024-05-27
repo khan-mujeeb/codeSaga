@@ -8,29 +8,30 @@ import useGetAudio from "../api/useGetAudio";
 import { Lines } from "react-preloaders";
 import introVideo from "../assets/video/intro.mp4";
 import Heading from "../components/interview/Heading";
+import { history } from "../data/AiData";
 
 
-var history = [
-    {
-        role: "user",
-        parts: "i want you to take my mock interview for the role of web developer",
-    },
+// var history = [
+//     {
+//         role: "user",
+//         parts: "i want you to take my mock interview for the role of web developer",
+//     },
 
-    {
-        role: "model",
-        parts: "Hello, thank you for joining todays Interview for role of web developer",
-    },
+//     {
+//         role: "model",
+//         parts: "Hello, thank you for joining todays Interview for role of web developer",
+//     },
 
-    {
-        role: "user",
-        parts: "thank you so much sir for this opportunity.",
-    },
+//     {
+//         role: "user",
+//         parts: "thank you so much sir for this opportunity.",
+//     },
 
-    {
-        role: "model",
-        parts: "Can you please start by introducing yourself?.",
-    },
-];
+//     {
+//         role: "model",
+//         parts: "Can you please start by introducing yourself?.",
+//     },
+// ];
 
 const AiInterview = () => {
     const [muted, setMuted] = useState(true);
@@ -44,6 +45,8 @@ const AiInterview = () => {
     const messagesEndRef = useRef(null);
 
     const [screenLoading, setScreenLoading] = useState(false);
+
+    
     useEffect(() => {
         setScreenLoading(true);
         setTimeout(() => {

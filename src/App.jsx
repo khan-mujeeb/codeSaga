@@ -3,7 +3,7 @@ import AiInterview from "./pages/AiInterview.jsx";
 import Rootlayout from "./layouts/rootlayout";
 
 import UnitGame from "./pages/UnitGame";
-import FlexGame from "./pages/FlexGame";
+
 import { Sugar } from "react-preloaders";
 import Sql from "./pages/Sql.jsx";
 
@@ -20,22 +20,15 @@ import {
 
 import GridGame from "./pages/GridGame.jsx";
 import { useEffect, useState } from "react";
-// import Authentications from "./pages/Authentications";
-// import "./App.css";
 
-/**
- * - The App component is the entry point of the application.
- * - It is responsible for rendering the top-level components.
- * - It is also responsible for routing.
- *
- */
 import React from "react";
-// import Quizui from "./pages/Quizui.jsx";
-// import QuizDemo from "./pages/QuizDemo.jsx";
+
 import QuizWithAuth from "./pages/QuizWithAuth.jsx";
-// import Quizui from "./pages/Quizui.jsx";
+
 import SliderMenu from "./components/SlidingMenu/SliderMenu.jsx";
 import SelectorCSS from "./pages/SelectorCSS.jsx";
+import FlexOptimised from "./pages/FlexOptimised.jsx";
+import Demolab from "./pages/Demolab.jsx";
 
 const App = () => {
   const [loading, isLoading] = useState(false);
@@ -57,7 +50,8 @@ const App = () => {
               <Route path="/CssMenu" element={<Outlet />}>
                 <Route path="" element={<SliderMenu />} />
                 <Route path="unit" element={<UnitGame />} />
-                <Route path="flex" element={<FlexGame />} />
+                <Route path="flex" element={<FlexOptimised />} />
+                <Route path="demolab" element={<Demolab />} />
                 <Route path="sql" element={<Sql />} />
 
                 <Route path="grid" element={<GridGame />}></Route>
@@ -75,9 +69,6 @@ const App = () => {
           time={1800}
         />
       </React.Fragment>
-      {/* <button type="button" className="login-with-google-btn">
-        Sign in with Google
-      </button> */}
     </>
   );
 };

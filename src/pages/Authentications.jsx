@@ -6,7 +6,7 @@ import { cookies } from "../cookies.js";
 import googleColor from "../assets/img/google-color.svg";
 import "../styles/QuizAuthetications.css";
 import Star from "../components/Back/Star.jsx";
-import quizstart from "../assets/Quiz/quiz-start.png";
+import quizstart from "../assets/Quiz/quiz-start.png"; 
 
 function Authentications({ setIsAuth, setAuthUser }) {
   const handleSignIn = async () => {

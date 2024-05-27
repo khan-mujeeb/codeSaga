@@ -4,12 +4,6 @@ import "./Slider.css";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
 
-import flex from "../../assets/CssMenuImages/flex.png";
-import grid from "../../assets/CssMenuImages/grid.jpg";
-import AiInterview from "../../assets/img/AiInterview.svg";
-
-import units from "../../assets/CssMenuImages/units.svg";
-import sql from "../../assets/CssMenuImages/sql.png";
 // import { register } from "module";
 
 const routesConfig = [
@@ -17,39 +11,33 @@ const routesConfig = [
     id: "unit",
     label: "Units",
     path: "unit",
-    url: units,
   },
   {
     id: "flex",
     label: "Flex",
     path: "flex",
-    url: flex,
   },
   {
     id: "cssSlelectors",
     label: "Selectors",
     path: "cssSlelectors",
-    url: units,
   },
   {
     id: "sql",
     label: "Sql",
     path: "sql",
-    url: sql,
   },
 
   {
     id: "ai-interview",
     label: "AI Interview",
     path: "ai-interview",
-    url: AiInterview,
   },
 
   {
     id: "Authentications",
     label: "Quiz",
     path: "Authentications",
-    url: units,
   },
 ];
 

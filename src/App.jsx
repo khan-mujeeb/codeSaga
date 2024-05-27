@@ -20,7 +20,9 @@ import {
 
 import GridGame from "./pages/GridGame.jsx";
 import { useEffect, useState } from "react";
+import NthSelector from "./components/labs/nth-child/NthSelector.jsx"
 
+import Animation from "./components/labs/animation/Animation.jsx";
 import React from "react";
 
 import QuizWithAuth from "./pages/QuizWithAuth.jsx";
@@ -53,6 +55,10 @@ const App = () => {
                 <Route path="flex" element={<FlexOptimised />} />
                 <Route path="demolab" element={<Demolab />} />
                 <Route path="sql" element={<Sql />} />
+
+                <Route path="/CssMenu/demolab/nth-child" element={<NthSelector />} />
+                <Route path="/CssMenu/demolab/unit" element={<UnitGame />} />
+                <Route path="/CssMenu/demolab/animation" element={<Animation />} />
 
                 <Route path="grid" element={<GridGame />}></Route>
                 <Route path="ai-interview" element={<AiInterview />} />

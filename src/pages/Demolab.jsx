@@ -13,9 +13,15 @@ const routesConfig = [
         url: units,
     },
     {
-        id: "flex",
-        label: "Flex",
-        path: "flex",
+        id: "nth-child",
+        label: "Nth Child Selector",
+        path: "nth-child",
+        url: grid,
+    },
+    {
+        id: "animation",
+        label: "Animation",
+        path: "animation",
         url: grid,
     }
 ];
@@ -32,19 +38,15 @@ function Demolab() {
                 }
             >
                 {/* {route.label} */}
-                <div class="w-full max-w-xs rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 duration-200 demobox">
+                <div className="w-full max-w-xs rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 duration-200 demobox">
                     <a href="#">
-                        <img class="p-4 rounded-t-3xl w-80 h-40 " src={route.url} alt="product image" />
+                        <img className="p-4 rounded-t-3xl w-80 h-40 " src={route.url} alt="product image" />
                     </a>
-                    <div class="px-5 pb-5">
+                    <div className="px-5 pb-5">
                         <a href="#">
-                            <h5 class="text-2xl mb-3 text-center font-roboto tracking-tight text-gray-900 dark:text-white">{route.label}</h5>
+                            <h5 className="text-2xl mb-3 text-center font-roboto tracking-tight text-gray-900 dark:text-white">{route.label}</h5>
                         </a>
-                        <div class="flex justify-center">
-                            <a href="#" class="text-white bg-blue-700 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-green-600 hover:scale-95 dark:focus:ring-blue-800">
-                                View More
-                            </a>
-                        </div>
+                        
                     </div>
                 </div>
 

@@ -3,8 +3,9 @@ import "./NthSelector.css";
 
 function App() {
     return (
-        <div>
-            <h1>CSS CHILD SELECTORS</h1>
+        <div className="flex flex-col items-center">
+             <h1 className="text-4xl font-semibold">CSS Transition Timing Function</h1>
+            <p className="text-xl text-gray-700">Hover to see the transition</p>
             <div className="nth-child-container">
                 <div className="nth-child-left">
                     <div className="nth-child-wrapper">

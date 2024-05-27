@@ -12,7 +12,7 @@ import ConfettiExplosion from "react-confetti-explosion";
 
 function FlexOptimised() {
   const [discussionClicked, setDiscussionClicked] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(3);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [nextLevel, setNextLevel] = useState(false);
   const currentItem = dataFlexbox[currentIndex];
   const [open, setOpen] = useState(false);

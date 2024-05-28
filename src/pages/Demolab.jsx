@@ -2,7 +2,8 @@ import React from 'react'
 import Star from '../components/Back/Star.jsx'
 import { NavLink } from 'react-router-dom';
 import units from '../assets/CssMenuImages/units.svg'
-import grid from '../assets/CssMenuImages/grid.svg'
+import animate from '../assets/CssMenuImages/sql.svg'
+import grid from '../assets/CssMenuImages/media.svg'
 import '../styles/demolab.css'
 
 const routesConfig = [
@@ -22,7 +23,7 @@ const routesConfig = [
         id: "animation",
         label: "Animation",
         path: "animation",
-        url: grid,
+        url: animate,
     }
 ];
 

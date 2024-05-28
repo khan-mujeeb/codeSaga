@@ -14,8 +14,8 @@ export const sqlGameQuestions = [
         scenario:
             "After a successful start, you're asked to narrow down the search to officers with specific ranks.",
         question:
-            "write a sql query to retrieve the Full name and ranks of officers ranked as 'Lieutenant' from the 'Officers' table.",
-        answer: "SELECT first_name, last_name rank FROM Officers WHERE rank = 'Lieutenant';",
+            "write a sql query to retrieve the first name and rank of officers ranked as 'Lieutenant' from the 'Officers' table.",
+        answer: "SELECT first_name,rank FROM Officers WHERE rank = 'Lieutenant';",
     },
     {
         level: 3,

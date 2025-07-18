@@ -7,8 +7,7 @@ const useCheckAnswer = () => {
     const [error, setError] = useState(null);
 
 
-    const genAns = new GoogleGenerativeAI("AIzaSyBl0WLp04_XxXAofLvPNF5iXifN2KzsqQw")
-    const ansModel = genAns.getGenerativeModel({ model: "gemini-pro" });
+   
 
     async function getAnswerFromAi(ans, query, setCorrect, setIsExploding) {
         

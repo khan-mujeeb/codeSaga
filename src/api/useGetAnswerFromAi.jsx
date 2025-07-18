@@ -2,9 +2,7 @@ import { useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 
-const genAI = new GoogleGenerativeAI(
-    "AIzaSyBxqd-5jq5AP0LWxpdeuORYgpH07mGgIPU"
-);
+\
 
 const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
